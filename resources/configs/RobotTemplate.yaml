@@ -1,0 +1,15 @@
+RobotName: ""
+Author: "" 
+Date: ""
+Peripherals:
+        - Name: ""
+          Type: ""
+          Motors:
+                  - Name: ""
+                    Type: ""
+                    .......
+                  - Name: ""
+                    Type: ""
+                    .......
+        - Name: ""
+          ......

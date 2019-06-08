@@ -1,0 +1,25 @@
+Name: {{ Robot.name }}
+Author: {{ Meta.author }}
+Date: {{ Meta.date }}
+Peripherals:
+  {% for p in Robot.peripherals %}
+  - Name: {{ p.name }}
+    Type: {{ p.type }}
+    {% for m in p.meta.keys() %}
+    {{ m }}: {{ p.meta[m] }}
+    {% endfor %}
+    Outputs:
+    {% for o in p.outputs %}
+      - Name: {{ o.name }}
+      - Type: {{ o.type }}
+      {% for m in o.meta.keys() %}
+      {{ m }}: {{ o.meta[m] }}
+      {% endfor %}
+    {% endfor %}
+    Inputs:
+    {% for i in p.inputs %}
+      - Name: {{ i.name }}
+      - Type: {{ i.type }}
+      {% for m in i.meta %}
+      {{ m.key }}: {{ m.value }}
+  {% endfor %}

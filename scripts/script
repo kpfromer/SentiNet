@@ -1,0 +1,11 @@
+
+
+/*
+virtual void create_peripherals(ConfigurationClient& config){
+  {% for p in peripherals %}
+  {{ p.class }} * {{ p.name }} = new {{ p.class }}(config, "{{ p.name }}");
+  peripherals.insert(std::pair<std::string, std::shared_ptr<PeripheralInterface>>("{{ p.name }}", std::move({{ p.name }})));
+  {% endfor %}
+}
+*/
+
