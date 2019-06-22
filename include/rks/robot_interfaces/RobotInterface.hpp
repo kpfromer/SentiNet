@@ -33,10 +33,14 @@ class RobotInterface : public RobotBaseInterface
     virtual ~RobotInterface();
 
   public:
+    virtual bool load_peripherals(ConfigurationClient* config);
+
+  public:
     virtual bool initialize();
     virtual bool terminate();
 
   protected:
+    //peripheral probing
     virtual bool start_up_scan();
     virtual bool termination_scan();
 
@@ -57,6 +61,9 @@ class RobotInterface : public RobotBaseInterface
 
 
   private:
+    void* action_objective;
+    ControlClientInterface* controller;
+
     const std::string asset_name;
 };
 
