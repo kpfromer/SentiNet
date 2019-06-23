@@ -28,12 +28,8 @@ class PeripheralBaseInterface
   public:
     virtual ~PeripheralBaseInterface() = default;
 
-  protected:
-    virtual void create_inputs(ConfigurationClient&, unsigned int) = 0;
-    virtual void create_outputs(ConfigurationClient&, unsigned int) = 0;
-
   public:
-    virtual void loop() = 0;
+    virtual void write() = 0;
 }; 
 
 } // namespace peripheral_interfaces

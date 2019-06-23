@@ -1,6 +1,6 @@
 
-#ifndef RKS_OUTPUTINTERFACE_HPP
-#define RKS_OUTPUTINTERFACE_HPP
+#ifndef RKS_IO_INTERFACES_OUTPUTINTERFACE_HPP
+#define RKS_IO_INTERFACES_OUTPUTINTERFACE_HPP
 
 #include "rks/ConfigurationClient.hpp"
 #include <string>
@@ -45,4 +45,4 @@ class OutputInterface {
 } // namespace output
 } // namespace rks
 
-#endif // RKS_OUTPUTINTERFACE_HPP
+#endif // RKS_IO_INTERFACES_OUTPUTINTERFACE_HPP

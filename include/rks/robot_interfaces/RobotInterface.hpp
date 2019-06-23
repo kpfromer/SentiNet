@@ -32,6 +32,7 @@ class RobotInterface : public RobotBaseInterface
 
     virtual ~RobotInterface();
 
+  //TODO
   public:
     virtual bool load_peripherals(ConfigurationClient* config);
 
@@ -62,7 +63,6 @@ class RobotInterface : public RobotBaseInterface
 
   private:
     void* action_objective;
-    ControlClientInterface* controller;
 
     const std::string asset_name;
 };

@@ -1,6 +1,6 @@
 
-#ifndef RKS_INPUTINTERFACE_HPP
-#define RKS_INPUTINTERFACE_HPP
+#ifndef RKS_IO_INTERFACES_INPUTINTERFACE_HPP
+#define RKS_IO_INTERFACES_INPUTINTERFACE_HPP 
 
 #include "rks/ConfigurationClient.hpp"
 #include <string>
@@ -45,4 +45,4 @@ class InputInterface {
 } // namespace rks
 } // namespace input
 
-#endif //RKS_INPUTINTERFACE_HPP
+#endif //RKS_IO_INTERFACES_INPUTINTERFACE_HPP

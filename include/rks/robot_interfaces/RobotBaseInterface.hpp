@@ -31,10 +31,7 @@ class RobotBaseInterface
     virtual ~RobotBaseInterface() = default;
 
   protected:
-    virtual void create_peripherals(ConfigurationClient& config) = 0;
-
-  protected:
-    virtual void update() = 0;
+    virtual void write() = 0;
 };
 
 

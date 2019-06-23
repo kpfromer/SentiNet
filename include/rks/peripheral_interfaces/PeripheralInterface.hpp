@@ -25,9 +25,15 @@ class PeripheralInterface : public PeripheralBaseInterface
 {
   public:
     PeripheralInterface(ConfigurationClient* config, unsigned int id)
-    : asset_name(config->get_peripheral(id)["Name"].as<std::string>()){}
+    : asset_name(std::string);
+    //: asset_name(config->get_peripheral(id)["Name"].as<std::string>()){}
 
     virtual ~PeripheralInterface();
+
+  //TODO
+  public:
+    virtual bool load_inputs(ConfigurationClient* config unsigned int);
+    virtual bool load_outputs(ConfigurationClient* config, unsigned int);
 
   public:
     virtual bool initialize();
@@ -53,6 +59,7 @@ class PeripheralInterface : public PeripheralBaseInterface
     std::map<std::string, std::shared_ptr<InputInterface>> inputs;
 
   private:
+    void* io_objective;
     const std::string asset_name;
 }; 
 
