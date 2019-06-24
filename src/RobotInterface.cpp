@@ -1,8 +1,22 @@
 #include "rks/robot_interfaces/RobotInterface.hpp"
 
 using rks::robot_interfaces::RobotInterface;
+using rks::peripheral_interfaces::PeripheralInterface;
 
 RobotInterface::~RobotInterface(){}
+
+
+PeripheralInterface* RobotInterface::load_peripheral(std::string path_name)
+{
+  void* handle = dlopen(path_name, RT
+}
+
+bool RobotInerface::load_peripherals(ConfigurationClient* config)
+{
+  void* handel
+   return true;
+}
+
 
 //Default Runtime initialization (start listening to control)
 bool RobotInterface::initialize(){

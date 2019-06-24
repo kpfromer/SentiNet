@@ -1,7 +1,0 @@
-
-
-
-typedef struct
-{
-
-} task;

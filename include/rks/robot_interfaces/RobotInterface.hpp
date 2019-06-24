@@ -26,44 +26,25 @@ class RobotInterface : public RobotBaseInterface
 {
 
   public:
-    
+    //will probably have to change this later
     RobotInterface(ConfigurationClient* config)
     : asset_name(config->get_robot()["Name"].as<std::string>()){};
-
     virtual ~RobotInterface();
 
-  //TODO
   public:
-    virtual bool load_peripherals(ConfigurationClient* config);
-
-  public:
-    virtual bool initialize();
-    virtual bool terminate();
-
-  protected:
-    //peripheral probing
-    virtual bool start_up_scan();
-    virtual bool termination_scan();
-
-    virtual bool start_up_status();
-    virtual bool termination_status();
-
-  public:
-
     virtual std::string get_name() const;
     virtual void get_description(bool);
 
+  //Kill process
   protected:
-
-    virtual void emergency_cut_power(); 
-
-  protected:
-    std::map<std::string, std::shared_ptr<PeripheralInterface>> peripherals;
-
+    virtual void kill(); 
+  private:
+    virtual void check_statuses();
 
   private:
-    void* action_objective;
-
+    READ_ONLY_ACTION_OBJECTIVE robot_objective;
+    WRITE_ONLY_ACTION_OBJECTIVE* periph_objective;
+    
     const std::string asset_name;
 };
 
