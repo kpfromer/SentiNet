@@ -19,4 +19,5 @@
 #define TRIGGER_MESSAGE   uint8_t
 
 typedef enum {none, low, medium, high} verbosity;
+typedef enum {DEBUG, INFO, WARN, LOG} log;
 

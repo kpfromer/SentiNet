@@ -1,18 +1,28 @@
 //RKS includes
-#include "kernel/macros.h"
+#include "../macros.h"
 
 //C includes
 #include <stdlib.h>
 
+//Forward declaration
+struct action_process;
+struct trigger_objective;
+struct action_objective;
+enum PROCESS_STATUS;
+
+//A Process can be utilized or not, but if its active, it is either waiting
+//for one of its functions to complete or executing a function
 typedef enum {active, inactive} PROCESS_STATUS;
-typedef void (*action_function)(TRIGGER_MESSAGE, void*);
+
+//A trigger function. Recieves a number (TRIGGER_MESSAGE) and a pointer to an action process
+typedef void (*trigger_function)(TRIGGER_MESSAGE, struct action_process*);
+
+//An arbitrary pool of data (templated struct without c++ template)
 typedef void* action_pool;
 
 //An action objective is a steady stream area that commands an action_process
 typedef struct action_objective
 {
-  PROCESS_ID pid_parent;
-  PROCESS_ID pid_child;
   OBJECTIVE_ID oid;
   action_pool data_pool;
   struct action_objective* next;
@@ -21,10 +31,8 @@ typedef struct action_objective
 //A trigger objective is an instantaneous method that triggers an action
 typedef struct trigger_objective
 {
-  PROCESS_ID pid_parent;
-  PROCESS_ID pid_child;
   OBJECTIVE_ID oid;
-  action_function function;
+  trigger_function process;
   struct trigger_objective* next;
 } trigger_objective_t;
 
@@ -37,15 +45,13 @@ typedef struct
   PROCESS_STATUS status;
 
   //TRIGGER OBJECTIVES
-  trigger_objective_t passive_to; //ideally only one - handels different 
-  trigger_objective_t active_to;
+  trigger_objective_t* triggers;
 
   //ACTION OBJECTIVES
-  action_objective_t read_ao;
-  action_objective_t write_ao;
+  action_objective_t* actions;
 
   //TRANSITION FUNCTION
-  action_function transition_function;
+  trigger_function transition_function;
 } action_process;
 
 
