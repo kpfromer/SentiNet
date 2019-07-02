@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../cpp/include/kernelOPS/core/Types.hpp
+iostream
+-
+string
+-
+
+/home/theo/dev/projects/curmc/grl/cpp/lib/Types.cpp
+kernelOPS/core/Types.hpp
+/home/theo/dev/projects/curmc/grl/cpp/lib/kernelOPS/core/Types.hpp
+

@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/theo/dev/projects/curmc/grl/build/CMakeFiles /home/theo/dev/projects/curmc/grl/build/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /home/theo/dev/projects/curmc/grl/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/theo/dev/projects/curmc/grl/build/CMakeFiles /home/theo/dev/projects/curmc/grl/build/cpp/lib/CMakeFiles/progress.marks
+	cd /home/theo/dev/projects/curmc/grl/build && $(MAKE) -f CMakeFiles/Makefile2 cpp/lib/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/theo/dev/projects/curmc/grl/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /home/theo/dev/projects/curmc/grl/build && $(MAKE) -f CMakeFiles/Makefile2 cpp/lib/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,44 +97,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/theo/dev/projects/curmc/grl/build && $(MAKE) -f CMakeFiles/Makefile2 cpp/lib/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/theo/dev/projects/curmc/grl/build && $(MAKE) -f CMakeFiles/Makefile2 cpp/lib/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/theo/dev/projects/curmc/grl/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named run
+# Convenience name for target.
+cpp/lib/CMakeFiles/types.dir/rule:
+	cd /home/theo/dev/projects/curmc/grl/build && $(MAKE) -f CMakeFiles/Makefile2 cpp/lib/CMakeFiles/types.dir/rule
+.PHONY : cpp/lib/CMakeFiles/types.dir/rule
 
-# Build rule for target.
-run: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 run
-.PHONY : run
+# Convenience name for target.
+types: cpp/lib/CMakeFiles/types.dir/rule
 
-# fast build rule for target.
-run/fast:
-	$(MAKE) -f cpp/CMakeFiles/run.dir/build.make cpp/CMakeFiles/run.dir/build
-.PHONY : run/fast
-
-#=============================================================================
-# Target rules for targets named types
-
-# Build rule for target.
-types: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 types
 .PHONY : types
 
 # fast build rule for target.
 types/fast:
-	$(MAKE) -f cpp/lib/CMakeFiles/types.dir/build.make cpp/lib/CMakeFiles/types.dir/build
+	cd /home/theo/dev/projects/curmc/grl/build && $(MAKE) -f cpp/lib/CMakeFiles/types.dir/build.make cpp/lib/CMakeFiles/types.dir/build
 .PHONY : types/fast
+
+Types.o: Types.cpp.o
+
+.PHONY : Types.o
+
+# target to build an object file
+Types.cpp.o:
+	cd /home/theo/dev/projects/curmc/grl/build && $(MAKE) -f cpp/lib/CMakeFiles/types.dir/build.make cpp/lib/CMakeFiles/types.dir/Types.cpp.o
+.PHONY : Types.cpp.o
+
+Types.i: Types.cpp.i
+
+.PHONY : Types.i
+
+# target to preprocess a source file
+Types.cpp.i:
+	cd /home/theo/dev/projects/curmc/grl/build && $(MAKE) -f cpp/lib/CMakeFiles/types.dir/build.make cpp/lib/CMakeFiles/types.dir/Types.cpp.i
+.PHONY : Types.cpp.i
+
+Types.s: Types.cpp.s
+
+.PHONY : Types.s
+
+# target to generate assembly for a file
+Types.cpp.s:
+	cd /home/theo/dev/projects/curmc/grl/build && $(MAKE) -f cpp/lib/CMakeFiles/types.dir/build.make cpp/lib/CMakeFiles/types.dir/Types.cpp.s
+.PHONY : Types.cpp.s
 
 # Help Target
 help:
@@ -143,9 +159,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... run"
 	@echo "... types"
+	@echo "... edit_cache"
+	@echo "... Types.o"
+	@echo "... Types.i"
+	@echo "... Types.s"
 .PHONY : help
 
 
@@ -157,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/theo/dev/projects/curmc/grl/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
