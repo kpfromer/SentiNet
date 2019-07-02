@@ -4,7 +4,6 @@
 #ifndef TEST_COMMON_TESTUTILS_HPP
 #define TEST_COMMON_TESTUTILS_HPP
 
-// Kelvin includes
 #include "common/Utils.hpp"
 #include "common/configuration/ConfigurationInterface.hpp"
 #include "common/filesystem/FileSystem.hpp"

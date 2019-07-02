@@ -9,9 +9,9 @@
  *  @bug No Known Bugs
  */
 
-#ifndef TYPES_HPPI
+#ifndef TYPES_HPP
 
-#define TYPES_HPPI
+#define TYPES_HPP
 
 //C++ includes
 #include <iostream>

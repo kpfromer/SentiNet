@@ -1,7 +1,7 @@
 project(Kernel-Objective-Based-PubSub)
 
 
-include_directories(include)
+include_directories(common)
 add_subdirectory(lib)
 
 add_executable(run impl/main.cpp
