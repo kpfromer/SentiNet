@@ -19,7 +19,7 @@
 #include <memory>
 
 //Project includes
-#include "kernelOPS/core/Types.hpp"
+#include "kernelOPS/utils/Types.hpp"
 #include "kernelOPS/core/TriggerHandler.hpp"
 
 namespace obps

@@ -1,1 +1,7 @@
-build
+build*/
+./example*
+*.swp
+*.swo
+*.pyc
+.idea/*
+.vscode/*

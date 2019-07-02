@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/run.dir/impl/main.cpp.o CMakeFiles/run.dir/src/ActionProcess.cpp.o CMakeFiles/run.dir/src/TriggerHandler.cpp.o  -o run lib/libtypes.a 

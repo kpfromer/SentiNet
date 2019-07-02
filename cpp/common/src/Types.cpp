@@ -9,7 +9,7 @@
  *  @bug No Known Bugs
  */
 
-#include "kernelOPS/core/Types.hpp"
+#include "kernelOPS/utils/Types.hpp"
 
 using namespace obps::utils;
 
