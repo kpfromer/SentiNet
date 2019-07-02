@@ -8,5 +8,5 @@ $ cd build
 $ cmake ..
 $ make
 
-$ ./run
+$ ./cpp/impl/run
 ```
