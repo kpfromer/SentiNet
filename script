@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rm -rf build
+mkdir build
+pushd ./build
+cmake ../
+make
+cp ./cpp/tests/*test ../bin
+popd
+

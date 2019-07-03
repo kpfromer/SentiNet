@@ -6,8 +6,12 @@ cmake_minimum_required(VERSION 3.5)
 
 set(LIBTYPES_SRC src/Types.cpp)
 set(LIBGRL_SRC src/TriggerHandler.cpp
-              src/ActionProcess.cpp)
+              src/ActionProcess.cpp
+			  src/ActionObjective.cpp
+			  src/ObjectiveHandler.cpp)
 
+			  #			  src/ObjectiveHandler.cpp)
+		  	
 
 add_library(types ${LIBTYPES_SRC})
 add_library(grl ${LIBGRL_SRC})

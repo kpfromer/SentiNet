@@ -1,7 +1,12 @@
-# Include the GTEST CMake configuration file.  I didn't want to pollute the main file with GTEST stuff
-include(CMakeLists-gtest.txt)
+project(Kernel-Objective-Based-PubSub)
 
-# Include the unit tests (should pass on all machines)
-add_subdirectory(unit_test)
-# Include the functional tests (may pass on a machine, but passing is based on performance (which can vary per machine))
-add_subdirectory(functional_test)
+include_directories(include
+					../common/include)
+
+add_executable(objective-handler-test unit-tests/ObjectiveHandlerTest.cpp)
+add_executable(objective-test unit-tests/ActionObjectiveTest.cpp)
+add_executable(action-trigger-test unit-tests/ActionTriggerTest.cpp)
+
+target_link_libraries(action-trigger-test grl types)
+target_link_libraries(objective-handler-test grl types)
+target_link_libraries(objective-test grl types)

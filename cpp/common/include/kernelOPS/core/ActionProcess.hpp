@@ -41,6 +41,7 @@ class ActionProcess
 
 	private:
 		std::shared_ptr<TriggerHandler> th;
+		std::shared_ptr<ObjectiveHandler> oh;
 		std::string asset_name;
 };
 }
