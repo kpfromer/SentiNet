@@ -1,12 +1,9 @@
 project(Kernel-Objective-Based-PubSub)
 
-include_directories(include
-					../common/include)
+include_directories(../common/include)
 
-add_executable(objective-handler-test unit-tests/ObjectiveHandlerTest.cpp)
-add_executable(objective-test unit-tests/ActionObjectiveTest.cpp)
-add_executable(action-trigger-test unit-tests/ActionTriggerTest.cpp)
+add_executable(client unit-tests/Clienttest.cpp)
+add_executable(server unit-tests/Servertest.cpp)
 
-target_link_libraries(action-trigger-test grl types)
-target_link_libraries(objective-handler-test grl types)
-target_link_libraries(objective-test grl types)
+target_link_libraries(client zmqclient)
+target_link_libraries(server zmqserver)
