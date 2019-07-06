@@ -1,9 +1,11 @@
-project(Kernel-Objective-Based-PubSub)
+project(unit-tests)
 
-include_directories(../common/include)
+set(APP_NAME run_unit_tests)
 
-add_executable(client unit-tests/Clienttest.cpp)
-add_executable(server unit-tests/Servertest.cpp)
+file(GLOB_RECURSE UNIT_TEST_SOURCE_FILES "*.cpp")
+add_executable(${APP_NAME} ${UNIT_TEST_SOURCE_FILES})
+add_dependencies(${APP_NAME} gtest)
 
-target_link_libraries(client zmqclient)
-target_link_libraries(server zmqserver)
+list(APPEND UNIT_TEST_SUBDIRS "common")
+foreach(SUDIR ${UNIT_TEST_SUBDIRS})
+  :

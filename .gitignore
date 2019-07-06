@@ -1,7 +1,9 @@
 build*/
+./docs/doxygen*
 ./example*
 *.swp
 *.swo
 *.pyc
 .idea/*
 .vscode/*
+

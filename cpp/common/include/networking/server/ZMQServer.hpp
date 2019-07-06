@@ -22,6 +22,7 @@
 
 //Project includes
 #include "networking/server/ServerInterface.hpp"
+#include "callbacks/callbacks.hpp"
 
 
 namespace networking
@@ -29,29 +30,32 @@ namespace networking
 namespace server
 {
 
+void* thread_entry_point(void*);
+
 class ZMQServer : public ServerInterface
 {
     public:
-        ZMQServer (const std::string address_, int context_ = 1);
-        virtual ~ZMQServer ();
+      ZMQServer (const std::string address_, int context_ = 1);
+      ZMQServer (int port);
+      virtual ~ZMQServer ();
 
-		virtual bool initialize(int threads = 1);
-		virtual bool terminate();
+		  virtual bool initialize(int threads = 1);
+		  virtual bool terminate();
 	
 		 
 
     private:
 
-		void* multi_threaded_listener(void*);
+		  void* multi_threaded_listener(void*);
 
-		friend void* thread_entry_point(void*); 
+		  friend ::callbacks::entry_func thread_entry_point; 
 
-		void single_threaded_listener();
+		  void single_threaded_listener();
 
-		std::string process(void*);
+		  std::string process(void*);
 
-		int context;
-		std::unique_ptr<::zmq::socket_t> socket;
+		  int context;
+		  std::unique_ptr<::zmq::socket_t> socket;
 
 		
 };

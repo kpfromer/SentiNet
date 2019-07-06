@@ -1,2 +1,5 @@
-# VENDOR
-This is a place for all C and C++ dependencies from third party clients. This is NOT a place for dependencies, to install dependencies not C or C++ related, run make install-arch/ubuntu-dependencies (Not implimented yet cause we don't have any dependencies)
+yaml-cpp - parsing config files
+zmq - messaging protocol
+curlcpp - sending requests via http (zmq can do this but only implimented in 3.2)
+tclap - parse command line arguments
+
