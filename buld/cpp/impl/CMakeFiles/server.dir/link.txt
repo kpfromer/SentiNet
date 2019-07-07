@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/server.dir/run-tests/Servertest.cpp.o  -o ../../../build/x86_64/bin/server -Wl,-rpath,/home/theo/dev/projects/curmc/grl/build/x86_64/lib:/usr/local/lib ../../../build/x86_64/lib/libzmqserver.so.1 /usr/local/lib/libzmq.so /usr/lib/libpthread.so 
