@@ -19,8 +19,11 @@
 #include <string>
 #include <functional>
 #include <cstring>
+#include <memory>
+#include <iostream>
 
 //Project includes
+#include "defaults.hpp"
 
 
 namespace networking
@@ -57,10 +60,8 @@ class ServerInterface
 		 */
 		ServerInterface (const std::string& address, std::function<std::string(void*, int)> callback);
 
-		void set_callback(std::function<std::string(void*, int)> callback_)
-		{
-			callback = callback_;
-		}
+
+		void set_callback(std::function<std::string(void*, int)>* callback_);
 
 		/**
 		 * @brief Default Destructor
@@ -113,7 +114,7 @@ class ServerInterface
 		 */
 		const std::string serving_address;
 
-		std::function<std::string(void*, int)> callback;
+		std::unique_ptr<std::function<std::string(void*, int)>> callback;
 };
 
 }	// namespace server

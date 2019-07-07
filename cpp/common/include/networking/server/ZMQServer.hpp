@@ -68,7 +68,10 @@ class ZMQServer : public ServerInterface
 
 		ZMQServer (const std::string& address, int threads);
 
+		ZMQServer (const std::string& address, std::function<std::string(void*, int)> callback);
+
 		ZMQServer (const std::string& address, int threads, std::function<std::string(void*, int)> callback);
+		
 		
 		virtual ~ZMQServer();
 
@@ -88,7 +91,6 @@ class ZMQServer : public ServerInterface
 
 		::zmq::context_t context;
 		std::unique_ptr<::zmq::socket_t> socket;
-		std::function<std::string(void*, int)> callback;
 		int threads;
 		
 		void* create_entry_point()

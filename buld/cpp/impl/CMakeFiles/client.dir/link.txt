@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/client.dir/run-tests/Clienttest.cpp.o  -o ../../../build/x86_64/bin/client -Wl,-rpath,/home/theo/dev/projects/curmc/grl/build/x86_64/lib:/usr/local/lib ../../../build/x86_64/lib/libzmqclient.so.1 /usr/local/lib/libzmq.so 

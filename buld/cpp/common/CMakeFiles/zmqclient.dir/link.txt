@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared -Wl,-soname,libzmqclient.so.1 -o ../../../build/x86_64/lib/libzmqclient.so.1 CMakeFiles/zmqclient.dir/src/client/ClientInterface.cpp.o CMakeFiles/zmqclient.dir/src/client/ZMQClient.cpp.o -Wl,-rpath,/usr/local/lib: /usr/local/lib/libzmq.so 

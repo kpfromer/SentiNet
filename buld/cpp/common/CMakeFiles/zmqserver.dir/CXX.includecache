@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../cpp/common/include/networking/server/ServerInterface.hpp
+string
+-
+functional
+-
+cstring
+-
+
+../cpp/common/include/networking/server/ZMQServer.hpp
+zmq.hpp
+-
+string
+-
+iostream
+-
+pthread.h
+-
+functional
+-
+networking/server/ServerInterface.hpp
+../cpp/common/include/networking/server/networking/server/ServerInterface.hpp
+
+/home/theo/dev/projects/curmc/grl/cpp/common/src/server/ServerInterface.cpp
+networking/server/ServerInterface.hpp
+/home/theo/dev/projects/curmc/grl/cpp/common/src/server/networking/server/ServerInterface.hpp
+iostream
+-
+
+/home/theo/dev/projects/curmc/grl/cpp/common/src/server/ZMQServer.cpp
+networking/server/ZMQServer.hpp
+/home/theo/dev/projects/curmc/grl/cpp/common/src/server/networking/server/ZMQServer.hpp
+

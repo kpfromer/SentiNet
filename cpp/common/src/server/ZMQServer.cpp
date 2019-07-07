@@ -26,7 +26,6 @@ ZMQServer::ZMQServer(const std::string& address)
 	: ServerInterface(address)
 {
 	threads = 1;    
-
 }
 
 ZMQServer::ZMQServer(const std::string& address, int threads_)
@@ -35,13 +34,19 @@ ZMQServer::ZMQServer(const std::string& address, int threads_)
 	threads = threads_;
 }
 
-ZMQServer::ZMQServer(const std::string& address, int threads_, std::function<std::string(void*, int)> callback)
+ZMQServer::ZMQServer(const std::string& address, std::function<std::string(void*, int)> callback)
 	: ServerInterface(address, callback)
 {
-	std::cout<<"Im here too"<<std::endl;
+	threads = 1;
+}
 
+ZMQServer::ZMQServer(const std::string& address, int threads_, std::function<std::string(void*, int)> callback_)
+	: ServerInterface(address, callback_)
+{
 	threads = threads_;
 }
+
+
 
 ZMQServer::~ZMQServer()
 {
@@ -91,17 +96,12 @@ void ZMQServer::single_threaded_listener()
 		::zmq::message_t request;
 
 		this->socket->recv(request, ::zmq::recv_flags::none);
-		std::cout<<"Got it"<<std::endl;
 
-	if(callback == nullptr)
-	{
-		std::cout<<"null"<<std::endl;
-	}else{
-		std::cout<<"good"<<std::endl;
-	}
-	std::cout<<"test"<<std::endl;
-		
-		std::string result = callback(request.data(), request.size());
+		std::string result;
+		if(callback == nullptr)
+			result = ::utils::defaults::callbacks::default_callback(request.data(), request.size());
+		else
+			result = (*callback)(request.data(), request.size());
 		
 		::zmq::message_t reply(result.size());
 		memcpy(reply.data(), result.c_str(), result.size());
@@ -120,7 +120,11 @@ void ZMQServer::multi_threaded_listener()
 		
 		worker_socket.recv(request, ::zmq::recv_flags::none);
 	
-		std::string result = callback(request.data(), request.size());
+		std::string result;
+		if(callback == nullptr)
+			result = ::utils::defaults::callbacks::default_callback(request.data(), request.size());
+		else
+			result = (*callback)(request.data(), request.size());
 
 		::zmq::message_t reply(result.size());
 		memcpy(reply.data(), result.c_str(), result.size());

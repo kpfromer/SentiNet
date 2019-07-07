@@ -10,34 +10,23 @@
  */
 
 #include "networking/server/ServerInterface.hpp"
-#include <iostream>
 
 using namespace networking::server;
 
 ServerInterface::ServerInterface(const std::string& address_)
 	: serving_address(address_)
 {
-	callback = std::unique_ptr<std::function<std::string(void*, int)>>
-		(new std::function<std::string(void*, int)>
-		 [this](void* data, int size) -> std::string
-	{
-		char* value = (char*)malloc(size);
-		memcpy(value, data, size);
-		value[size] = '\0';
-		std::string val = std::string(value);
-		free(value);
-		return val;
-	});
-	if(callback == nullptr)
-	{
-		std::cout<<"no"<<std::endl;
-	}else{
-	std::cout<<"Im here"<<std::endl;
-}
+	callback = nullptr;
 }
 
 ServerInterface::ServerInterface(const std::string& add, std::function<std::string(void*, int)> callback_)
 	: serving_address(add)
 {
-	set_callback(callback_);
+	set_callback(&callback_);
+}
+
+
+void ServerInterface::set_callback(std::function<std::string(void*, int)> * callback_)
+{
+	callback = std::unique_ptr<std::function<std::string(void*, int)>>(callback_);
 }
