@@ -18,4 +18,33 @@ ClientInterface::ClientInterface()
 {
 }
 
+std::string ClientInterface::request(const std::string& server_address, const std::string& request_)
+{
+	std::string response_;
+	if(!request_flags(server_address, request_, response_))
+	{
+		std::cout<<"ERROR"<<std::endl;
+		return "";
+	}
+	return response_;
+}
 
+bool ClientInterface::request_flags(const std::string& server_address, const std::string& request_, std::string& response_)
+{
+	if(!connect(server_address))
+	{
+		std::cout<<"Error connecting"<<std::endl;
+		return false;
+	}
+	if(!make_request(request_, response_))
+	{
+		std::cout<<"Error request"<<std::endl;
+		return false;
+	}
+	if(!disconnect(server_address))
+	{
+		std::cout<<"Error disconnecting"<<std::endl;
+		return false;
+	}
+	return true;
+}

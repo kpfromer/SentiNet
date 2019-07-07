@@ -14,13 +14,14 @@
 #define ZMQCLIENT_HPP
 
 //C++ includes
-#include <zmq.hpp>
 #include <memory>
-#include <unordered_map>
 #include <string>
+#include <iostream>
+#include <cstdlib>
 
 //Project includes
 #include "networking/client/ClientInterface.hpp"
+#include <zmq.hpp>
 
 namespace networking
 {
@@ -31,21 +32,20 @@ class ZMQClient : public ClientInterface
 {
     public:
         ZMQClient ();
-         ~ZMQClient ();
+        ~ZMQClient ();
 
-		 virtual bool initialize();
-		 virtual bool terminate();
+		virtual bool initialize(int context = 1);
+		virtual bool terminate();
 
-		 virtual std::string connect(std::string server_address, std::string request, int context = 1);
-		 virtual bool disconnect(std::string server_address);
+	protected:
+		virtual bool connect(const std::string& server_address);
+		virtual bool disconnect(const std::string& server_address);	
+		virtual bool make_request(const std::string& request_, std::string& response_);
 
-		 virtual std::string request(std::string& server_address, std::string& data);
-
-    private:
-
-		std::unordered_map<std::string, std::unique_ptr<::zmq::socket_t>> servers;
-
+	private:
 		::zmq::context_t context;
+		std::unique_ptr<::zmq::socket_t> socket;
+		std::string connected_address;
 };
 
 }

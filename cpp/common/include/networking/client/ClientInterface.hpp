@@ -15,9 +15,9 @@
 
 //C++ includes
 #include <string>
+#include <iostream>
 
 //Project includes
-
 
 namespace networking
 {
@@ -26,17 +26,23 @@ namespace client
 
 class ClientInterface
 {
-    public:
+	public:
         ClientInterface ();
         virtual ~ClientInterface () = default;
 
-		virtual bool initialize() = 0;
+		//Initialize sub processes
+		virtual bool initialize(int) = 0;
 		virtual bool terminate() = 0;
 
-		virtual std::string connect(std::string server_address, std::string, int) = 0;
-		virtual bool disconnect(std::string server_address) = 0; 
+		virtual std::string request(const std::string& server_address, const std::string& request_);
 
-		virtual std::string request(std::string& server_address, std::string& data) = 0;
+	protected:
+		virtual bool connect(const std::string& server_address) = 0;
+		virtual bool disconnect(const std::string& server_address) = 0; 
+		virtual bool make_request(const std::string& request_, std::string& response) = 0;
+
+	private:
+		virtual bool request_flags(const std::string& server_address, const std::string& request_, std::string& response_);
 
 };
 

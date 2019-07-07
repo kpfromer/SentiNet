@@ -1,8 +1,9 @@
 /**
  *  @file ZMQServer
- *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
+ *  @brief An interface implementation of ServerInterface
  *  
- *  ADD A MORE DETAILED DESCRIPTION HERE
+ *  ZMQServer uses ZMQ server socket pattern to emulate a server. It can be single
+ *  or multithreaded using some simple commands to make it either one.
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
  *  @created      Thursday Jul 04, 2019 14:07:20 MDT
@@ -22,7 +23,6 @@
 
 //Project includes
 #include "networking/server/ServerInterface.hpp"
-#include "callbacks/callbacks.hpp"
 
 
 namespace networking
@@ -30,33 +30,71 @@ namespace networking
 namespace server
 {
 
-void* thread_entry_point(void*);
+/**
+* @brief A thread entry point
+*
+* pthread is pretty dumb, so we need a friend entry point that allows us,
+* the Server, to enter a new thread while still keeping all inherited traits
+* because in the end, we want to execute the function multi_threaded_listener
+* when we enter the function, which is private in context (and should be)
+*
+* @param entry a void pointer entry point that points to this
+*
+* @return nullptr normally, but used to satisfy pthread_create
+*/
+void* thread_entry_point(void* entry);
 
+/**
+ * @brief Extension of Server Interface
+ *
+ * A ZMQServer impliments all the ZMQ functionallity (multithreading, piping etc.)
+ * to create an idealized server for whatever need. Similar to a publisher, but
+ * it listens and responds. For this project, a ZMQServer will reply to a client 
+ * pinging it for data (ie requesting a control module)
+ */
 class ZMQServer : public ServerInterface
 {
     public:
-      ZMQServer (const std::string address_, int context_ = 1);
-      ZMQServer (int port);
-      virtual ~ZMQServer ();
+		/**
+		 * @brief Default constructor
+		 *
+		 * ZMQConstructor that assignes address to address, maps to
+		 * ServerInterface(const std::string&).
+		 *
+		 * @param address serving_address
+		 */
+      	ZMQServer (const std::string& address);
 
-		  virtual bool initialize(int threads = 1);
-		  virtual bool terminate();
+
+		ZMQServer (const std::string& address, int threads);
+
+		ZMQServer (const std::string& address, int threads, std::function<std::string(void*, int)> callback);
+		
+		virtual ~ZMQServer();
+
+		virtual bool initialize(int context = 1);
+		virtual bool terminate();
 	
-		 
+		virtual void listen();	
+
+	private:
+		void single_threaded_listener();
+		void multi_threaded_listener();
+
+		friend void* thread_entry_point(void*);
+	
 
     private:
 
-		  void* multi_threaded_listener(void*);
-
-		  friend ::callbacks::entry_func thread_entry_point; 
-
-		  void single_threaded_listener();
-
-		  std::string process(void*);
-
-		  int context;
-		  std::unique_ptr<::zmq::socket_t> socket;
-
+		::zmq::context_t context;
+		std::unique_ptr<::zmq::socket_t> socket;
+		std::function<std::string(void*, int)> callback;
+		int threads;
+		
+		void* create_entry_point()
+		{
+			return (void*)this;
+		}
 		
 };
 

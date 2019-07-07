@@ -5,8 +5,8 @@ set(IIRF_IMPL_INCLUDES include)
 include_directories(../common/include
                     ${IIRF_IMPL_INCLUDES})
 
-set(CLIENT unit-tests/Clienttest.cpp)
-set(SERVER unit-tests/Servertest.cpp)
+set(CLIENT run-tests/Clienttest.cpp)
+set(SERVER run-tests/Servertest.cpp)
 
 add_executable(client ${CLIENT})
 add_executable(server ${SERVER})

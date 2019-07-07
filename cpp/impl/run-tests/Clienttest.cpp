@@ -16,11 +16,15 @@ using namespace networking::client;
 int main()
 {
 	ZMQClient* a = new ZMQClient();
+	a->initialize();
 
-	for(int i = 0; i < 10; i++)
-	{
-		a->connect("tcp://localhost:5555", "hello");
-	}
+	std::cout<<"here"<<std::endl;
+
+	int context = 1;
+
+	std::string value = a->request("tcp://localhost:5555", "hello");
+
+	std::cout<<value<<std::endl;
 
 	return 0;
 }

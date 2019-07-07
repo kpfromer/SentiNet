@@ -1,90 +1,56 @@
 /**
  *  @file ZMQServer
- *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
+ *  @brief ZMQServer is an interface implimentation of ServerInterface
  *  
- *  ADD A MORE DETAILED DESCRIPTION HERE
+ *  ZMQServer recieves a request from a client and sends back a reply via ZMQ's
+ *  server client pattern. This is useful for things like large data packets (ie camera
+ *  data or one time requests) that should not be sent over and over via the pub sub pattern
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
- *  @created      Thursday Jul 04, 2019 17:12:06 MDT
+ *  @created      Saturday Jul 06, 019 13:30:45 MDT
  *  @bug No Known Bugs
  */
 
 #include "networking/server/ZMQServer.hpp"
-#include <iostream>
-#include <unistd.h>
 
 using namespace networking::server;
 
-
-/*
- * We need a thread entry function to capture <this> because pthread only accepts a void pointer
- * to "context" or whatever else the thread needs. Thus, the entry point is a friend to ZMQServer,
- * it can access private vars and functions. It's essentially the same as the object
- */
-//obj is { this, void* (context) }
-void* networking::server::thread_entry_point(void* obj)
+void* networking::server::thread_entry_point(void* args)
 {
-  //extract this from obj
-	::callbacks::entry_context<ZMQServer>* thr = ((::callbacks::entry_context<ZMQServer>*)obj);
-
-  //start main process of execution
-	thr->object->multi_threaded_listener(thr->context);
-
-  //make sure to delete context - or else it wont be deleted until the end remember, its 
-  //a void pointer right now.
-  delete ((::zmq::context_t*)thr->context);
-
-  //mak the compiler happy
+	ZMQServer* ep = (ZMQServer*)args;
+	ep->multi_threaded_listener();
 	return nullptr;
 }
 
-//Initialize a server with a context
-ZMQServer::ZMQServer(const std::string address_, int context_)
-	: ServerInterface(address_)
+ZMQServer::ZMQServer(const std::string& address)
+	: ServerInterface(address)
 {
-	context = context_;
+	threads = 1;    
+
 }
 
-//delete server
+ZMQServer::ZMQServer(const std::string& address, int threads_)
+	: ServerInterface(address)
+{
+	threads = threads_;
+}
+
+ZMQServer::ZMQServer(const std::string& address, int threads_, std::function<std::string(void*, int)> callback)
+	: ServerInterface(address, callback)
+{
+	std::cout<<"Im here too"<<std::endl;
+
+	threads = threads_;
+}
+
 ZMQServer::~ZMQServer()
 {
 }
 
-//do work with a set amount of threads
-bool ZMQServer::initialize(int threads)
+bool ZMQServer::initialize(int context_)
 {
-  //If we want multithreading, we need to utilize zmq's in process
-  //communication, otherwise, zmq is a straight shot that has no idea what to do
-	if(threads > 1)
-	{
-    //create a new context - scoped here - deleted as we leave TODO change to class attribute
-		::zmq::context_t context_(context);
-		::zmq::socket_t clients(context_, ZMQ_ROUTER);
-
-    //bind to self address - this is the master socket that accepts incomming data from workers
-		clients.bind(address);
-
-    //create a new worker socket - these accept incomming messages and pipe them to the main server
-		zmq::socket_t workers(context_, ZMQ_DEALER);
-    //special type of transport protocol
-		workers.bind("inproc://workers");
-
-		//launch worker threads
-		for(int i = 0; i < threads; i++)
-		{
-			pthread_t worker;	
-      //create an entry point to the thread, remember, pthread is pretty dumb, it needs special priveledges
-      //and access to class contents
-      void* entry_point = ::callbacks::create_entry(this, (void*)&context_);
-			pthread_create(&worker, NULL, thread_entry_point, entry_point);
-		}
-    
-    //create a zmq proxy that listens to workers
-    //proxy connects frontend sockets to backend sockets
-		zmq::proxy(clients, workers, NULL);
-	} else {
-		single_threaded_listener();
-	}
+	context = ::zmq::context_t(context_);
+	socket = std::unique_ptr<::zmq::socket_t>(new ::zmq::socket_t(context, threads > 1 ? ZMQ_ROUTER : ZMQ_REP));
 	return true;
 }
 
@@ -93,64 +59,71 @@ bool ZMQServer::terminate()
 	return true;
 }
 
-void ZMQServer::single_threaded_listener()
-{	
-		//create the context and socket in the process so their deleted on exit
-		::zmq::context_t context_(context);
-		::zmq::socket_t socket(context_, ZMQ_REP);
+void ZMQServer::listen()
+{
+	if(threads > 1)
+	{
+		//cant put this call globally in this function because once you bind, 
+		//you need to stay in the same process, it sometimes works
+		//but the way c++ compiler works, you never know
+		this->socket->bind(serving_address);
 
-		//bind to address
-		socket.bind(address);
+		::zmq::socket_t workers(context, ZMQ_DEALER);
+		workers.bind("inproc://workers");
 
-		while(true) 
+		for(int i = 0; i < threads; i++)
 		{
-			//placeholder for request
-			zmq::message_t request;
-
-			std::cout<<"Waiting for client ..."<<std::endl;
-			socket.recv(&request, 0);
-			std::cout<<"Got A message from client .... "<<std::endl;
-
-			//"do work"
-			std::string result = process(request.data());
-
-			//reply 
-			::zmq::message_t reply(result.size());
-			memcpy(reply.data(), result.c_str(), result.size());
-			socket.send(reply);
+			pthread_t worker;
+			pthread_create(&worker, NULL, thread_entry_point, create_entry_point());
 		}
+
+		::zmq::proxy(*(this->socket), workers, NULL);
+	} else {
+		single_threaded_listener();
+	}
 }
 
-void* ZMQServer::multi_threaded_listener(void* arg)
+void ZMQServer::single_threaded_listener()
 {
-	::zmq::context_t *context_ = (::zmq::context_t*)arg;	
-	::zmq::socket_t socket(*context_, ZMQ_REP);
-	socket.connect("inproc://workers"); //really the only difference
-	
+	this->socket->bind(serving_address);
 	while(true)
 	{
-		zmq::message_t request;
+		::zmq::message_t request;
 
-		std::cout<<"Waiting for client...."<<std::endl;
-		socket.recv(&request, 0);
-		std::cout<<"Got a message from client ...."<<std::endl;
+		this->socket->recv(request, ::zmq::recv_flags::none);
+		std::cout<<"Got it"<<std::endl;
 
-		//"do work"
-		std::string result = process(request.data());
+	if(callback == nullptr)
+	{
+		std::cout<<"null"<<std::endl;
+	}else{
+		std::cout<<"good"<<std::endl;
+	}
+	std::cout<<"test"<<std::endl;
+		
+		std::string result = callback(request.data(), request.size());
+		
+		::zmq::message_t reply(result.size());
+		memcpy(reply.data(), result.c_str(), result.size());
+		socket->send(reply, ::zmq::send_flags::none);
+	}
+}
+
+void ZMQServer::multi_threaded_listener()
+{
+	//create a socket on the stack so C++ can do the dirty work of deleting threaded sockets
+	::zmq::socket_t worker_socket(this->context, ZMQ_REP);
+	worker_socket.connect("inproc://workers");
+	while(true)
+	{
+		::zmq::message_t request;
+		
+		worker_socket.recv(request, ::zmq::recv_flags::none);
+	
+		std::string result = callback(request.data(), request.size());
 
 		::zmq::message_t reply(result.size());
-		memcpy((void*)reply.data(), result.c_str(), 6);
-		socket.send(reply);
+		memcpy(reply.data(), result.c_str(), result.size());
+		worker_socket.send(reply, ::zmq::send_flags::none);
 	}
-	return nullptr;
 }
-
-std::string ZMQServer::process(void* arg)
-{
-	std::string value((char*)arg);
-	sleep(1); //do work
-	return value;
-}
-
-
-
