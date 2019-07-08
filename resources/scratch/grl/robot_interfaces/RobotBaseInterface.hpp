@@ -1,5 +1,5 @@
-/* 
- * CS-11 Asn 2, 
+/*
+ * CS-11 Asn 2,
  * Purpose: A Basic Robot class
  *
  * @author Theo Lincke
@@ -9,35 +9,28 @@
 #ifndef RKS_ROBOT_INTERFACES__ROBOTBASEINTERFACE_HPP
 #define RKS_ROBOT_INTERFACES__ROBOTBASEINTERFACE_HPP
 
-//RumVision
+// RumVision
 #include "rks/ConfigurationClient.hpp"
 
-//C++
+// C++
 #include <map>
 #include <memory>
 
 using rks::config::ConfigurationClient;
 
-namespace rks
-{
-namespace robot_interfaces
-{
+namespace rks {
+namespace robot_interfaces {
 
-//only virtual functions
-class RobotBaseInterface
-{
+// only virtual functions
+class RobotBaseInterface {
+ public:
+  virtual ~RobotBaseInterface() = default;
 
-  public:
-    virtual ~RobotBaseInterface() = default;
-
-  protected:
-    virtual void write() = 0;
+ protected:
+  virtual void write() = 0;
 };
 
+}  // namespace robot_interfaces
+}  // namespace rks
 
-
-} // namespace robot_interfaces
-} // namespace rks
-
-#endif //RKS_ROBOT_INTERFACES__ROBOTBASEINTERFACE_HPP
-
+#endif  // RKS_ROBOT_INTERFACES__ROBOTBASEINTERFACE_HPP

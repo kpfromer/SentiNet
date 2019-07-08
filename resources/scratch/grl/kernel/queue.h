@@ -1,8 +1,5 @@
 
 
-extern "C"
-{
+extern "C" {
 
-typedef struct queue
-{
-  
+typedef struct queue {

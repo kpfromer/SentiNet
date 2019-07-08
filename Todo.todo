@@ -1,0 +1,12 @@
+Main todo items
+- [ ] Solidify message interface - be able to juggle two messages between two processes
+  - [ ] Write a message interface class that impliments the functionality of a message type
+  - [ ] Create a very basic zmq pub sub pattern that is able to parse a message print to the screen and respond with an updated message
+  - [X] Research protobuf
+  - [X] Write a few practice modules that read and write protobuf messages
+- [ ] FileDescriptorClass - Add generalized support for file descriptors - reading and writing messages from files or inputs / outputs
+  - [ ] Research file descriptors and input output differences between files and hardware
+  - [ ] Write an interface for writing to a file
+  - [ ] Write a debug class implimentation
+    - [ ] Debug file implimentation - a class that is monitoring a file and outputs to the console file changes
+    - [ ] Debug file writer implimenation a class that writes to  a file and reads input

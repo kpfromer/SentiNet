@@ -1,7 +1,7 @@
 /**
  *  @file Subscriber
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
- *  
+ *
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
@@ -13,32 +13,29 @@
 
 #define SUBSCRIBER_HPP
 
-//C++ includes
+// C++ includes
 
-//Project includes
-class SubscriberBase
-{
-	public:
-		virtual ~SubscriberBase();
-		std::string get_name() const;
-		
-	private:
-		const std::string name;
+// Project includes
+class SubscriberBase {
+ public:
+  virtual ~SubscriberBase();
+  std::string get_name() const;
+
+ private:
+  const std::string name;
 }
 
+template <typename message>
+class Subscriber : public SubscriberBase {
+ public:
+  Subscriber();
+  virtual ~Subscriber();
 
-template<typename message>
-class Subscriber : public SubscriberBase
-{
-    public:
-        Subscriber ();
-        virtual ~Subscriber ();
+  message get_data();
 
-		message get_data();	
-    private:
-		std::shared_ptr<ObjectiveHandler> handler;
-        /* private data */
+ private:
+  std::shared_ptr<ObjectiveHandler> handler;
+  /* private data */
 };
 
 #endif /* end of include guard SUBSCRIBER_HPP */
-

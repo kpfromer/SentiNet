@@ -1,5 +1,5 @@
-/* 
- * CS-11 Asn 2, 
+/*
+ * CS-11 Asn 2,
  * Purpose: A Basic Robot class
  *
  * @author Theo Lincke
@@ -9,58 +9,50 @@
 #ifndef CRKCPP_ROBOT_S__ROBOTINTERFACE_HPP
 #define CRKCPP_ROBOT_S__ROBOTINTERFACE_HPP
 
-//RumVision
+// RumVision
 #include "rks/robot_interfaces/RobotBaseInterface.hpp"
 #include "rks/peripheral_interfaces/PeripheralInterface.hpp"
 
 using rks::config::ConfigurationClient;
 using rks::peripheral_interfaces::PeripheralInterface;
 
-namespace rks
-{
-namespace robot_interfaces
-{
+namespace rks {
+namespace robot_interfaces {
 
-//defaults
-class Robovisor : public RobotBaseInterface
-{
+// defaults
+class Robovisor : public RobotBaseInterface {
+ public:
+  Robovisor(ConfigurationClient* config)
+      : asset_name(config->get_robot()["Name"].as<std::string>()){};
 
-  public:
-    
-    Robovisor(ConfigurationClient* config)
-    : asset_name(config->get_robot()["Name"].as<std::string>()){};
+  virtual ~Robovisor();
 
-    virtual ~Robovisor();
+ public:
+  virtual bool initialize();
+  virtual bool terminate();
 
-  public:
-    virtual bool initialize();
-    virtual bool terminate();
+ protected:
+  virtual bool start_up_scan();
+  virtual bool termination_scan();
 
-  protected:
-    virtual bool start_up_scan();
-    virtual bool termination_scan();
+  virtual bool start_up_status();
+  virtual bool termination_status();
 
-    virtual bool start_up_status();
-    virtual bool termination_status();
+ public:
+  virtual std::string get_name() const;
+  virtual void get_description(bool);
 
-  public:
+ protected:
+  virtual void emergency_cut_power();
 
-    virtual std::string get_name() const;
-    virtual void get_description(bool);
+ protected:
+  std::map<std::string, std::shared_ptr<PeripheralInterface>> peripherals;
 
-  protected:
-
-    virtual void emergency_cut_power(); 
-
-  protected:
-    std::map<std::string, std::shared_ptr<PeripheralInterface>> peripherals;
-
-
-  private:
-    const std::string asset_name;
+ private:
+  const std::string asset_name;
 };
 
-} // namespace robot_interfaces
-} // namespace rks
+}  // namespace robot_interfaces
+}  // namespace rks
 
-#endif //CRKCPP_ROBOT_S__ROBOTINTERFACE_HPP
+#endif  // CRKCPP_ROBOT_S__ROBOTINTERFACE_HPP

@@ -1,0 +1,10 @@
+syntax="proto2";
+
+package debug;
+
+message DebugMessage {
+  required string name = 1;
+  required int32 id = 2;
+  optional string extra = 3;
+}
+  

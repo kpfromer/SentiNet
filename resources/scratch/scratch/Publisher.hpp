@@ -1,7 +1,7 @@
 /**
  *  @file Publisher
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
- *  
+ *
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
@@ -13,43 +13,37 @@
 
 #define PUBLISHER_HPP
 
-//C++ includes
+// C++ includes
 
-//Project includes
+// Project includes
 
+namespace grl {
+namespace processes {
 
-namespace grl
-{
-namespace processes
-{
+class PublisherBase {
+ public:
+  virtual ~PublisherBase() = default;
+  std::string get_name() const;
 
-class PublisherBase
-{
-	public:
-		virtual ~PublisherBase() = default;
-		std::string get_name() const;
-
-	private:
-		const std::string name;
+ private:
+  const std::string name;
 }
 
 template <typename message>
-class Publisher : public PublisherBase
-{
-    public:
-        Publisher ();
-        virtual ~Publisher ();
+class Publisher : public PublisherBase {
+ public:
+  Publisher();
+  virtual ~Publisher();
 
-	public:
-		void publish(message, ActionProcessBase*);
-		void publish(message, const std::string&);
+ public:
+  void publish(message, ActionProcessBase*);
+  void publish(message, const std::string&);
 
-    private:
-		std::shared_ptr<ObjectiveHandler> handler;
+ private:
+  std::shared_ptr<ObjectiveHandler> handler;
 };
 
-}	//namespace processes
-}	//namespace grl
+}  // namespace processes
+}  // namespace grl
 
 #endif /* end of include guard PUBLISHER_HPP */
-

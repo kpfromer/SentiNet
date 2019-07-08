@@ -1,7 +1,7 @@
 /**
  *  @file ObjectiveHandler
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
- *  
+ *
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
@@ -13,37 +13,32 @@
 
 #define OBJECTIVEHANDLER_HPP
 
-//C++ includes
+// C++ includes
 
-//Project includes
+// Project includes
 
+namespace grl {
+namespace processes {
 
-namespace grl
-{
-namespace processes
-{
+class ObjectiveHandlerBase {
+ public:
+  virtual ~ObjectiveHandlerBase() = default;
 
-class ObjectiveHandlerBase
-{
-	public:
-		virtual ~ObjectiveHandlerBase() = default;
-		
-		virtual void* read_data(std::string hash);
-		virtual void write_data(void*, t);
+  virtual void* read_data(std::string hash);
+  virtual void write_data(void*, t);
 
 }
 
-class ObjectiveHandler
-{
-    public:
-        ObjectiveHandler ();
-        virtual ~ObjectiveHandler ();
-    private:
-        /* private data */
+class ObjectiveHandler {
+ public:
+  ObjectiveHandler();
+  virtual ~ObjectiveHandler();
+
+ private:
+  /* private data */
 };
 
-}
-}
+}  // namespace processes
+}  // namespace grl
 
 #endif /* end of include guard OBJECTIVEHANDLER_HPP */
-

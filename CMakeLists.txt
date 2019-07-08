@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.7)
 
-project("Generic Modular Robot Framework" VERSION 0.0.1 LANGUAGES C;CXX DESCRIPTION "Integrated Internet Robot Framework")
+project("Generic Modular Robot Framework" VERSION 0.0.1 LANGUAGES C;CXX)
 
 set(CPP_SOURCE_DIR ${PROJECT_SOURCE_DIR}/cpp)
 set(PYTHON_SOURCE_DIR ${PROJECT_SOURCE_DIR}/python)
@@ -19,6 +19,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/x86_64/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/x86_64/bin)
 
 include(GNUInstallDirs)
+include("cmake_functions")
 
 option(BUILD_DOCS "Build the documentation" OFF)
 option(BUILD_SHARED "Build all libraries as shared objectes" ON)

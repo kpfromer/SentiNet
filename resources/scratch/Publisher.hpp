@@ -1,7 +1,7 @@
 /**
  *  @file Publisher
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
- *  
+ *
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
@@ -13,32 +13,28 @@
 
 #define PUBLISHER_HPP
 
-//C++ includes
+// C++ includes
 #include <iostream>
-//Project includes
+// Project includes
 
+class PublisherBase {
+ public:
+  virtual ~PublisherBase() = default;
 
+  virtual void publish(void*) = 0;
 
-class PublisherBase
-{
-	public:
-		virtual ~PublisherBase() = default;
-
-		virtual void publish(void*) = 0;
-	private:
+ private:
 };
 template <typename message>
-class Publisher : public PublisherBase
-{
-    public:
-        Publisher (){}
-        ~Publisher (){}
+class Publisher : public PublisherBase {
+ public:
+  Publisher() {}
+  ~Publisher() {}
 
-	public:
-		void publish(void* t){std::cout<<*(message*)t<<std::endl;}
+ public:
+  void publish(void* t) { std::cout << *(message*)t << std::endl; }
 
-    private:
+ private:
 };
 
 #endif /* end of include guard PUBLISHER_HPP */
-

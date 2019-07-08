@@ -1,7 +1,7 @@
 /**
  *  @file Publisher
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
- *  
+ *
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
@@ -12,15 +12,7 @@
 #include "Publisher.hpp"
 
 template <typename message>
-Publisher<message>::Publisher()
-{
-   
-}
+Publisher<message>::Publisher() {}
 
 template <typename message>
-Publisher<message>::~Publisher()
-{
-}
-
-
-
+Publisher<message>::~Publisher() {}

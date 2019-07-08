@@ -1,0 +1,26 @@
+/**
+ *  @file {{ FILE }}
+ *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
+ *  
+ *  ADD A MORE DETAILED DESCRIPTION HERE
+ *
+ *  @author       {{ NAME }} 
+ *  @created      {{ TIMESTAMP }}
+ *  @bug No Known Bugs
+ */
+
+#ifndef {{ MACRO_GUARD }}
+
+#define {{ MACRO_GUARD }}
+
+
+//C includes
+
+//Project includes
+
+
+
+
+
+
+#endif /* end of include guard {{ MACRO_GUARD }} */

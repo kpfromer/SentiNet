@@ -9,30 +9,27 @@
 #ifndef RKS_PERIPHERAL_INTERFACES_PERIPHERALBASEINTERFACE_HPP
 #define RKS_PERIPHERAL_INTERFACES_PERIPHERALBASEINTERFACE_HPP
 
-//C++
+// C++
 #include <string>
 
-//Rumvision
+// Rumvision
 #include "rks/ConfigurationClient.hpp"
 
 using rks::config::ConfigurationClient;
 
-namespace rks
-{
-namespace peripheral_interfaces
-{
+namespace rks {
+namespace peripheral_interfaces {
 
-//only virtual functions
-class PeripheralBaseInterface
-{
-  public:
-    virtual ~PeripheralBaseInterface() = default;
+// only virtual functions
+class PeripheralBaseInterface {
+ public:
+  virtual ~PeripheralBaseInterface() = default;
 
-  public:
-    virtual void write() = 0;
-}; 
+ public:
+  virtual void write() = 0;
+};
 
-} // namespace peripheral_interfaces
-} // namespace rks
+}  // namespace peripheral_interfaces
+}  // namespace rks
 
-#endif //RKS_PERIPHERAL_INTERFACES_PERIPHERALBASEINTERFACE_HPP
+#endif  // RKS_PERIPHERAL_INTERFACES_PERIPHERALBASEINTERFACE_HPP

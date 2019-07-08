@@ -1,7 +1,7 @@
 /**
  *  @file ObjectiveHandler
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
- *  
+ *
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
@@ -13,31 +13,25 @@
 
 #define OBJECTIVEHANDLER_HPP
 
-//C++ includes
+// C++ includes
 
-//Project includes
+// Project includes
 
+namespace grl {
+namespace processes {
 
-namespace grl
-{
-namespace processes
-{
+class ObjectiveHandler {
+ public:
+  ObjectiveHandler();
+  virtual ~ObjectiveHandler();
 
-class ObjectiveHandler
-{
-    public:
-        ObjectiveHandler ();
-        virtual ~ObjectiveHandler ();
-		
-		std::unique_ptr<ActionObjectiveBase> get_action_objective(const std::string&);
+  std::unique_ptr<ActionObjectiveBase> get_action_objective(const std::string&);
 
-    private:
-		std::vector<std::unique_ptr<ActionObjectiveBase>> action_objectives;
-		
+ private:
+  std::vector<std::unique_ptr<ActionObjectiveBase>> action_objectives;
 };
 
-} 	//namespace processes
-}	//namespcae grl
+}  // namespace processes
+}  // namespace grl
 
 #endif /* end of include guard OBJECTIVEHANDLER_HPP */
-

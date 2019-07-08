@@ -1,8 +1,0 @@
-syntax = "proto2";
-
-package test;
-message val
-{
-	optional string name = 1;
-	optional int32 value = 2;
-}
