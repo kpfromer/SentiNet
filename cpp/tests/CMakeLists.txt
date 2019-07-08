@@ -1,11 +1,16 @@
-project(unit-tests)
+project(impl)
 
-set(APP_NAME run_unit_tests)
+set(IIRF_IMPL_INCLUDES include)
 
-file(GLOB_RECURSE UNIT_TEST_SOURCE_FILES "*.cpp")
-add_executable(${APP_NAME} ${UNIT_TEST_SOURCE_FILES})
-add_dependencies(${APP_NAME} gtest)
+include_directories(../framework/include
+                    ${IIRF_IMPL_INCLUDES})
 
-list(APPEND UNIT_TEST_SUBDIRS "common")
-foreach(SUDIR ${UNIT_TEST_SUBDIRS})
-  :
+
+add_executable(curl_test run-tests/CurlTest.cpp)
+target_link_libraries(curl_test curlloader)
+set(CLIENT run-tests/Clienttest.cpp)
+set(SERVER run-tests/Servertest.cpp)
+add_executable(client ${CLIENT})
+add_executable(server ${SERVER})
+target_link_libraries(client zmqclient)
+target_link_libraries(server zmqserver)

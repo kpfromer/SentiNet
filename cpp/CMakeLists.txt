@@ -1,9 +1,10 @@
 project(cpp)
 
-set(COMMON_DIR "${PROJECT_SOURCE_DIR}/common")
-set(IMPL_DIR "${PROJECT_SOURCE_DIR}/impl")
+set(FRAMEWORK_DIR "${PROJECT_SOURCE_DIR}/framework")
+#set(IMPL_DIR "${PROJECT_SOURCE_DIR}/impl")
+set(PROTO_DIR "${PROJECT_SOURCE_DIR}/protoc")
 set(TESTS_DIR "${PROJECT_SOURCE_DIR}/tests")
-set(VENDOR_DIR "${PROJECT_SOURCE_DIR}/vendor")
+#set(VENDOR_DIR "${PROJECT_SOURCE_DIR}/vendor")
 set(CONFIG_DIR "${PROJECT_SOURCE_DIR}/config")
 
 
@@ -16,6 +17,8 @@ configure_file(
 
 include_directories(${IIRF_CONFIG_DIR})
 
-#add_subdirectory(tests)
-add_subdirectory(${COMMON_DIR})
-add_subdirectory(${IMPL_DIR})
+#ADD_SUBDIRECTORY(TESTS)
+add_subdirectory(${FRAMEWORK_DIR})
+add_subdirectory(${PROTO_DIR})
+add_subdirectory(${TESTS_DIR})
+

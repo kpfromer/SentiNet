@@ -1,2 +1,0 @@
-number is ${hello}
-the value is ${this}

@@ -1,0 +1,8 @@
+syntax="proto2";
+
+package IIRF;
+
+message DriveTrainSimple {
+    required int32 linear = 1;
+    required int32 angular = 2;
+}

@@ -6,4 +6,4 @@ build*/
 *.pyc
 .idea/*
 .vscode/*
-
+venv*/
