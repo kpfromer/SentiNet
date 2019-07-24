@@ -30,7 +30,7 @@
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
-#include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/extension_set.h>   // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -43,38 +43,44 @@ PROTOBUF_NAMESPACE_CLOSE
 
 // Internal implementation detail -- do not use these members.
 struct TableStruct_proto_2fdebug_2fdebug_2eproto {
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTableField entries[]
-    PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
-    PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[1]
-    PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
-  static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTableField
+      entries[] PROTOBUF_SECTION_VARIABLE(protodesc_cold);
+  static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField
+      aux[] PROTOBUF_SECTION_VARIABLE(protodesc_cold);
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable
+      schema[1] PROTOBUF_SECTION_VARIABLE(protodesc_cold);
+  static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata
+      field_metadata[];
+  static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable
+      serialization_table[];
   static const ::PROTOBUF_NAMESPACE_ID::uint32 offsets[];
 };
-extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_proto_2fdebug_2fdebug_2eproto;
+extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable
+    descriptor_table_proto_2fdebug_2fdebug_2eproto;
 namespace debug {
 class DebugMessage;
 class DebugMessageDefaultTypeInternal;
 extern DebugMessageDefaultTypeInternal _DebugMessage_default_instance_;
 }  // namespace debug
 PROTOBUF_NAMESPACE_OPEN
-template<> ::debug::DebugMessage* Arena::CreateMaybeMessage<::debug::DebugMessage>(Arena*);
+template <>
+::debug::DebugMessage* Arena::CreateMaybeMessage<::debug::DebugMessage>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace debug {
 
 // ===================================================================
 
-class DebugMessage :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:debug.DebugMessage) */ {
+class DebugMessage
+    : public ::PROTOBUF_NAMESPACE_ID::
+          Message /* @@protoc_insertion_point(class_definition:debug.DebugMessage)
+                   */
+{
  public:
   DebugMessage();
   virtual ~DebugMessage();
 
   DebugMessage(const DebugMessage& from);
-  DebugMessage(DebugMessage&& from) noexcept
-    : DebugMessage() {
+  DebugMessage(DebugMessage&& from) noexcept : DebugMessage() {
     *this = ::std::move(from);
   }
 
@@ -91,7 +97,8 @@ class DebugMessage :
     return *this;
   }
 
-  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields()
+      const {
     return _internal_metadata_.unknown_fields();
   }
   inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
@@ -112,14 +119,11 @@ class DebugMessage :
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
   static inline const DebugMessage* internal_default_instance() {
     return reinterpret_cast<const DebugMessage*>(
-               &_DebugMessage_default_instance_);
+        &_DebugMessage_default_instance_);
   }
-  static constexpr int kIndexInFileMessages =
-    0;
+  static constexpr int kIndexInFileMessages = 0;
 
-  friend void swap(DebugMessage& a, DebugMessage& b) {
-    a.Swap(&b);
-  }
+  friend void swap(DebugMessage& a, DebugMessage& b) { a.Swap(&b); }
   inline void Swap(DebugMessage* other) {
     if (other == this) return;
     InternalSwap(other);
@@ -142,19 +146,21 @@ class DebugMessage :
   bool IsInitialized() const final;
 
   size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  #else
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(
+      const char* ptr,
+      ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+#else
   bool MergePartialFromCodedStream(
       ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
   void SerializeWithCachedSizes(
       ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
   ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
       ::PROTOBUF_NAMESPACE_ID::uint8* target) const final;
   int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  private:
+ private:
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
@@ -163,24 +169,25 @@ class DebugMessage :
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
     return "debug.DebugMessage";
   }
-  private:
+
+ private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
     return nullptr;
   }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
+  inline void* MaybeArenaPtr() const { return nullptr; }
 
+ public:
   ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-  private:
+
+ private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
-    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_proto_2fdebug_2fdebug_2eproto);
-    return ::descriptor_table_proto_2fdebug_2fdebug_2eproto.file_level_metadata[kIndexInFileMessages];
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+        &::descriptor_table_proto_2fdebug_2fdebug_2eproto);
+    return ::descriptor_table_proto_2fdebug_2fdebug_2eproto
+        .file_level_metadata[kIndexInFileMessages];
   }
 
-  public:
-
+ public:
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
@@ -227,7 +234,8 @@ class DebugMessage :
   // helper for ByteSizeLong()
   size_t RequiredFieldsByteSizeFallback() const;
 
-  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena
+      _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
@@ -237,12 +245,11 @@ class DebugMessage :
 };
 // ===================================================================
 
-
 // ===================================================================
 
 #ifdef __GNUC__
-  #pragma GCC diagnostic push
-  #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
 // DebugMessage
 
@@ -251,7 +258,8 @@ inline bool DebugMessage::has_name() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void DebugMessage::clear_name() {
-  name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  name_.ClearToEmptyNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   _has_bits_[0] &= ~0x00000001u;
 }
 inline const std::string& DebugMessage::name() const {
@@ -260,31 +268,37 @@ inline const std::string& DebugMessage::name() const {
 }
 inline void DebugMessage::set_name(const std::string& value) {
   _has_bits_[0] |= 0x00000001u;
-  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  name_.SetNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:debug.DebugMessage.name)
 }
 inline void DebugMessage::set_name(std::string&& value) {
   _has_bits_[0] |= 0x00000001u;
   name_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:debug.DebugMessage.name)
 }
 inline void DebugMessage::set_name(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   _has_bits_[0] |= 0x00000001u;
-  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  name_.SetNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(value));
   // @@protoc_insertion_point(field_set_char:debug.DebugMessage.name)
 }
 inline void DebugMessage::set_name(const char* value, size_t size) {
   _has_bits_[0] |= 0x00000001u;
-  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  name_.SetNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:debug.DebugMessage.name)
 }
 inline std::string* DebugMessage::mutable_name() {
   _has_bits_[0] |= 0x00000001u;
   // @@protoc_insertion_point(field_mutable:debug.DebugMessage.name)
-  return name_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return name_.MutableNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 inline std::string* DebugMessage::release_name() {
   // @@protoc_insertion_point(field_release:debug.DebugMessage.name)
@@ -292,7 +306,8 @@ inline std::string* DebugMessage::release_name() {
     return nullptr;
   }
   _has_bits_[0] &= ~0x00000001u;
-  return name_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return name_.ReleaseNonDefaultNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 inline void DebugMessage::set_allocated_name(std::string* name) {
   if (name != nullptr) {
@@ -300,7 +315,8 @@ inline void DebugMessage::set_allocated_name(std::string* name) {
   } else {
     _has_bits_[0] &= ~0x00000001u;
   }
-  name_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name);
+  name_.SetAllocatedNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name);
   // @@protoc_insertion_point(field_set_allocated:debug.DebugMessage.name)
 }
 
@@ -327,7 +343,8 @@ inline bool DebugMessage::has_extra() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void DebugMessage::clear_extra() {
-  extra_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  extra_.ClearToEmptyNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   _has_bits_[0] &= ~0x00000002u;
 }
 inline const std::string& DebugMessage::extra() const {
@@ -336,31 +353,37 @@ inline const std::string& DebugMessage::extra() const {
 }
 inline void DebugMessage::set_extra(const std::string& value) {
   _has_bits_[0] |= 0x00000002u;
-  extra_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  extra_.SetNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:debug.DebugMessage.extra)
 }
 inline void DebugMessage::set_extra(std::string&& value) {
   _has_bits_[0] |= 0x00000002u;
   extra_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:debug.DebugMessage.extra)
 }
 inline void DebugMessage::set_extra(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   _has_bits_[0] |= 0x00000002u;
-  extra_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  extra_.SetNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(value));
   // @@protoc_insertion_point(field_set_char:debug.DebugMessage.extra)
 }
 inline void DebugMessage::set_extra(const char* value, size_t size) {
   _has_bits_[0] |= 0x00000002u;
-  extra_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  extra_.SetNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:debug.DebugMessage.extra)
 }
 inline std::string* DebugMessage::mutable_extra() {
   _has_bits_[0] |= 0x00000002u;
   // @@protoc_insertion_point(field_mutable:debug.DebugMessage.extra)
-  return extra_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return extra_.MutableNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 inline std::string* DebugMessage::release_extra() {
   // @@protoc_insertion_point(field_release:debug.DebugMessage.extra)
@@ -368,7 +391,8 @@ inline std::string* DebugMessage::release_extra() {
     return nullptr;
   }
   _has_bits_[0] &= ~0x00000002u;
-  return extra_.ReleaseNonDefaultNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return extra_.ReleaseNonDefaultNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 inline void DebugMessage::set_allocated_extra(std::string* extra) {
   if (extra != nullptr) {
@@ -376,12 +400,13 @@ inline void DebugMessage::set_allocated_extra(std::string* extra) {
   } else {
     _has_bits_[0] &= ~0x00000002u;
   }
-  extra_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), extra);
+  extra_.SetAllocatedNoArena(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), extra);
   // @@protoc_insertion_point(field_set_allocated:debug.DebugMessage.extra)
 }
 
 #ifdef __GNUC__
-  #pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
 #endif  // __GNUC__
 
 // @@protoc_insertion_point(namespace_scope)

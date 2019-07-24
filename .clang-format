@@ -104,6 +104,7 @@ RawStringFormats:
       - CPP
       - 'c++'
       - 'C++'
+      - proto
     CanonicalDelimiter: ''
     BasedOnStyle:    google
   - Language:        TextProto

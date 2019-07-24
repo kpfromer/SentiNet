@@ -18,7 +18,8 @@
 namespace IIRF {
 class DriveTrainSimpleDefaultTypeInternal {
  public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DriveTrainSimple> _instance;
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DriveTrainSimple>
+      _instance;
 } _DriveTrainSimple_default_instance_;
 }  // namespace IIRF
 static void InitDefaultsscc_info_DriveTrainSimple_drivetrain_2eproto() {
@@ -26,73 +27,98 @@ static void InitDefaultsscc_info_DriveTrainSimple_drivetrain_2eproto() {
 
   {
     void* ptr = &::IIRF::_DriveTrainSimple_default_instance_;
-    new (ptr) ::IIRF::DriveTrainSimple();
+    new (ptr)::IIRF::DriveTrainSimple();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
   ::IIRF::DriveTrainSimple::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_DriveTrainSimple_drivetrain_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_DriveTrainSimple_drivetrain_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0>
+    scc_info_DriveTrainSimple_drivetrain_2eproto = {
+        {ATOMIC_VAR_INIT(
+             ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized),
+         0, InitDefaultsscc_info_DriveTrainSimple_drivetrain_2eproto},
+        {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_drivetrain_2eproto[1];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_drivetrain_2eproto = nullptr;
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_drivetrain_2eproto = nullptr;
+static ::PROTOBUF_NAMESPACE_ID::Metadata
+    file_level_metadata_drivetrain_2eproto[1];
+static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const**
+    file_level_enum_descriptors_drivetrain_2eproto = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const**
+    file_level_service_descriptors_drivetrain_2eproto = nullptr;
 
-const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_drivetrain_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::IIRF::DriveTrainSimple, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::IIRF::DriveTrainSimple, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::IIRF::DriveTrainSimple, linear_),
-  PROTOBUF_FIELD_OFFSET(::IIRF::DriveTrainSimple, angular_),
-  0,
-  1,
+const ::PROTOBUF_NAMESPACE_ID::uint32
+    TableStruct_drivetrain_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
+        protodesc_cold) = {
+        PROTOBUF_FIELD_OFFSET(::IIRF::DriveTrainSimple, _has_bits_),
+        PROTOBUF_FIELD_OFFSET(::IIRF::DriveTrainSimple, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        PROTOBUF_FIELD_OFFSET(::IIRF::DriveTrainSimple, linear_),
+        PROTOBUF_FIELD_OFFSET(::IIRF::DriveTrainSimple, angular_),
+        0,
+        1,
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 7, sizeof(::IIRF::DriveTrainSimple)},
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema
+    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+        {0, 7, sizeof(::IIRF::DriveTrainSimple)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::IIRF::_DriveTrainSimple_default_instance_),
+static ::PROTOBUF_NAMESPACE_ID::Message const* const file_default_instances[] =
+    {
+        reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(
+            &::IIRF::_DriveTrainSimple_default_instance_),
 };
 
 const char descriptor_table_protodef_drivetrain_2eproto[] =
-  "\n\020drivetrain.proto\022\004IIRF\"3\n\020DriveTrainSi"
-  "mple\022\016\n\006linear\030\001 \002(\005\022\017\n\007angular\030\002 \002(\005"
-  ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_drivetrain_2eproto_deps[1] = {
+    "\n\020drivetrain.proto\022\004IIRF\"3\n\020DriveTrainSi"
+    "mple\022\016\n\006linear\030\001 \002(\005\022\017\n\007angular\030\002 "
+    "\002(\005";
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* const
+    descriptor_table_drivetrain_2eproto_deps[1] = {};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase* const
+    descriptor_table_drivetrain_2eproto_sccs[1] = {
+        &scc_info_DriveTrainSimple_drivetrain_2eproto.base,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_drivetrain_2eproto_sccs[1] = {
-  &scc_info_DriveTrainSimple_drivetrain_2eproto.base,
-};
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_drivetrain_2eproto_once;
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag
+    descriptor_table_drivetrain_2eproto_once;
 static bool descriptor_table_drivetrain_2eproto_initialized = false;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_drivetrain_2eproto = {
-  &descriptor_table_drivetrain_2eproto_initialized, descriptor_table_protodef_drivetrain_2eproto, "drivetrain.proto", 77,
-  &descriptor_table_drivetrain_2eproto_once, descriptor_table_drivetrain_2eproto_sccs, descriptor_table_drivetrain_2eproto_deps, 1, 0,
-  schemas, file_default_instances, TableStruct_drivetrain_2eproto::offsets,
-  file_level_metadata_drivetrain_2eproto, 1, file_level_enum_descriptors_drivetrain_2eproto, file_level_service_descriptors_drivetrain_2eproto,
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable
+    descriptor_table_drivetrain_2eproto = {
+        &descriptor_table_drivetrain_2eproto_initialized,
+        descriptor_table_protodef_drivetrain_2eproto,
+        "drivetrain.proto",
+        77,
+        &descriptor_table_drivetrain_2eproto_once,
+        descriptor_table_drivetrain_2eproto_sccs,
+        descriptor_table_drivetrain_2eproto_deps,
+        1,
+        0,
+        schemas,
+        file_default_instances,
+        TableStruct_drivetrain_2eproto::offsets,
+        file_level_metadata_drivetrain_2eproto,
+        1,
+        file_level_enum_descriptors_drivetrain_2eproto,
+        file_level_service_descriptors_drivetrain_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_drivetrain_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_drivetrain_2eproto), true);
+static bool dynamic_init_dummy_drivetrain_2eproto =
+    (::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(
+         &descriptor_table_drivetrain_2eproto),
+     true);
 namespace IIRF {
 
 // ===================================================================
 
-void DriveTrainSimple::InitAsDefaultInstance() {
-}
+void DriveTrainSimple::InitAsDefaultInstance() {}
 class DriveTrainSimple::HasBitSetters {
  public:
   using HasBits = decltype(std::declval<DriveTrainSimple>()._has_bits_);
-  static void set_has_linear(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-  static void set_has_angular(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
+  static void set_has_linear(HasBits* has_bits) { (*has_bits)[0] |= 1u; }
+  static void set_has_angular(HasBits* has_bits) { (*has_bits)[0] |= 2u; }
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -101,25 +127,27 @@ const int DriveTrainSimple::kAngularFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 DriveTrainSimple::DriveTrainSimple()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+    : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:IIRF.DriveTrainSimple)
 }
 DriveTrainSimple::DriveTrainSimple(const DriveTrainSimple& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
+    : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&linear_, &from.linear_,
-    static_cast<size_t>(reinterpret_cast<char*>(&angular_) -
-    reinterpret_cast<char*>(&linear_)) + sizeof(angular_));
+           static_cast<size_t>(reinterpret_cast<char*>(&angular_) -
+                               reinterpret_cast<char*>(&linear_)) +
+               sizeof(angular_));
   // @@protoc_insertion_point(copy_constructor:IIRF.DriveTrainSimple)
 }
 
 void DriveTrainSimple::SharedCtor() {
-  ::memset(&linear_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&angular_) -
-      reinterpret_cast<char*>(&linear_)) + sizeof(angular_));
+  ::memset(&linear_, 0,
+           static_cast<size_t>(reinterpret_cast<char*>(&angular_) -
+                               reinterpret_cast<char*>(&linear_)) +
+               sizeof(angular_));
 }
 
 DriveTrainSimple::~DriveTrainSimple() {
@@ -127,37 +155,39 @@ DriveTrainSimple::~DriveTrainSimple() {
   SharedDtor();
 }
 
-void DriveTrainSimple::SharedDtor() {
-}
+void DriveTrainSimple::SharedDtor() {}
 
 void DriveTrainSimple::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 const DriveTrainSimple& DriveTrainSimple::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_DriveTrainSimple_drivetrain_2eproto.base);
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(
+      &::scc_info_DriveTrainSimple_drivetrain_2eproto.base);
   return *internal_default_instance();
 }
 
-
 void DriveTrainSimple::Clear() {
-// @@protoc_insertion_point(message_clear_start:IIRF.DriveTrainSimple)
+  // @@protoc_insertion_point(message_clear_start:IIRF.DriveTrainSimple)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
-    ::memset(&linear_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&angular_) -
-        reinterpret_cast<char*>(&linear_)) + sizeof(angular_));
+    ::memset(&linear_, 0,
+             static_cast<size_t>(reinterpret_cast<char*>(&angular_) -
+                                 reinterpret_cast<char*>(&linear_)) +
+                 sizeof(angular_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* DriveTrainSimple::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+const char* DriveTrainSimple::_InternalParse(
+    const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) \
+  if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   HasBitSetters::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
@@ -166,19 +196,23 @@ const char* DriveTrainSimple::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
     switch (tag >> 3) {
       // required int32 linear = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(
+                static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           HasBitSetters::set_has_linear(&has_bits);
           linear_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // required int32 angular = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(
+                static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           HasBitSetters::set_has_angular(&has_bits);
           angular_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       default: {
       handle_unusual:
@@ -191,7 +225,7 @@ const char* DriveTrainSimple::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
         continue;
       }
     }  // switch
-  }  // while
+  }    // while
 success:
   _has_bits_.Or(has_bits);
   return ptr;
@@ -203,21 +237,26 @@ failure:
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool DriveTrainSimple::MergePartialFromCodedStream(
     ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+#define DO_(EXPRESSION) \
+  if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::PROTOBUF_NAMESPACE_ID::uint32 tag;
   // @@protoc_insertion_point(parse_start:IIRF.DriveTrainSimple)
   for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p =
+        input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+    switch (
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(
+            tag)) {
       // required int32 linear = 1;
       case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
+        if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
           HasBitSetters::set_has_linear(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
-                 input, &linear_)));
+               ::PROTOBUF_NAMESPACE_ID::int32,
+               ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+              input, &linear_)));
         } else {
           goto handle_unusual;
         }
@@ -226,11 +265,12 @@ bool DriveTrainSimple::MergePartialFromCodedStream(
 
       // required int32 angular = 2;
       case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
+        if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
           HasBitSetters::set_has_angular(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
-                 input, &angular_)));
+               ::PROTOBUF_NAMESPACE_ID::int32,
+               ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+              input, &angular_)));
         } else {
           goto handle_unusual;
         }
@@ -243,7 +283,7 @@ bool DriveTrainSimple::MergePartialFromCodedStream(
           goto success;
         }
         DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
+            input, tag, _internal_metadata_.mutable_unknown_fields()));
         break;
       }
     }
@@ -262,17 +302,19 @@ void DriveTrainSimple::SerializeWithCachedSizes(
     ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:IIRF.DriveTrainSimple)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required int32 linear = 1;
   if (cached_has_bits & 0x00000001u) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(1, this->linear(), output);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(
+        1, this->linear(), output);
   }
 
   // required int32 angular = 2;
   if (cached_has_bits & 0x00000002u) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(2, this->angular(), output);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(
+        2, this->angular(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -282,77 +324,84 @@ void DriveTrainSimple::SerializeWithCachedSizes(
   // @@protoc_insertion_point(serialize_end:IIRF.DriveTrainSimple)
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DriveTrainSimple::InternalSerializeWithCachedSizesToArray(
+::PROTOBUF_NAMESPACE_ID::uint8*
+DriveTrainSimple::InternalSerializeWithCachedSizesToArray(
     ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:IIRF.DriveTrainSimple)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required int32 linear = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->linear(), target);
+    target =
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(
+            1, this->linear(), target);
   }
 
   // required int32 angular = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->angular(), target);
+    target =
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(
+            2, this->angular(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::
+        SerializeUnknownFieldsToArray(_internal_metadata_.unknown_fields(),
+                                      target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:IIRF.DriveTrainSimple)
   return target;
 }
 
 size_t DriveTrainSimple::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:IIRF.DriveTrainSimple)
+  // @@protoc_insertion_point(required_fields_byte_size_fallback_start:IIRF.DriveTrainSimple)
   size_t total_size = 0;
 
   if (has_linear()) {
     // required int32 linear = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->linear());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->linear());
   }
 
   if (has_angular()) {
     // required int32 angular = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->angular());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->angular());
   }
 
   return total_size;
 }
 size_t DriveTrainSimple::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:IIRF.DriveTrainSimple)
+  // @@protoc_insertion_point(message_byte_size_start:IIRF.DriveTrainSimple)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+            _internal_metadata_.unknown_fields());
   }
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) ==
+      0) {  // All required fields are present.
     // required int32 linear = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->linear());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->linear());
 
     // required int32 angular = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->angular());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->angular());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
@@ -360,26 +409,25 @@ size_t DriveTrainSimple::ByteSizeLong() const {
 }
 
 void DriveTrainSimple::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:IIRF.DriveTrainSimple)
+  // @@protoc_insertion_point(generalized_merge_from_start:IIRF.DriveTrainSimple)
   GOOGLE_DCHECK_NE(&from, this);
   const DriveTrainSimple* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DriveTrainSimple>(
-          &from);
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DriveTrainSimple>(&from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:IIRF.DriveTrainSimple)
+    // @@protoc_insertion_point(generalized_merge_from_cast_fail:IIRF.DriveTrainSimple)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:IIRF.DriveTrainSimple)
+    // @@protoc_insertion_point(generalized_merge_from_cast_success:IIRF.DriveTrainSimple)
     MergeFrom(*source);
   }
 }
 
 void DriveTrainSimple::MergeFrom(const DriveTrainSimple& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:IIRF.DriveTrainSimple)
+  // @@protoc_insertion_point(class_specific_merge_from_start:IIRF.DriveTrainSimple)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -394,14 +442,14 @@ void DriveTrainSimple::MergeFrom(const DriveTrainSimple& from) {
 }
 
 void DriveTrainSimple::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:IIRF.DriveTrainSimple)
+  // @@protoc_insertion_point(generalized_copy_from_start:IIRF.DriveTrainSimple)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void DriveTrainSimple::CopyFrom(const DriveTrainSimple& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:IIRF.DriveTrainSimple)
+  // @@protoc_insertion_point(class_specific_copy_from_start:IIRF.DriveTrainSimple)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -428,12 +476,13 @@ void DriveTrainSimple::InternalSwap(DriveTrainSimple* other) {
   return GetMetadataStatic();
 }
 
-
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace IIRF
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::IIRF::DriveTrainSimple* Arena::CreateMaybeMessage< ::IIRF::DriveTrainSimple >(Arena* arena) {
-  return Arena::CreateInternal< ::IIRF::DriveTrainSimple >(arena);
+template <>
+PROTOBUF_NOINLINE ::IIRF::DriveTrainSimple*
+Arena::CreateMaybeMessage<::IIRF::DriveTrainSimple>(Arena* arena) {
+  return Arena::CreateInternal<::IIRF::DriveTrainSimple>(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

@@ -1,7 +1,7 @@
 /**
  *  @file ActionObjective
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
- *  
+ *
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
@@ -14,16 +14,8 @@
 
 using namespace obps::core;
 
-ActionObjective::ActionObjective(const int size_)
-	: buffer_size(size_)
-{
-    data = (void*)malloc(size_);
+ActionObjective::ActionObjective(const int size_) : buffer_size(size_) {
+  data = (void*)malloc(size_);
 }
 
-ActionObjective::~ActionObjective()
-{
-	free(data);
-}
-
-
-
+ActionObjective::~ActionObjective() { free(data); }

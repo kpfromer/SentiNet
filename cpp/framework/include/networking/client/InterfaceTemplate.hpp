@@ -1,7 +1,7 @@
 /**
  *  @file InterfaceTemplate
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
- *  
+ *
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
@@ -13,36 +13,32 @@
 
 #define INTERFACETEMPLATE_HPP
 
-//C++ includes
+// C++ includes
 
-//Project includes
+// Project includes
 
+namespace networking {
+namespace client {
 
+class InterfaceTemplate {
+ public:
+  InterfaceTemplate();
+  virtual ~InterfaceTemplate();
 
-namespace networking
-{
-namespace client
-{
+  virtual bool initialize();
+  virtual bool terminate();
 
-class InterfaceTemplate
-{
-    public:
-        InterfaceTemplate ();
-        virtual ~InterfaceTemplate ();
+  virtual bool connect(std::string server_address, void*);
+  virtual bool disconnect(std::string server_address);
 
-		virtual bool initialize();
-		virtual bool terminate();
+  virtual MessageInterface request(std::string& server,
+                                   MessageInterface* message);
 
-		virtual bool connect(std::string server_address, void*);
-		virtual bool disconnect(std::string server_address);
-
-		virtual MessageInterface request(std::string& server, MessageInterface* message);
-    private:
-        /* private data */
+ private:
+  /* private data */
 };
 
-}
-}
+}  // namespace client
+}  // namespace networking
 
 #endif /* end of include guard INTERFACETEMPLATE_HPP */
-

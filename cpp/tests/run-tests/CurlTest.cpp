@@ -19,4 +19,3 @@ int main(int argc, char* argv[]) {
   a->grab("hello");
   return 0;
 }
-

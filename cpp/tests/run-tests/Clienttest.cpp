@@ -26,5 +26,4 @@ int main() {
   std::cout << value << std::endl;
 
   return 0;
-
 }

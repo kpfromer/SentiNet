@@ -1,7 +1,7 @@
 /**
  *  @file ActionObjectiveTest
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
- *  
+ *
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
@@ -13,36 +13,34 @@
 #include "kernelOPS/core/ActionObjective.hpp"
 using namespace obps::core;
 
-typedef struct
-{
-	int i;
-	int b;
-	int c;
+typedef struct {
+  int i;
+  int b;
+  int c;
 } datatype;
 
-int main()
-{
-	ActionObjective* a = new ActionObjective(sizeof(datatype));
+int main() {
+  ActionObjective* a = new ActionObjective(sizeof(datatype));
 
-	datatype b = a->read<datatype>();
-	printf("%d %d %d\n", b.i, b.b, b.c);
+  datatype b = a->read<datatype>();
+  printf("%d %d %d\n", b.i, b.b, b.c);
 
-	datatype c = {1, 4, 5};
+  datatype c = {1, 4, 5};
 
-	a->write(&c);
+  a->write(&c);
 
-	b = a->read<datatype>();
+  b = a->read<datatype>();
 
-	printf("%d %d %d\n", b.i, b.b, b.c);
+  printf("%d %d %d\n", b.i, b.b, b.c);
 
-	c.i = 9;
-	c.b = 10;
-	c.c = 11;
-	
-	a->write(&c);
-	b = a->read<datatype>();
-	
-	printf("%d %d %d\n", b.i, b.b, b.c);
+  c.i = 9;
+  c.b = 10;
+  c.c = 11;
 
-	return 0;
+  a->write(&c);
+  b = a->read<datatype>();
+
+  printf("%d %d %d\n", b.i, b.b, b.c);
+
+  return 0;
 }

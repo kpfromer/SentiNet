@@ -14,27 +14,24 @@
 
 #include "rks/ConfigurationClient.hpp"
 
-namespace rks
-{
-namespace peripheral_interfaces
-{
+namespace rks {
+namespace peripheral_interfaces {
 
-//only virtual functions
-class PeripheralInterface
-{
-  public:
-    virtual ~PeripheralInterface() = default;
+// only virtual functions
+class PeripheralInterface {
+ public:
+  virtual ~PeripheralInterface() = default;
 
-  protected:
-    virtual void create_inputs(ConfigurationClient&, std::string) = 0;
-    virtual void create_outputs(ConfigurationClient&, std::string) = 0;
+ protected:
+  virtual void create_inputs(ConfigurationClient&, std::string) = 0;
+  virtual void create_outputs(ConfigurationClient&, std::string) = 0;
 
-  public:
-    virtual void loop() = 0;
-    virtual void update() = 0;
-}; 
+ public:
+  virtual void loop() = 0;
+  virtual void update() = 0;
+};
 
-} // namespace peripheral_interfaces
-} // namespace rks
+}  // namespace peripheral_interfaces
+}  // namespace rks
 
-#endif //RKS_PERIPHERAL_INTERFACES_PERIPHERALBASEINTERFACE_HPP
+#endif  // RKS_PERIPHERAL_INTERFACES_PERIPHERALBASEINTERFACE_HPP

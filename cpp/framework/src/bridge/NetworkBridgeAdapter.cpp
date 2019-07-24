@@ -1,22 +1,19 @@
 
 
-
-
 #include "networking/bridge/NetworkBridgeAdapter.hpp"
 
-ZMQNetworkBridgeAdapter::ZMQNetworkBridgeAdapter(const std::string& sub_addr, const std::string& pub_addr, int context_num)
-  : frontend_addr(sub_addr), backend_addr(pub_addr)
-{
+ZMQNetworkBridgeAdapter::ZMQNetworkBridgeAdapter(const std::string& sub_addr,
+                                                 const std::string& pub_addr,
+                                                 int context_num)
+    : frontend_addr(sub_addr), backend_addr(pub_addr) {
   context_ = context_num;
 }
 
-ZMQNetworkBridgeAdapter::~ZMQNetworkBridgeAdapter()
-{}
+ZMQNetworkBridgeAdapter::~ZMQNetworkBridgeAdapter() {}
 
-void ZMQNetworkBridgeAdapter::listen()
-{
+void ZMQNetworkBridgeAdapter::listen() {
   ::zmq::context_t context(context_);
-  
+
   ::zmq::socket_t frontend(context, ZMQ_SUB);
   frontend.connect(frontend_addr);
 
@@ -25,9 +22,8 @@ void ZMQNetworkBridgeAdapter::listen()
 
   frontend.setsockopt(ZMQ_SUBSCRIBE, "", 0);
 
-  while(1)
-  {
-    while(1) {
+  while (1) {
+    while (1) {
       ::zmq::message_t message;
       int more;
       size_t more;
@@ -36,8 +32,7 @@ void ZMQNetworkBridgeAdapter::listen()
       frontend.recv(&message);
       frontend.getsockopt(ZMQ_RCVMORE, &more, &more_size);
       backend.send(message, more ? ZMQ_SNDMORE : 0);
-      if(!more)
-        break;
+      if (!more) break;
     }
   }
 }

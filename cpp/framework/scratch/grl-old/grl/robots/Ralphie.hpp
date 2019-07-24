@@ -1,7 +1,6 @@
 
 
-
-typedef struct{
+typedef struct {
   int angular;
   int linear;
   bool mining;
@@ -10,24 +9,21 @@ typedef struct{
   bool turn_on;
 } objective_type;
 
-class Ralphie : RobotInterface
-{
-  public:
-    Ralphie(configurationClient&)
-    : RobotInterface(ConfigurationClient&);
+class Ralphie : RobotInterface {
+ public:
+  Ralphie(configurationClient&) : RobotInterface(ConfigurationClient&);
 
-    ~Ralphie(){}
+  ~Ralphie() {}
 
-  protected:
-    void create_peripherals(ConfigurationClient&);
+ protected:
+  void create_peripherals(ConfigurationClient&);
 
-    void loop();
-    void update(objective_type);
+  void loop();
+  void update(objective_type);
 
-    void emergency_cut_power();
+  void emergency_cut_power();
 
-  private:
-    objective_type objective;
-    bool running;
+ private:
+  objective_type objective;
+  bool running;
 }
-

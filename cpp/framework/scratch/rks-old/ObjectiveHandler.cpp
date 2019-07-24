@@ -1,7 +1,7 @@
 /**
  *  @file ObjectiveHandler
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
- *  
+ *
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
@@ -13,20 +13,15 @@
 
 using namespace obps::core;
 
-ObjectiveHandler::ObjectiveHandler()
-{
+ObjectiveHandler::ObjectiveHandler() {}
+
+ObjectiveHandler::~ObjectiveHandler() {}
+
+void ObjectiveHandler::add_objective(ActionObjective* a, std::string name) {
+  objectives[name] = std::shared_ptr<ActionObjective>(a);
 }
 
-ObjectiveHandler::~ObjectiveHandler()
-{
-}
-
-void ObjectiveHandler::add_objective(ActionObjective* a, std::string name)
-{	
-	objectives[name] = std::shared_ptr<ActionObjective>(a);
-}	
-
-std::shared_ptr<ActionObjective> ObjectiveHandler::get_objective(std::string name)
-{
-	return objectives[name];
+std::shared_ptr<ActionObjective> ObjectiveHandler::get_objective(
+    std::string name) {
+  return objectives[name];
 }

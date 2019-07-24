@@ -13,7 +13,7 @@
 
 class SubscriberInterface {
  public:
-   SubscriberInterface() {}
+  SubscriberInterface() {}
   virtual ~SubscriberInterface() = default;
 
   virtual void subscribe(const std::string& topic) = 0;

@@ -1,7 +1,7 @@
 /**
  *  @file main
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
- *  
+ *
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
  *  @author       theo (theo@theo-Lenovo-Yoga-Arch)
@@ -12,22 +12,18 @@
 #include "kernelOPS/core/TriggerHandler.hpp"
 #include "kernelOPS/core/ActionProcess.hpp"
 
-
-
-
 using namespace obps::core;
 
-int main()
-{
-	TriggerHandler* th = new TriggerHandler();
-	ActionProcess* a = new ActionProcess( th, "charlie");
-	ActionProcess* b = new ActionProcess( th, "scott");
-	ActionProcess* c = new ActionProcess( th, "henry");
-	ActionProcess* d = new ActionProcess( th, "chumps");
+int main() {
+  TriggerHandler* th = new TriggerHandler();
+  ActionProcess* a = new ActionProcess(th, "charlie");
+  ActionProcess* b = new ActionProcess(th, "scott");
+  ActionProcess* c = new ActionProcess(th, "henry");
+  ActionProcess* d = new ActionProcess(th, "chumps");
 
-	a->notify_trigger_handler("scott");
-	b->notify_trigger_handler("chumps");
-	c->notify_trigger_handler("henry");
-	d->notify_trigger_handler("charlie");
-	return 0;
+  a->notify_trigger_handler("scott");
+  b->notify_trigger_handler("chumps");
+  c->notify_trigger_handler("henry");
+  d->notify_trigger_handler("charlie");
+  return 0;
 }

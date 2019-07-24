@@ -30,7 +30,7 @@
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
-#include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/extension_set.h>   // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -43,38 +43,45 @@ PROTOBUF_NAMESPACE_CLOSE
 
 // Internal implementation detail -- do not use these members.
 struct TableStruct_drivetrain_2eproto {
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTableField entries[]
-    PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
-    PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[1]
-    PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
-  static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTableField
+      entries[] PROTOBUF_SECTION_VARIABLE(protodesc_cold);
+  static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField
+      aux[] PROTOBUF_SECTION_VARIABLE(protodesc_cold);
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable
+      schema[1] PROTOBUF_SECTION_VARIABLE(protodesc_cold);
+  static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata
+      field_metadata[];
+  static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable
+      serialization_table[];
   static const ::PROTOBUF_NAMESPACE_ID::uint32 offsets[];
 };
-extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_drivetrain_2eproto;
+extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable
+    descriptor_table_drivetrain_2eproto;
 namespace IIRF {
 class DriveTrainSimple;
 class DriveTrainSimpleDefaultTypeInternal;
 extern DriveTrainSimpleDefaultTypeInternal _DriveTrainSimple_default_instance_;
 }  // namespace IIRF
 PROTOBUF_NAMESPACE_OPEN
-template<> ::IIRF::DriveTrainSimple* Arena::CreateMaybeMessage<::IIRF::DriveTrainSimple>(Arena*);
+template <>
+::IIRF::DriveTrainSimple* Arena::CreateMaybeMessage<::IIRF::DriveTrainSimple>(
+    Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace IIRF {
 
 // ===================================================================
 
-class DriveTrainSimple :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:IIRF.DriveTrainSimple) */ {
+class DriveTrainSimple
+    : public ::PROTOBUF_NAMESPACE_ID::
+          Message /* @@protoc_insertion_point(class_definition:IIRF.DriveTrainSimple)
+                   */
+{
  public:
   DriveTrainSimple();
   virtual ~DriveTrainSimple();
 
   DriveTrainSimple(const DriveTrainSimple& from);
-  DriveTrainSimple(DriveTrainSimple&& from) noexcept
-    : DriveTrainSimple() {
+  DriveTrainSimple(DriveTrainSimple&& from) noexcept : DriveTrainSimple() {
     *this = ::std::move(from);
   }
 
@@ -91,7 +98,8 @@ class DriveTrainSimple :
     return *this;
   }
 
-  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields()
+      const {
     return _internal_metadata_.unknown_fields();
   }
   inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
@@ -112,15 +120,12 @@ class DriveTrainSimple :
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
   static inline const DriveTrainSimple* internal_default_instance() {
     return reinterpret_cast<const DriveTrainSimple*>(
-               &_DriveTrainSimple_default_instance_);
+        &_DriveTrainSimple_default_instance_);
   }
-  static constexpr int kIndexInFileMessages =
-    0;
+  static constexpr int kIndexInFileMessages = 0;
 
   void Swap(DriveTrainSimple* other);
-  friend void swap(DriveTrainSimple& a, DriveTrainSimple& b) {
-    a.Swap(&b);
-  }
+  friend void swap(DriveTrainSimple& a, DriveTrainSimple& b) { a.Swap(&b); }
 
   // implements Message ----------------------------------------------
 
@@ -139,19 +144,21 @@ class DriveTrainSimple :
   bool IsInitialized() const final;
 
   size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  #else
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(
+      const char* ptr,
+      ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+#else
   bool MergePartialFromCodedStream(
       ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
   void SerializeWithCachedSizes(
       ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
   ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
       ::PROTOBUF_NAMESPACE_ID::uint8* target) const final;
   int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  private:
+ private:
   inline void SharedCtor();
   inline void SharedDtor();
   void SetCachedSize(int size) const final;
@@ -160,24 +167,25 @@ class DriveTrainSimple :
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
     return "IIRF.DriveTrainSimple";
   }
-  private:
+
+ private:
   inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
     return nullptr;
   }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
+  inline void* MaybeArenaPtr() const { return nullptr; }
 
+ public:
   ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-  private:
+
+ private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
-    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_drivetrain_2eproto);
-    return ::descriptor_table_drivetrain_2eproto.file_level_metadata[kIndexInFileMessages];
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+        &::descriptor_table_drivetrain_2eproto);
+    return ::descriptor_table_drivetrain_2eproto
+        .file_level_metadata[kIndexInFileMessages];
   }
 
-  public:
-
+ public:
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
@@ -203,7 +211,8 @@ class DriveTrainSimple :
   // helper for ByteSizeLong()
   size_t RequiredFieldsByteSizeFallback() const;
 
-  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena
+      _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::int32 linear_;
@@ -212,12 +221,11 @@ class DriveTrainSimple :
 };
 // ===================================================================
 
-
 // ===================================================================
 
 #ifdef __GNUC__
-  #pragma GCC diagnostic push
-  #pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
 // DriveTrainSimple
 
@@ -251,14 +259,15 @@ inline ::PROTOBUF_NAMESPACE_ID::int32 DriveTrainSimple::angular() const {
   // @@protoc_insertion_point(field_get:IIRF.DriveTrainSimple.angular)
   return angular_;
 }
-inline void DriveTrainSimple::set_angular(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void DriveTrainSimple::set_angular(
+    ::PROTOBUF_NAMESPACE_ID::int32 value) {
   _has_bits_[0] |= 0x00000002u;
   angular_ = value;
   // @@protoc_insertion_point(field_set:IIRF.DriveTrainSimple.angular)
 }
 
 #ifdef __GNUC__
-  #pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
 #endif  // __GNUC__
 
 // @@protoc_insertion_point(namespace_scope)
