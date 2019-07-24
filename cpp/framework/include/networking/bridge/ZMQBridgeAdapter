@@ -1,0 +1,26 @@
+
+#include <string>
+
+namespace networking
+{
+namespace bridge
+{
+
+class ZMQNetworkBridgeAdapter
+{
+  public:
+    ZMQNetworkBridgeAdapter(const std::string&, const std::string&, int context_num = 1);
+
+    ~ZMQNetworkBridgeAdapter();
+
+    void listen();
+
+  protected:
+    int context_;
+    const std::string frontend_addr;
+    const std::string backend_addr;
+
+};
+
+}
+}

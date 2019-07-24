@@ -3,7 +3,6 @@ project(cpp)
 set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include")
 set(SRC_DIR "${PROJECT_SOURCE_DIR}/src")
 set(MODELS "${PROJECT_SOURCE_DIR}/models")
-#config is really small
 add_subdirectory(${MODELS})
 include(cpp.cmake)
 
@@ -34,3 +33,4 @@ target_link_libraries(subscriber ${NETWORKING_LIB})
 
 add_executable(publisher "${SRC_DIR}/impl/publisher.cpp")
 target_link_libraries(publisher ${NETWORKING_LIB})
+

@@ -22,4 +22,5 @@ int main() {
   a->terminate();
 
   return 0;
+
 }

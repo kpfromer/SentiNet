@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.7)
 
 project("Generic Modular Robot Framework" VERSION 0.0.1 LANGUAGES C;CXX)
 
+
 set(CPP_SOURCE_DIR ${PROJECT_SOURCE_DIR}/cpp)
 set(PYTHON_SOURCE_DIR ${PROJECT_SOURCE_DIR}/python)
 
