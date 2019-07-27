@@ -1,6 +1,0 @@
-Client Classes to impliment
-- [ ] Client Interface
-  - [ ] Single Threaded Client
-  - [ ] Multi Threaded Client????
-- [ ] ZMQClient
-- [ ] Client Factory
