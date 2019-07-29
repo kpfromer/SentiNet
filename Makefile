@@ -24,3 +24,9 @@ keep-cmake ::
 
 format ::
 	@find ./cpp -iname "*.cpp" -o -iname "*.hpp" -o -iname "*.h" -o -iname "*.cc" -o -iname "*.c" | xargs clang-format -i -sort-includes=false -style=file
+
+install-arch-dependencies ::
+	yay boost
+
+install-arch-wii ::
+	yay wiiuse
