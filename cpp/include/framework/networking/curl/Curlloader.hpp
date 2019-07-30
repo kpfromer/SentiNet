@@ -25,35 +25,35 @@ namespace networking {
 namespace curl {
 
 typedef struct {
-  const char* filename;
-  FILE* stream;
+  const char *filename;
+  FILE *stream;
 } FtpFile;
 
 class Curlloader {
- public:
+public:
   Curlloader();
-  Curlloader(const std::string& destination_url);
-  Curlloader(const std::string& destination_url,
-             const std::string& output_path);
+  Curlloader(const std::string &destination_url);
+  Curlloader(const std::string &destination_url,
+             const std::string &output_path);
   virtual ~Curlloader();
 
-  void set_output_path(const std::string& output_path);
-  void set_destination_url(const std::string& url);
+  void set_output_path(const std::string &output_path);
+  void set_destination_url(const std::string &url);
 
-  void grab(const std::string& file_name);
+  void grab(const std::string &file_name);
 
- private:
+private:
   void curl_start();
-  static size_t file_write(void* buffer, size_t size, size_t nmemb,
-                           void* stream);
+  static size_t file_write(void *buffer, size_t size, size_t nmemb,
+                           void *stream);
   void curl_terminate();
 
   std::string destination;
-  FtpFile* ftpfile;
-  CURL* curl;
+  FtpFile *ftpfile;
+  CURL *curl;
   CURLcode res;
 };
 
-}  // namespace curl
-}  // namespace networking
+} // namespace curl
+} // namespace networking
 #endif /* end of include guard CURLLOADER_HPP */

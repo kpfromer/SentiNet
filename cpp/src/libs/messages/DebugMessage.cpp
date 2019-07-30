@@ -21,32 +21,32 @@ int DebugMessage::get_id() { return message->id(); }
 
 std::string DebugMessage::get_extra() { return message->extra(); }
 
-void DebugMessage::set_name(const std::string& name) {
+void DebugMessage::set_name(const std::string &name) {
   message->set_name(name);
 }
 
 void DebugMessage::set_id(int32_t id) { message->set_id(id); }
 
-void DebugMessage::set_extra(const std::string& extra) {
+void DebugMessage::set_extra(const std::string &extra) {
   message->set_extra(extra);
 }
 
-bool DebugMessage::serialize_to_string(std::string* output_string) const {
+bool DebugMessage::serialize_to_string(std::string *output_string) const {
   message->SerializeToString(output_string);
   return true;
 }
 
-bool DebugMessage::parse_from_string(const std::string& value) {
+bool DebugMessage::parse_from_string(const std::string &value) {
   message->ParseFromString(value);
   return true;
 }
 
-bool DebugMessage::serialize_to_ostream(std::ostream* output) const {
+bool DebugMessage::serialize_to_ostream(std::ostream *output) const {
   message->SerializeToOstream(output);
   return true;
 }
 
-bool DebugMessage::parse_from_istream(std::istream* input) {
+bool DebugMessage::parse_from_istream(std::istream *input) {
   message->ParseFromIstream(input);
   return true;
 }

@@ -12,11 +12,11 @@
 #include <memory>
 
 class SubscriberInterface {
- public:
+public:
   SubscriberInterface() {}
   virtual ~SubscriberInterface() = default;
 
-  virtual void subscribe(const std::string& topic) = 0;
+  virtual void subscribe(const std::string &topic) = 0;
   virtual void listen() = 0;
 };
 

@@ -16,7 +16,7 @@
 #include "framework/utils/utils.hpp"
 
 class ControlClientInterface {
- public:
+public:
   virtual ~ControlClientInterface() = default;
 
   ////////////////////////// Publish Methods /////////////////////////////
@@ -29,8 +29,8 @@ class ControlClientInterface {
    *
    * @return             [Status of the publish]
    */
-  virtual bool publish(const std::string& topic,
-                       const std::string& message) = 0;
+  virtual bool publish(const std::string &topic,
+                       const std::string &message) = 0;
 
   // Set a periodic publish / request. i.e. developer attatches a callback to
   // the function to periodically occur
@@ -46,21 +46,22 @@ class ControlClientInterface {
    *
    * @return       [status of the publish]
    */
-  virtual bool publish(
-      const std::string& sock_addr, std::string& topic,
-      const std::function<std::string&(void)>& get_data_to_publish,
-      const std::chrono::microseconds& period) = 0;
+  virtual bool
+  publish(const std::string &sock_addr, std::string &topic,
+          const std::function<std::string &(void)> &get_data_to_publish,
+          const std::chrono::microseconds &period) = 0;
 
-  virtual bool publish(
-      const int& port, std::string& topic,
-      const std::function<std::string&(void)>& get_data_to_publish,
-      const std::chrono::microseconds& period) {
+  virtual bool
+  publish(const int &port, std::string &topic,
+          const std::function<std::string &(void)> &get_data_to_publish,
+          const std::chrono::microseconds &period) {
 
-      return publish(::utils::strings::join(::utils::defaults::SERVER_TCP_PREFIX, port, ":"),
-             topic, get_data_to_publish, period);
+    return publish(
+        ::utils::strings::join(::utils::defaults::SERVER_TCP_PREFIX, port, ":"),
+        topic, get_data_to_publish, period);
   }
 
-  virtual bool cancel_periodic_publisher(const std::string&) = 0;
+  virtual bool cancel_periodic_publisher(const std::string &) = 0;
   ////////////////////////// Request Methods /////////////////////////////
   /**
    * Requests a string from an endpoint
@@ -71,8 +72,8 @@ class ControlClientInterface {
    *
    * @return             [The response from the server]
    */
-  virtual std::string request(const std::string& destination,
-                              const std::string& message) = 0;
+  virtual std::string request(const std::string &destination,
+                              const std::string &message) = 0;
 
   /**
    * Make A request at a regular period
@@ -84,13 +85,13 @@ class ControlClientInterface {
    * badly]
    */
   virtual bool request(
-      std::string& destination,  // Destination can change (not const)
-      const std::function<std::string&(void)>&
-          get_data_to_request,  // placeholder for string to request with
-      const std::function<void(const std::string&)>& action_to_recieved_data,
-      const std::chrono::microseconds& period);
+      std::string &destination, // Destination can change (not const)
+      const std::function<std::string &(void)>
+          &get_data_to_request, // placeholder for string to request with
+      const std::function<void(const std::string &)> &action_to_recieved_data,
+      const std::chrono::microseconds &period);
 
-  virtual bool cancel_periodic_request(const std::string&) = 0;
+  virtual bool cancel_periodic_request(const std::string &) = 0;
   ////////////////////////// Subscribe Methods /////////////////////////////
   /**
    * Subscribe to a topic with a specified callback
@@ -103,11 +104,11 @@ class ControlClientInterface {
    *
    * @return           [Status of the subscription if it ends]
    */
-  virtual bool subscribe(
-      const std::string& sock_addr, const std::string& topic,
-      const std::function<void(const std::string&)>& callback) = 0;
+  virtual bool
+  subscribe(const std::string &sock_addr, const std::string &topic,
+            const std::function<void(const std::string &)> &callback) = 0;
 
-  virtual bool cancel_subscription(const std::string& topic) = 0;
+  virtual bool cancel_subscription(const std::string &topic) = 0;
 
   ////////////////////////// Serve Methods /////////////////////////////
   /**
@@ -120,13 +121,13 @@ class ControlClientInterface {
    *
    * @return         [Staus if the server dies]
    */
-  virtual bool serve(
-      const std::string& address,
-      const std::function<std::string(const std::string&)>& callback) = 0;
+  virtual bool
+  serve(const std::string &address,
+        const std::function<std::string(const std::string &)> &callback) = 0;
 
   // Inline when a port is supplied instead of address
-  inline bool serve(const int& port,
-                    std::function<std::string(const std::string&)>& callback) {
+  inline bool serve(const int &port,
+                    std::function<std::string(const std::string &)> &callback) {
     return serve(
         utils::strings::join(utils::defaults::SERVER_TCP_PREFIX, port, ":"),
         callback);
@@ -138,17 +139,17 @@ class ControlClientInterface {
    * @param  Callback   [The callback to the request]
    * @return            [Status if there is an exit]
    */
-  virtual bool serve(const std::string& address,
-                     const std::function<std::string(void)>& callback) = 0;
+  virtual bool serve(const std::string &address,
+                     const std::function<std::string(void)> &callback) = 0;
 
   // Inline when a port is supplied instead of address
-  inline bool serve(const int& port,
-                    std::function<std::string(void)>& callback) {
+  inline bool serve(const int &port,
+                    std::function<std::string(void)> &callback) {
     return serve(
         utils::strings::join(utils::defaults::SERVER_TCP_PREFIX, port, ":"),
         callback);
   }
 
-  virtual bool terminate_server(const std::string& address) = 0;
+  virtual bool terminate_server(const std::string &address) = 0;
 };
 #endif /* end of include guard CONTROLINTERFACE_HPP */

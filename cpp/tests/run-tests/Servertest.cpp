@@ -15,7 +15,7 @@
 using namespace networking::server;
 
 int main() {
-  ZMQServer* a = new ZMQServer("tcp://*:5555", 1);
+  ZMQServer *a = new ZMQServer("tcp://*:5555", 1);
 
   a->initialize();
   a->listen();

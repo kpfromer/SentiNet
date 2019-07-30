@@ -39,7 +39,7 @@ namespace server {
  *
  * @return nullptr normally, but used to satisfy pthread_create
  */
-void* thread_entry_point(void* entry);
+void *thread_entry_point(void *entry);
 
 /**
  * @brief Extension of Server Interface
@@ -50,7 +50,7 @@ void* thread_entry_point(void* entry);
  * reply to a client pinging it for data (ie requesting a control module)
  */
 class ZMQServer : public ServerInterface {
- public:
+public:
   /**
    * @brief Default constructor
    *
@@ -59,15 +59,15 @@ class ZMQServer : public ServerInterface {
    *
    * @param address serving_address
    */
-  ZMQServer(const std::string& address);
+  ZMQServer(const std::string &address);
 
-  ZMQServer(const std::string& address, int threads);
+  ZMQServer(const std::string &address, int threads);
 
-  ZMQServer(const std::string& address,
-            std::function<std::string(void*, int)> callback);
+  ZMQServer(const std::string &address,
+            std::function<std::string(void *, int)> callback);
 
-  ZMQServer(const std::string& address, int threads,
-            std::function<std::string(void*, int)> callback);
+  ZMQServer(const std::string &address, int threads,
+            std::function<std::string(void *, int)> callback);
 
   virtual ~ZMQServer();
 
@@ -76,21 +76,21 @@ class ZMQServer : public ServerInterface {
 
   virtual void listen();
 
- private:
+private:
   void single_threaded_listener();
   void multi_threaded_listener();
 
-  friend void* thread_entry_point(void*);
+  friend void *thread_entry_point(void *);
 
- private:
+private:
   ::zmq::context_t context;
   std::unique_ptr<::zmq::socket_t> socket;
   int threads;
 
-  void* create_entry_point() { return (void*)this; }
+  void *create_entry_point() { return (void *)this; }
 };
 
-}  // namespace server
-}  // namespace networking
+} // namespace server
+} // namespace networking
 
 #endif /* end of include guard ZMQSERVER_HPP */

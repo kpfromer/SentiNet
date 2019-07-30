@@ -15,11 +15,11 @@
 using namespace obps::core;
 
 int main() {
-  TriggerHandler* th = new TriggerHandler();
-  ActionProcess* a = new ActionProcess(th, "charlie");
-  ActionProcess* b = new ActionProcess(th, "scott");
-  ActionProcess* c = new ActionProcess(th, "henry");
-  ActionProcess* d = new ActionProcess(th, "chumps");
+  TriggerHandler *th = new TriggerHandler();
+  ActionProcess *a = new ActionProcess(th, "charlie");
+  ActionProcess *b = new ActionProcess(th, "scott");
+  ActionProcess *c = new ActionProcess(th, "henry");
+  ActionProcess *d = new ActionProcess(th, "chumps");
 
   a->notify_trigger_handler("scott");
   b->notify_trigger_handler("chumps");

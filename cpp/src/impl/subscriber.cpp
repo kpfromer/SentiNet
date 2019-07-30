@@ -7,7 +7,7 @@
 #include "networking/zmq/ZMQSubscriber.hpp"
 
 int main() {
-  ZMQSubscriber* a = new ZMQSubscriber("tcp://localhost:5555", 1);
+  ZMQSubscriber *a = new ZMQSubscriber("tcp://localhost:5555", 1);
   a->subscribe("topic");
   a->listen();
   return 0;

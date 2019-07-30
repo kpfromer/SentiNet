@@ -21,24 +21,24 @@ namespace networking {
 namespace client {
 
 class InterfaceTemplate {
- public:
+public:
   InterfaceTemplate();
   virtual ~InterfaceTemplate();
 
   virtual bool initialize();
   virtual bool terminate();
 
-  virtual bool connect(std::string server_address, void*);
+  virtual bool connect(std::string server_address, void *);
   virtual bool disconnect(std::string server_address);
 
-  virtual MessageInterface request(std::string& server,
-                                   MessageInterface* message);
+  virtual MessageInterface request(std::string &server,
+                                   MessageInterface *message);
 
- private:
+private:
   /* private data */
 };
 
-}  // namespace client
-}  // namespace networking
+} // namespace client
+} // namespace networking
 
 #endif /* end of include guard INTERFACETEMPLATE_HPP */

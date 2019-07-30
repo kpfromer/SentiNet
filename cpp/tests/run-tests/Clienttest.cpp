@@ -14,7 +14,7 @@
 
 using namespace networking::client;
 int main() {
-  ZMQClient* a = new ZMQClient();
+  ZMQClient *a = new ZMQClient();
   a->initialize();
 
   std::cout << "here" << std::endl;

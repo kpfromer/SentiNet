@@ -9,7 +9,7 @@
 #define ZMQBROKER_HPP
 
 class ZMQBroker {
- public:
+public:
   ZMQBroker();
   virtual ~ZMQBroker();
 

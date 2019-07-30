@@ -33,7 +33,7 @@ namespace server {
  * @brief Server intterface serves a template for implimented servers
  */
 class ServerInterface : public RecieverInterface {
- public:
+public:
   /**
    * @brief Default constructor, sets address and threads to 1
    *
@@ -43,7 +43,7 @@ class ServerInterface : public RecieverInterface {
    *
    * @param address self's address
    */
-  ServerInterface(const std::string& address);
+  ServerInterface(const std::string &address);
 
   /**
    * @brief Secondary constructor when there multithreading is possible
@@ -57,10 +57,10 @@ class ServerInterface : public RecieverInterface {
    * @param address serving_address
    * @param threads number of threads
    */
-  ServerInterface(const std::string& address,
-                  std::function<std::string(void*, int)> callback);
+  ServerInterface(const std::string &address,
+                  std::function<std::string(void *, int)> callback);
 
-  void set_callback(std::function<std::string(void*, int)>* callback_);
+  void set_callback(std::function<std::string(void *, int)> *callback_);
 
   /**
    * @brief Default Destructor
@@ -105,7 +105,7 @@ class ServerInterface : public RecieverInterface {
    */
   virtual void listen() = 0;
 
- protected:
+protected:
   /**
    * @brief Address to serve on
    *
@@ -113,10 +113,10 @@ class ServerInterface : public RecieverInterface {
    */
   const std::string serving_address;
 
-  std::unique_ptr<std::function<std::string(void*, int)>> callback;
+  std::unique_ptr<std::function<std::string(void *, int)>> callback;
 };
 
-}  // namespace server
-}  // namespace networking
+} // namespace server
+} // namespace networking
 
 #endif /* end of include guard SERVERINTERFACE_HPP */

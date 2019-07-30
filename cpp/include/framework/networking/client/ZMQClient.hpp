@@ -31,29 +31,29 @@ namespace networking {
 namespace client {
 
 class ZMQClient : public ClientInterface {
- public:
+public:
   ZMQClient();
   ~ZMQClient();
 
   virtual bool initialize(int context = 1);
   virtual bool terminate();
 
- protected:
-  virtual bool connect(const std::string& server_address);
-  virtual bool disconnect(const std::string& server_address);
-  virtual bool make_request(const std::string& request_,
-                            std::string& response_);
+protected:
+  virtual bool connect(const std::string &server_address);
+  virtual bool disconnect(const std::string &server_address);
+  virtual bool make_request(const std::string &request_,
+                            std::string &response_);
 
-  virtual bool serialize(const std::ostream* input) = 0;
+  virtual bool serialize(const std::ostream *input) = 0;
 
-  void* (*entry_fnc)(void*);
+  void *(*entry_fnc)(void *);
 
- private:
+private:
   ::zmq::context_t context;
   std::unique_ptr<::zmq::socket_t> socket;
   std::string connected_address;
 };
 
-}  // namespace client
-}  // namespace networking
+} // namespace client
+} // namespace networking
 #endif /* end of include guard ZMQCLIENT_HPP */

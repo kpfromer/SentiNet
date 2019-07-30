@@ -15,8 +15,8 @@ namespace networking {
 namespace loader {
 
 template <class T>
-Loader<T>::Loader(const std::string& library, const std::string& destroy_symbol,
-                  const std::string& load_symbol) {
+Loader<T>::Loader(const std::string &library, const std::string &destroy_symbol,
+                  const std::string &load_symbol) {
   handle = dlopen(library.c_str(), RTLD_LAZY);
   if (!handle) {
     std::cerr << "Cannot load library: " << dlerror() << std::endl;
@@ -25,7 +25,7 @@ Loader<T>::Loader(const std::string& library, const std::string& destroy_symbol,
 
   // static cast instead of dynamic because we know this'll be a void ptr
   create_m = (create_t)(dlsym(handle, load_symbol.c_str()));
-  const char* dlsym_error = dlerror();
+  const char *dlsym_error = dlerror();
   if (dlsym_error) {
     std::cerr << "Cannot load symbol create: " << dlsym_error << std::endl;
     exit(1);
@@ -41,16 +41,14 @@ Loader<T>::Loader(const std::string& library, const std::string& destroy_symbol,
   object = (*create_m)();
 }
 
-template <class T>
-Loader<T>::~Loader() {
-  if (object) (*destroy_m)(object);
-  if (handle) dlclose(handle);
+template <class T> Loader<T>::~Loader() {
+  if (object)
+    (*destroy_m)(object);
+  if (handle)
+    dlclose(handle);
 }
 
-template <class T>
-T* Loader<T>::get_object() {
-  return object;
-}
+template <class T> T *Loader<T>::get_object() { return object; }
 
-}  // namespace loader
-}  // namespace networking
+} // namespace loader
+} // namespace networking

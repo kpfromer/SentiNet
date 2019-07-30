@@ -13,8 +13,8 @@ namespace networking {
 namespace client {
 #define CLIENTDEFAULT 1
 
-}  // namespace client
+} // namespace client
 
-}  // namespace networking
+} // namespace networking
 
 #endif /* end of include guard CLIENTMACROS_HPP */

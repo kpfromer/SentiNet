@@ -12,15 +12,15 @@
 #include "framework/networking/subscriber/SubscriberInterface.hpp"
 
 class ZMQSubscriber : public SubscriberInterface {
- public:
-  ZMQSubscriber(const std::string& address, int context);
+public:
+  ZMQSubscriber(const std::string &address, int context);
   ~ZMQSubscriber() {}
 
-  void subscribe(const std::string& topic);
+  void subscribe(const std::string &topic);
 
   void listen();
 
- private:
+private:
   std::unique_ptr<zmq::socket_t> socket;
   zmq::context_t context;
 };

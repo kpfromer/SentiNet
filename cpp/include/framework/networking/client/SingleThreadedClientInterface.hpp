@@ -19,13 +19,13 @@ namespace networking {
 namespace client {
 
 class SingleThreadedClientInterface : public ClientBaseInterface {
- public:
+public:
   SingleThreadedClientInterface();
   virtual ~SingleThreadedClientInterface();
 
- private:
+private:
 };
 
-}  // namespace client
-}  // namespace networking
+} // namespace client
+} // namespace networking
 #endif /* end of include guard SINGLETHREADEDCLIENTINTERFACE_HPP */

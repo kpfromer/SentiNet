@@ -27,28 +27,27 @@ namespace loader {
  * now, all it does is load the class, assume there's an entry point and assume
  * there's an exit point
  */
-template <class T>
-class Loader {
- public:
-  Loader(const std::string& library, const std::string& destroy,
-         const std::string& load);
+template <class T> class Loader {
+public:
+  Loader(const std::string &library, const std::string &destroy,
+         const std::string &load);
   ~Loader();
 
   // NOTE we can't use smart pointers here, we need to provide all
   // destructors and const ourselves
-  T* get_object();
+  T *get_object();
 
- private:
-  void* handle;
+private:
+  void *handle;
 
-  typedef T* (*create_t)();
+  typedef T *(*create_t)();
   typedef void (*destroy_t)();
 
   create_t create_m;
   destroy_t destroy_m;
-  T* object;
+  T *object;
 };
 
-}  // namespace loader
-}  // namespace networking
+} // namespace loader
+} // namespace networking
 #endif /* end of include guard LOADER_HPP */

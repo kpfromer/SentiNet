@@ -9,11 +9,11 @@
 #define CONTROLBASEINTERFACE_HPP
 
 class ControlBaseInterface {
- public:
+public:
   ControlBaseInterface();
   virtual ~ControlBaseInterface();
 
- private:
+private:
   /* private data */
 };
 

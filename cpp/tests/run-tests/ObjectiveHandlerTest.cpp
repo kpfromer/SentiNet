@@ -26,7 +26,7 @@ typedef struct {
 } example2;
 
 int main() {
-  ObjectiveHandler* a = new ObjectiveHandler();
+  ObjectiveHandler *a = new ObjectiveHandler();
   a->add_objective(new ActionObjective(sizeof(example1)), "henry");
   a->add_objective(new ActionObjective(sizeof(example2)), "charlie");
 

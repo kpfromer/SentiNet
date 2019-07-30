@@ -16,12 +16,12 @@
 #include <memory>
 
 class PublisherInterface {
- public:
+public:
   PublisherInterface() {}
   virtual ~PublisherInterface() = default;
 
   virtual void publish(const std::string topic,
-                       const MessageInterface& msg) = 0;
+                       const MessageInterface &msg) = 0;
 };
 
 #endif /* end of include guard PUBLISHERINTERFACE_HPP */

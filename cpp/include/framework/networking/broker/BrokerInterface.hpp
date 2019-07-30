@@ -9,12 +9,12 @@
 #define BROKERINTERFACE_HPP
 
 class BrokerInterface {
- public:
-  BrokerInterface(const std::string& frontend_addr,
-                  const std::string& backend_addr);
+public:
+  BrokerInterface(const std::string &frontend_addr,
+                  const std::string &backend_addr);
   virtual ~BrokerInterface();
 
- private:
+private:
   const std::string frontend_addr;
   const std::string backend_addr;
   /* private data */

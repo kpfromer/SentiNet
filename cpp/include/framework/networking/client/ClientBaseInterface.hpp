@@ -27,7 +27,7 @@ namespace networking {
 namespace client {
 
 class ClientBaseInterface {
- public:
+public:
   ClientBaseInterface();
 
   virtual ~ClientBaseInterface() = default;
@@ -35,34 +35,34 @@ class ClientBaseInterface {
   /**
    * @brief At the very least, client will have a name
    */
-  void set_client_name(const std::string& name) : client_name(name) {}
+  void set_client_name(const std::string &name) : client_name(name) {}
   std::string get_client_name() const { return client_name; }
 
   // Initialize sub processes
   virtual bool initialize(int context = CLIENTDEFAULT) = 0;
   virtual bool terminate() = 0;
 
-  virtual std::unique_ptr<MessageBaseInterface> request(
-      const std::string server_address,
-      std::unique_ptr<MessageBaseInterface>& message);
+  virtual std::unique_ptr<MessageBaseInterface>
+  request(const std::string server_address,
+          std::unique_ptr<MessageBaseInterface> &message);
 
- protected:
-  virtual bool connect(const std::string& server_address) = 0;
-  virtual bool disconnect(const std::string& server_address) = 0;
+protected:
+  virtual bool connect(const std::string &server_address) = 0;
+  virtual bool disconnect(const std::string &server_address) = 0;
 
   virtual bool make_request(std::unique_ptr<MessageBaseInterface> message,
-                            std::string& response) = 0;
+                            std::string &response) = 0;
 
- private:
-  virtual bool request_flags(const std::string& server_address,
-                             const std::string& request_,
+private:
+  virtual bool request_flags(const std::string &server_address,
+                             const std::string &request_,
                              std::unique_ptr<MessageBaseInterface> response_);
 
   const std::string client_name;
 };
 
-}  // namespace client
+} // namespace client
 
-}  // namespace networking
+} // namespace networking
 
 #endif /* end of include guard CLIENTINTERFACE_HPP */

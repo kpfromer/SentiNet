@@ -15,11 +15,11 @@
 #include "framework/networking/client/ClientBaseInterface.hpp"
 
 class MultiThreadedClientInterface {
- public:
+public:
   MultiThreadedClientInterface();
   virtual ~MultiThreadedClientInterface();
 
- private:
+private:
   std::list<std::unique_ptr<std::thread>>> request_threads;
   /* private data */
 };

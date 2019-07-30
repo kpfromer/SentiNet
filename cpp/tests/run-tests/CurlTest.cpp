@@ -12,9 +12,9 @@
 #include "networking/curl/Curlloader.hpp"
 using namespace networking::curl;
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   std::string value = (argc > 1 ? argv[1] : "./hello");
-  Curlloader* a = new Curlloader("ftp://127.0.0.1/");
+  Curlloader *a = new Curlloader("ftp://127.0.0.1/");
   a->set_output_path(value);
   a->grab("hello");
   return 0;

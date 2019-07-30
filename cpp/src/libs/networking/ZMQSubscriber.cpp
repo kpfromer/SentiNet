@@ -6,13 +6,13 @@
 
 #include "networking/zmq/ZMQSubscriber.hpp"
 
-ZMQSubscriber::ZMQSubscriber(const std::string& address, int context_) {
+ZMQSubscriber::ZMQSubscriber(const std::string &address, int context_) {
   context = zmq::context_t(context_);
   socket = std::make_unique<zmq::socket_t>(context, ZMQ_SUB);
   socket->connect(address);
 }
 
-void ZMQSubscriber::subscribe(const std::string& topic) {
+void ZMQSubscriber::subscribe(const std::string &topic) {
   socket->setsockopt(ZMQ_SUBSCRIBE, topic.c_str(), topic.size());
 }
 

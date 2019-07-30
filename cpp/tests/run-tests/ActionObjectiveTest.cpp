@@ -20,7 +20,7 @@ typedef struct {
 } datatype;
 
 int main() {
-  ActionObjective* a = new ActionObjective(sizeof(datatype));
+  ActionObjective *a = new ActionObjective(sizeof(datatype));
 
   datatype b = a->read<datatype>();
   printf("%d %d %d\n", b.i, b.b, b.c);

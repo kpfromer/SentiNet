@@ -18,9 +18,9 @@ namespace client {
 // pretty boring I know, but there'll probably be more functions in the future
 ClientInterface::ClientInterface() {}
 
-std::unique_ptr<MessageBaseInterface> ClientInterface::request(
-    const std::string& server_address,
-    std::unique_ptr<MessageBaseInterface>& message) {
+std::unique_ptr<MessageBaseInterface>
+ClientInterface::request(const std::string &server_address,
+                         std::unique_ptr<MessageBaseInterface> &message) {
   auto response_ = std::make_unique<MessageBaseInterface>();
   if (!request_flags(server_address, request_, std::move(response))) {
     std::cout << "ERROR" << std::endl;
@@ -30,7 +30,7 @@ std::unique_ptr<MessageBaseInterface> ClientInterface::request(
 }
 
 bool ClientInterface::request_flags(
-    const std::string& server_address, const std::string& request_,
+    const std::string &server_address, const std::string &request_,
     std::unique_ptr<MessageBaseInterface> response_) {
   if (!connect(server_address)) {
     std::cout << "Error connecting" << std::endl;
@@ -47,5 +47,5 @@ bool ClientInterface::request_flags(
   return true;
 }
 
-}  // namespace client
-}  // namespace networking
+} // namespace client
+} // namespace networking

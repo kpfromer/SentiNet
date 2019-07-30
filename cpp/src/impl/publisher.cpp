@@ -8,9 +8,9 @@
 #include "messages/debug/DebugMessage.h"
 
 int main() {
-  ZMQPublisher* a = new ZMQPublisher("tcp://*:5555", 1);
+  ZMQPublisher *a = new ZMQPublisher("tcp://*:5555", 1);
 
-  DebugMessage* msg = new DebugMessage();
+  DebugMessage *msg = new DebugMessage();
   msg->set_name("Theo");
   msg->set_id(5);
   msg->set_extra("extra");
