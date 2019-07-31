@@ -9,8 +9,6 @@ MAKE_TARGET=make -C ${BUILD_TARGET}
 CMAKE_CLEAN=rm -rf ${BUILD_TARGET}/CMakeFiles ${BUILD_TARGET}/cmake_install.cmake \
 	    ${BUILD_TARGET}/Makefile ${BUILD_TARGET}/CMakeCache.txt ${BUILD_TARGET}/cpp
 all :: keep-cmake
-	@echo "Removing Cmake Resources"
-	@${CMAKE_CLEAN}
 
 
 CMAKE_GENERATE_COMPILE_COMMANDS=cmake -S . -B ${BUILD_TARGET} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON

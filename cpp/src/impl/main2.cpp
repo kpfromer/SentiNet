@@ -9,9 +9,9 @@
 int main() {
   
   std::unique_ptr<ZMQControlClient> a = std::make_unique<ZMQControlClient>();
-  a->publish("tcp://*:5555", "Yo", [&]() -> std::string& {
-      std::string * value = new std::string("hi");
-      return *value;}, std::chrono::microseconds(10)); 
-  sleep(10);
+  a->subscribe("tcp://localhost:5555", "Yo", 
+      [&](const std::string& value) -> void {
+        std::cout<<"Recieved "<<value<<std::endl;});
+  sleep(6);
   return 0;
 }

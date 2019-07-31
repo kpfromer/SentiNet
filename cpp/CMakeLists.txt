@@ -20,6 +20,7 @@ set(PROTO_MSGS_LIB protomessages)
 add_library(${PROTO_MSGS_LIB} SHARED ${PROTO_SRC_DIR})
 target_link_libraries(${PROTO_MSGS_LIB} ${PTHREAD_LIB} ${PROTO_LIB} ${BOOST_LOG})
 
+
 file(GLOB_RECURSE MESSAGE_SRC_DIR "${SRC_DIR}/libs/messages/*.cpp")
 set(MESSAGES_LIB messages)
 add_library(${MESSAGES_LIB} SHARED ${MESSAGE_SRC_DIR})
@@ -30,9 +31,13 @@ set(NETWORKING_LIB networking)
 add_library(${NETWORKING_LIB} SHARED ${NETWORKING_SRC_DIR})
 target_link_libraries(${NETWORKING_LIB} ${MESSAGES_LIB} ${ZMQ_LIB} ${BOOST_LOG} ${PTHREAD_LIB})
 
+add_executable(run "${SRC_DIR}/impl/main.cpp")
+target_link_libraries(run ${NETWORKING_LIB} ${PTHREAD_LIB})
 
-add_executable(subscriber "${SRC_DIR}/impl/subscriber.cpp")
-target_link_libraries(subscriber ${NETWORKING_LIB} ${BOOST_LOG} ${PTHREAD_LIB})
-
-add_executable(publisher "${SRC_DIR}/impl/publisher.cpp")
-target_link_libraries(publisher ${NETWORKING_LIB} ${PTHREAD_LIB} ${BOOST_LOG})
+add_executable(run2 "${SRC_DIR}/impl/main2.cpp")
+target_link_libraries(run2 ${NETWORKING_LIB} ${PTHREAD_LIB})
+# add_executable(subscriber "${SRC_DIR}/impl/subscriber.cpp")
+# target_link_libraries(subscriber ${NETWORKING_LIB} ${BOOST_LOG} ${PTHREAD_LIB})
+#
+# add_executable(publisher "${SRC_DIR}/impl/publisher.cpp")
+# target_link_libraries(publisher ${NETWORKING_LIB} ${PTHREAD_LIB} ${BOOST_LOG})

@@ -19,7 +19,7 @@
 class ZMQControlClient : public ControlClientInterface {
 public:
   ZMQControlClient(int context_ = 1);
-  virtual ~ZMQControlClient();
+  ~ZMQControlClient();
 
 public: // TODO Take these out and put htme in controlbase interface
   bool start() override;
