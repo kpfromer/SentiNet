@@ -9,15 +9,14 @@
 
 #define CONTROLINTERFACE_HPP
 
-#include <string>
-#include <memory>
-#include <functional>
-
 #include "framework/utils/utils.hpp"
 
 class ControlClientInterface {
 public:
   virtual ~ControlClientInterface() = default;
+
+  virtual bool start() = 0;
+  virtual bool quit() = 0;
 
   ////////////////////////// Publish Methods /////////////////////////////
   /**
@@ -47,21 +46,14 @@ public:
    * @return       [status of the publish]
    */
   virtual bool
-  publish(const std::string &sock_addr, std::string &topic,
-          const std::function<std::string &(void)> &get_data_to_publish,
-          const std::chrono::microseconds &period) = 0;
-
-  virtual bool
-  publish(const int &port, std::string &topic,
-          const std::function<std::string &(void)> &get_data_to_publish,
-          const std::chrono::microseconds &period) {
-
-    return publish(
-        ::utils::strings::join(::utils::defaults::SERVER_TCP_PREFIX, port, ":"),
-        topic, get_data_to_publish, period);
-  }
+  publish(std::string sock_addr, std::string topic,
+          std::function<std::string &(void)> get_data_to_publish,
+          std::chrono::microseconds period) = 0;
 
   virtual bool cancel_periodic_publisher(const std::string &) = 0;
+
+
+
   ////////////////////////// Request Methods /////////////////////////////
   /**
    * Requests a string from an endpoint
@@ -86,10 +78,9 @@ public:
    */
   virtual bool request(
       std::string &destination, // Destination can change (not const)
-      const std::function<std::string &(void)>
-          &get_data_to_request, // placeholder for string to request with
-      const std::function<void(const std::string &)> &action_to_recieved_data,
-      const std::chrono::microseconds &period);
+      std::function<std::string &(void)> get_data_to_request,
+      std::function<void(const std::string &)> action_to_recieved_data,
+      const std::chrono::microseconds &period) = 0;
 
   virtual bool cancel_periodic_request(const std::string &) = 0;
   ////////////////////////// Subscribe Methods /////////////////////////////
@@ -106,7 +97,7 @@ public:
    */
   virtual bool
   subscribe(const std::string &sock_addr, const std::string &topic,
-            const std::function<void(const std::string &)> &callback) = 0;
+            std::function<void(const std::string &)> callback) = 0;
 
   virtual bool cancel_subscription(const std::string &topic) = 0;
 
@@ -123,15 +114,9 @@ public:
    */
   virtual bool
   serve(const std::string &address,
-        const std::function<std::string(const std::string &)> &callback) = 0;
+        std::function<std::string(const std::string &)> callback) = 0;
 
-  // Inline when a port is supplied instead of address
-  inline bool serve(const int &port,
-                    std::function<std::string(const std::string &)> &callback) {
-    return serve(
-        utils::strings::join(utils::defaults::SERVER_TCP_PREFIX, port, ":"),
-        callback);
-  }
+
 
   /**
    * A Server that doesn't care about incomming arguments
@@ -140,16 +125,60 @@ public:
    * @return            [Status if there is an exit]
    */
   virtual bool serve(const std::string &address,
-                     const std::function<std::string(void)> &callback) = 0;
+                     std::function<std::string(void)> callback) = 0;
 
-  // Inline when a port is supplied instead of address
+
+  virtual bool terminate_server(const std::string &address) = 0;
+  /////////////////////////////// FUNCTIONALITY ///////////////////////////
+  /**
+   * These are the most used functions, utilizing helper functions
+   * and defaults so that a developer doesn't have to pass all the parameters to the
+   * functions
+   */
+   // TODO I would like to change the utils things - so that all defaults are local
+/*
+  inline bool
+  publish(const int &port, std::string &topic,
+          const std::function<std::string &(void)> &get_data_to_publish,
+          const std::chrono::microseconds &period) {
+
+    return publish(
+        ::utils::strings::join_d(":", ::utils::defaults::SERVER_TCP_PREFIX),
+        topic, get_data_to_publish, period);
+  }
+
+  inline bool
+  publish(std::string &topic,
+          const std::function<std::string &(void)> &get_data_to_publish,
+          const std::chrono::microseconds &period) {
+
+    return publish(
+        ::utils::strings::join_d(":", ::utils::defaults::SERVER_TCP_PREFIX, ::utils::ports::get_port("publisher")),
+        topic, get_data_to_publish, period);
+  }
+
+   // Pass a port and callback
   inline bool serve(const int &port,
                     std::function<std::string(void)> &callback) {
+    return serve(
+        utils::strings::join_d(':', utils::defaults::SERVER_TCP_PREFIX, port);
+        callback);
+  }
+
+  // Pass just a callback
+  inline bool serve(std::function<std::string(void)> &callback){
+    return serve(
+        utils::strings::join(":", utils::defaults::SERVER_TCP_PREFIX, utils::ports::get_port("server")),
+        callback);
+  }
+  // Inline when a port is supplied instead of address
+  inline bool serve(const int &port,
+                    std::function<std::string(const std::string &)> &callback) {
     return serve(
         utils::strings::join(utils::defaults::SERVER_TCP_PREFIX, port, ":"),
         callback);
   }
+  */
 
-  virtual bool terminate_server(const std::string &address) = 0;
 };
 #endif /* end of include guard CONTROLINTERFACE_HPP */

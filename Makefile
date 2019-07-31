@@ -4,15 +4,23 @@ BUILD_TARGET=./build
 CMAKE_TARGET=cmake -S . -B ${BUILD_TARGET}
 MAKE_TARGET=make -C ${BUILD_TARGET}
 
+
+
 CMAKE_CLEAN=rm -rf ${BUILD_TARGET}/CMakeFiles ${BUILD_TARGET}/cmake_install.cmake \
 	    ${BUILD_TARGET}/Makefile ${BUILD_TARGET}/CMakeCache.txt ${BUILD_TARGET}/cpp
-CLEAN_ALL=rm -rf ${BUILD_TARGET}
-CLEAN=rm -rf ${BUILD_TARGET}
-
 all :: keep-cmake
 	@echo "Removing Cmake Resources"
 	@${CMAKE_CLEAN}
 
+
+CMAKE_GENERATE_COMPILE_COMMANDS=cmake -S . -B ${BUILD_TARGET} -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+CMAKE_MOVE_GENERATE_COMPILE=cp ${BUILD_TARGET}/compile_commands.json .
+compile_commands :: clean
+	@${CMAKE_GENERATE_COMPILE_COMMANDS}
+	@${CMAKE_MOVE_GENERATE_COMPILE}
+
+CLEAN_ALL=rm -rf ${BUILD_TARGET}
+CLEAN=rm -rf ${BUILD_TARGET}
 clean ::
 	@${CLEAN}
 

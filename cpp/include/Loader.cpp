@@ -10,6 +10,8 @@
  */
 
 #include "networking/loader/Loader.hpp"
+#include <iostream>
+#include <cstdlib.h>
 
 namespace networking {
 namespace loader {
@@ -22,7 +24,6 @@ Loader<T>::Loader(const std::string &library, const std::string &destroy_symbol,
     std::cerr << "Cannot load library: " << dlerror() << std::endl;
     exit(1);
   }
-
   // static cast instead of dynamic because we know this'll be a void ptr
   create_m = (create_t)(dlsym(handle, load_symbol.c_str()));
   const char *dlsym_error = dlerror();

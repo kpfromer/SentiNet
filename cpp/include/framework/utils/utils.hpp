@@ -14,6 +14,9 @@
 #include <random>
 #include <yaml-cpp/yaml.h>
 #include <fstream>
+#include <memory>
+#include <functional>
+#include <chrono>
 
 #include "random.hpp"
 #include "strings.hpp"
