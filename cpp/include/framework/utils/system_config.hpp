@@ -11,9 +11,9 @@ const std::string LOCAL_HOST_TCP_PREFIX = "tcp://127.0.0.1";
 const std::string DEFAULT_ZMQ_CONTROL_NAME = "ZMQController";
 } // namespace defaults
 namespace ports {
-//static std::queue<int> avaliable_ports;
+// static std::queue<int> avaliable_ports;
 // A list of ports with a description - I don't know if this is needed
-//static std::map<int, std::string> in_use_ports;
+// static std::map<int, std::string> in_use_ports;
 /*
 static inline void init_ports() {
   YAML::Node ports = YAML::LoadFile("system.yml")["ports"];

@@ -1,22 +1,16 @@
 
 #include "networking/zmq/ZMQControlClient.hpp"
 
-ZMQControlClient::ZMQControlClient(int context_) 
-  : context(context_)
-{
+ZMQControlClient::ZMQControlClient(int context_) : context(context_) {
   this_publisher = std::make_unique<::zmq::socket_t>(context, ZMQ_PUB);
   this_client = std::make_unique<::zmq::socket_t>(context, ZMQ_REQ);
   meta.control_node_name = utils::defaults::DEFAULT_ZMQ_CONTROL_NAME;
   meta.supported_threads = std::thread::hardware_concurrency();
 }
 
-ZMQControlClient::~ZMQControlClient() {
-  quit();
-}
+ZMQControlClient::~ZMQControlClient() { quit(); }
 
-bool ZMQControlClient::start(){
-  return true;
-}
+bool ZMQControlClient::start() { return true; }
 
 bool ZMQControlClient::quit() {
   // TODO - make this look prettier
@@ -33,7 +27,7 @@ bool ZMQControlClient::quit() {
 
 bool ZMQControlClient::publish(const std::string &topic,
                                const std::string &message) {
-  if (!this_publisher){
+  if (!this_publisher) {
     LOG_ERROR("No Concurrent Publisher In This Control Thread");
     return false;
   }
@@ -54,18 +48,19 @@ bool ZMQControlClient::publish(
   }
 
   // Store a new socket by key sock_addr
-  auto&& val = create_socket(ZMQ_PUB, thread_space.periodic_publishers, sock_addr);
+  auto &&val =
+      create_socket(ZMQ_PUB, thread_space.periodic_publishers, sock_addr);
 
-  // Create a future promise to exit the thread 
+  // Create a future promise to exit the thread
   auto futureObj = val.exit_signal.get_future();
 
   // Create a new thread - attatched to periodic  publisher
-  // Remember to reconstruct the sock_addr because it's constant and 
+  // Remember to reconstruct the sock_addr because it's constant and
   // the thread wants mutable
   val.thread = std::make_unique<std::thread>(
       &ZMQControlClient::periodic_publish_thread, sock_addr,
-      std::move(futureObj), std::move(val.socket), topic,
-      get_data_to_publish, period);
+      std::move(futureObj), std::move(val.socket), topic, get_data_to_publish,
+      period);
   return true;
 }
 
@@ -77,7 +72,7 @@ bool ZMQControlClient::cancel_periodic_publisher(const std::string &reference) {
 
 std::string ZMQControlClient::request(const std::string &destination,
                                       const std::string &message) {
-  if (!this_client){
+  if (!this_client) {
     LOG_ERROR("No Concurrent Publisher In This Control Thread");
     return "";
   }
@@ -91,7 +86,8 @@ bool ZMQControlClient::request(
     const std::chrono::microseconds &period) {
 
   // See if element is allready in map
-  // TODO change destination to a const reference - shouldnt be passing destination
+  // TODO change destination to a const reference - shouldnt be passing
+  // destination
   auto &&found = thread_space.periodic_clients.find(destination);
   if (found != thread_space.periodic_clients.end()) {
     LOG_WARN("Destination already exists");
@@ -99,16 +95,17 @@ bool ZMQControlClient::request(
   }
 
   // create and assign the address of val (a socket_thraed_space) to the map
-  auto&& val = create_socket(ZMQ_REQ, thread_space.periodic_clients, destination);
+  auto &&val =
+      create_socket(ZMQ_REQ, thread_space.periodic_clients, destination);
 
   // Create a future promise to exit
-  auto&& futureObj = val.exit_signal.get_future();
+  auto &&futureObj = val.exit_signal.get_future();
 
   // Our main thread
   val.thread = std::make_unique<std::thread>(
       &ZMQControlClient::periodic_request_thread, std::move(futureObj),
-      std::move(val.socket), destination,
-      get_data_to_request, action_to_recieved_data, period);
+      std::move(val.socket), destination, get_data_to_request,
+      action_to_recieved_data, period);
   return true;
 }
 
@@ -122,16 +119,16 @@ bool ZMQControlClient::subscribe(
     const std::string &sock_addr, const std::string &topic,
     std::function<void(const std::string &)> callback) {
 
-  auto &&found =
-      thread_space.subscribers.find(sock_addr); // TODO Again change reference methods
+  auto &&found = thread_space.subscribers.find(
+      sock_addr); // TODO Again change reference methods
 
   if (found != thread_space.subscribers.end()) {
     LOG_WARN("Subscriber Already Exists");
     return false;
   }
-  std::cout<<"Topic: "<<topic.c_str()<<std::endl;
-  auto&& val = create_socket(ZMQ_SUB, thread_space.subscribers, sock_addr);
-  std::cout<<topic.c_str()<<" "<<strlen(topic.c_str())<<std::endl;
+  std::cout << "Topic: " << topic.c_str() << std::endl;
+  auto &&val = create_socket(ZMQ_SUB, thread_space.subscribers, sock_addr);
+  std::cout << topic.c_str() << " " << strlen(topic.c_str()) << std::endl;
   val.socket->setsockopt(ZMQ_SUBSCRIBE, topic.c_str(), strlen(topic.c_str()));
   val.socket->connect(sock_addr); // TODO Change this to pass  as address
 
@@ -157,7 +154,7 @@ bool ZMQControlClient::serve(
     return false;
   }
 
-  auto&& val = create_socket(ZMQ_REP, thread_space.servers, address);
+  auto &&val = create_socket(ZMQ_REP, thread_space.servers, address);
   auto &&futureObj = val.exit_signal.get_future();
   val.thread = std::make_unique<std::thread>(
       &ZMQControlClient::server_thread_1, std::move(futureObj),
@@ -172,11 +169,11 @@ bool ZMQControlClient::serve(const std::string &address,
     std::cout << "Already have a server there bud" << std::endl;
     return false;
   }
-  auto&& val = create_socket(ZMQ_REP, thread_space.servers, address);
+  auto &&val = create_socket(ZMQ_REP, thread_space.servers, address);
   auto &&futureObj = val.exit_signal.get_future();
-  val.thread = std::make_unique<std::thread>(
-      &ZMQControlClient::server_thread_2, std::move(futureObj),
-      std::move(val.socket), callback);
+  val.thread = std::make_unique<std::thread>(&ZMQControlClient::server_thread_2,
+                                             std::move(futureObj),
+                                             std::move(val.socket), callback);
   return true;
 }
 
@@ -196,17 +193,18 @@ void ZMQControlClient::periodic_publish_thread(
     const std::chrono::microseconds period) {
 
   std::string temp = sock_addr;
-  std::cout<<sock_addr<<std::endl;
+  std::cout << sock_addr << std::endl;
   socket->bind(sock_addr);
   auto start = std::chrono::steady_clock::now();
-  std::cout<<"here1"<<std::endl;
-  while (exit_signal.wait_for(std::chrono::milliseconds(0)) == std::future_status::timeout){
+  std::cout << "here1" << std::endl;
+  while (exit_signal.wait_for(std::chrono::milliseconds(0)) ==
+         std::future_status::timeout) {
     start = std::chrono::steady_clock::now();
-    std::cout<<"Topic "<<topic<<std::endl;
+    std::cout << "Topic " << topic << std::endl;
     s_sendmore(*socket, topic);
     s_send(*socket, get_data());
-    auto wait_time = period + start - std::chrono::steady_clock::now(); 
-    if(wait_time > std::chrono::milliseconds::zero())
+    auto wait_time = period + start - std::chrono::steady_clock::now();
+    if (wait_time > std::chrono::milliseconds::zero())
       std::this_thread::sleep_for(wait_time);
   }
   std::cout << "Thread end" << std::endl;
@@ -221,7 +219,8 @@ void ZMQControlClient::periodic_request_thread(
   std::cout << "Thread start" << std::endl;
 
   auto start = std::chrono::steady_clock::now();
-  while (exit_signal.wait_for(std::chrono::milliseconds(0)) == std::future_status::timeout){
+  while (exit_signal.wait_for(std::chrono::milliseconds(0)) ==
+         std::future_status::timeout) {
 
     start = std::chrono::steady_clock::now();
     socket->connect(server); // TODO Better way of doing this?
@@ -229,8 +228,8 @@ void ZMQControlClient::periodic_request_thread(
     std::string response = s_recv(*socket);
     callback(response);
     zmq_disconnect(*socket, server.c_str());
-    auto wait_time = period + start - std::chrono::steady_clock::now(); 
-    if(wait_time > std::chrono::milliseconds::zero())
+    auto wait_time = period + start - std::chrono::steady_clock::now();
+    if (wait_time > std::chrono::milliseconds::zero())
       std::this_thread::sleep_for(wait_time);
   }
   std::cout << "Thread end" << std::endl;
@@ -241,7 +240,8 @@ void ZMQControlClient::subscription_thread(
     std::function<void(const std::string &)> callback) {
 
   std::cout << "Thread start" << std::endl;
-  while (exit_signal.wait_for(std::chrono::milliseconds(0)) == std::future_status::timeout){
+  while (exit_signal.wait_for(std::chrono::milliseconds(0)) ==
+         std::future_status::timeout) {
     std::string val = s_recv(*socket);
     callback(val);
   }
@@ -250,10 +250,11 @@ void ZMQControlClient::subscription_thread(
 
 void ZMQControlClient::server_thread_1(
     std::future<void> exit_signal, std::unique_ptr<::zmq::socket_t> socket,
-    std::function<std::string (const std::string&)> callback) {
+    std::function<std::string(const std::string &)> callback) {
 
   std::cout << "Thread start" << std::endl;
-  while (exit_signal.wait_for(std::chrono::milliseconds(0)) == std::future_status::timeout) {
+  while (exit_signal.wait_for(std::chrono::milliseconds(0)) ==
+         std::future_status::timeout) {
     std::string request = s_recv(*socket);
     s_send(*socket, callback(request));
   }

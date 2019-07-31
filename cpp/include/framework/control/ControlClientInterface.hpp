@@ -45,14 +45,11 @@ public:
    *
    * @return       [status of the publish]
    */
-  virtual bool
-  publish(std::string sock_addr, std::string topic,
-          std::function<std::string &(void)> get_data_to_publish,
-          std::chrono::microseconds period) = 0;
+  virtual bool publish(std::string sock_addr, std::string topic,
+                       std::function<std::string &(void)> get_data_to_publish,
+                       std::chrono::microseconds period) = 0;
 
   virtual bool cancel_periodic_publisher(const std::string &) = 0;
-
-
 
   ////////////////////////// Request Methods /////////////////////////////
   /**
@@ -76,11 +73,11 @@ public:
    * @return                          [Status of request, returns 1 is ends
    * badly]
    */
-  virtual bool request(
-      std::string &destination, // Destination can change (not const)
-      std::function<std::string &(void)> get_data_to_request,
-      std::function<void(const std::string &)> action_to_recieved_data,
-      const std::chrono::microseconds &period) = 0;
+  virtual bool
+  request(std::string &destination, // Destination can change (not const)
+          std::function<std::string &(void)> get_data_to_request,
+          std::function<void(const std::string &)> action_to_recieved_data,
+          const std::chrono::microseconds &period) = 0;
 
   virtual bool cancel_periodic_request(const std::string &) = 0;
   ////////////////////////// Subscribe Methods /////////////////////////////
@@ -95,9 +92,8 @@ public:
    *
    * @return           [Status of the subscription if it ends]
    */
-  virtual bool
-  subscribe(const std::string &sock_addr, const std::string &topic,
-            std::function<void(const std::string &)> callback) = 0;
+  virtual bool subscribe(const std::string &sock_addr, const std::string &topic,
+                         std::function<void(const std::string &)> callback) = 0;
 
   virtual bool cancel_subscription(const std::string &topic) = 0;
 
@@ -116,8 +112,6 @@ public:
   serve(const std::string &address,
         std::function<std::string(const std::string &)> callback) = 0;
 
-
-
   /**
    * A Server that doesn't care about incomming arguments
    * @param  address    [Address to serve on]
@@ -127,58 +121,56 @@ public:
   virtual bool serve(const std::string &address,
                      std::function<std::string(void)> callback) = 0;
 
-
   virtual bool terminate_server(const std::string &address) = 0;
   /////////////////////////////// FUNCTIONALITY ///////////////////////////
   /**
    * These are the most used functions, utilizing helper functions
-   * and defaults so that a developer doesn't have to pass all the parameters to the
-   * functions
+   * and defaults so that a developer doesn't have to pass all the parameters to
+   * the functions
    */
-   // TODO I would like to change the utils things - so that all defaults are local
-/*
-  inline bool
-  publish(const int &port, std::string &topic,
-          const std::function<std::string &(void)> &get_data_to_publish,
-          const std::chrono::microseconds &period) {
+  // TODO I would like to change the utils things - so that all defaults are
+  // local
+  /*
+    inline bool
+    publish(const int &port, std::string &topic,
+            const std::function<std::string &(void)> &get_data_to_publish,
+            const std::chrono::microseconds &period) {
 
-    return publish(
-        ::utils::strings::join_d(":", ::utils::defaults::SERVER_TCP_PREFIX),
-        topic, get_data_to_publish, period);
-  }
+      return publish(
+          ::utils::strings::join_d(":", ::utils::defaults::SERVER_TCP_PREFIX),
+          topic, get_data_to_publish, period);
+    }
 
-  inline bool
-  publish(std::string &topic,
-          const std::function<std::string &(void)> &get_data_to_publish,
-          const std::chrono::microseconds &period) {
+    inline bool
+    publish(std::string &topic,
+            const std::function<std::string &(void)> &get_data_to_publish,
+            const std::chrono::microseconds &period) {
 
-    return publish(
-        ::utils::strings::join_d(":", ::utils::defaults::SERVER_TCP_PREFIX, ::utils::ports::get_port("publisher")),
-        topic, get_data_to_publish, period);
-  }
+      return publish(
+          ::utils::strings::join_d(":", ::utils::defaults::SERVER_TCP_PREFIX,
+    ::utils::ports::get_port("publisher")), topic, get_data_to_publish, period);
+    }
 
-   // Pass a port and callback
-  inline bool serve(const int &port,
-                    std::function<std::string(void)> &callback) {
-    return serve(
-        utils::strings::join_d(':', utils::defaults::SERVER_TCP_PREFIX, port);
-        callback);
-  }
+     // Pass a port and callback
+    inline bool serve(const int &port,
+                      std::function<std::string(void)> &callback) {
+      return serve(
+          utils::strings::join_d(':', utils::defaults::SERVER_TCP_PREFIX, port);
+          callback);
+    }
 
-  // Pass just a callback
-  inline bool serve(std::function<std::string(void)> &callback){
-    return serve(
-        utils::strings::join(":", utils::defaults::SERVER_TCP_PREFIX, utils::ports::get_port("server")),
-        callback);
-  }
-  // Inline when a port is supplied instead of address
-  inline bool serve(const int &port,
-                    std::function<std::string(const std::string &)> &callback) {
-    return serve(
-        utils::strings::join(utils::defaults::SERVER_TCP_PREFIX, port, ":"),
-        callback);
-  }
-  */
-
+    // Pass just a callback
+    inline bool serve(std::function<std::string(void)> &callback){
+      return serve(
+          utils::strings::join(":", utils::defaults::SERVER_TCP_PREFIX,
+    utils::ports::get_port("server")), callback);
+    }
+    // Inline when a port is supplied instead of address
+    inline bool serve(const int &port,
+                      std::function<std::string(const std::string &)> &callback)
+    { return serve( utils::strings::join(utils::defaults::SERVER_TCP_PREFIX,
+    port, ":"), callback);
+    }
+    */
 };
 #endif /* end of include guard CONTROLINTERFACE_HPP */
