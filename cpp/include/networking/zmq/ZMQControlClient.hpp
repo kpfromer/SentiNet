@@ -19,7 +19,7 @@
 class ZMQControlClient : public ControlClientInterface {
 public:
   ZMQControlClient(int context_ = 1);
-  ~ZMQControlClient();
+  ~ZMQControlClient(){}
 
 public: // TODO Take these out and put htme in controlbase interface
   bool start() override;
@@ -40,6 +40,12 @@ public: // TODO Take these out and put htme in controlbase interface
         return true; //TODO
     }
   */
+
+public:
+  bool initialize_publisher();
+  bool initialize_client();
+
+
   /**
    * API Guide - implimentation - inherited methods from ControlClientInterface
    */
@@ -226,7 +232,7 @@ private:
   /**
    * @brief The data structure of our sockets.
    */
-  typedef struct {
+  typedef struct socket_data_s {
     std::unordered_map<std::string, std::unique_ptr<socket_thread_space>>
         subscribers;
     std::unordered_map<std::string, std::unique_ptr<socket_thread_space>>
@@ -250,7 +256,7 @@ private:
   control_meta_data meta;
 
   // Thread spaces - Shared
-  /*static */ socket_data thread_space;
+  socket_data thread_space;
 
   // Unique per control client (ideally the same between processes)
   ::zmq::context_t context;
@@ -292,5 +298,7 @@ private:
     return *map[sock_addr];
   }
 };
+
+// Initialize static socket thread space with default constructor
 
 #endif /* end of include guard ZMQCONTROLCLIENT_HPP */

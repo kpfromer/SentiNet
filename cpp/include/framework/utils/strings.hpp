@@ -2,6 +2,11 @@
 #ifndef UTILS_STRING_HPP
 #define UTILS_STRING_HPP
 
+#include <string>
+#include <algorithm>
+#include <vector>
+#include <sstream>
+
 namespace utils {
 namespace strings {
 static inline std::string upper(const std::string &value) {

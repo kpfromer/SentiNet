@@ -1,14 +1,20 @@
 
 #include "networking/zmq/ZMQControlClient.hpp"
 
+
+
 ZMQControlClient::ZMQControlClient(int context_) : context(context_) {
-  this_publisher = std::make_unique<::zmq::socket_t>(context, ZMQ_PUB);
-  this_client = std::make_unique<::zmq::socket_t>(context, ZMQ_REQ);
+  // By default, no pub or client
+  this_publisher = nullptr;
+  this_client = nullptr;
+
+  // Name the node
   meta.control_node_name = utils::defaults::DEFAULT_ZMQ_CONTROL_NAME;
+
+  // For meta information, store the number of threadsd possible
   meta.supported_threads = std::thread::hardware_concurrency();
 }
 
-ZMQControlClient::~ZMQControlClient() { quit(); }
 
 bool ZMQControlClient::start() { return true; }
 
@@ -22,6 +28,18 @@ bool ZMQControlClient::quit() {
     cancel_periodic_publisher(i.first);
   for (auto const &i : thread_space.periodic_clients)
     cancel_periodic_request(i.first);
+  return true;
+}
+
+bool ZMQControlClient::initialize_publisher() {
+  using namespace ::utils;
+  this_publisher = std::make_unique<::zmq::socket_t>(context, ZMQ_PUB);
+  this_publisher->bind(strings::join_d(":", defaults::SERVER_TCP_PREFIX, ports::get_port("Publisher")));
+  return true;
+}
+
+bool ZMQControlClient::initialize_client() {
+  this_client = std::make_unique<::zmq::socket_t>(context, ZMQ_REQ);
   return true;
 }
 
@@ -126,10 +144,10 @@ bool ZMQControlClient::subscribe(
     LOG_WARN("Subscriber Already Exists");
     return false;
   }
-  std::cout << "Topic: " << topic.c_str() << std::endl;
   auto &&val = create_socket(ZMQ_SUB, thread_space.subscribers, sock_addr);
   std::cout << topic.c_str() << " " << strlen(topic.c_str()) << std::endl;
   val.socket->setsockopt(ZMQ_SUBSCRIBE, topic.c_str(), strlen(topic.c_str()));
+  std::cout<<sock_addr;
   val.socket->connect(sock_addr); // TODO Change this to pass  as address
 
   auto &&futureObj = val.exit_signal.get_future();
@@ -140,8 +158,11 @@ bool ZMQControlClient::subscribe(
 }
 
 bool ZMQControlClient::cancel_subscription(const std::string &reference) {
+  std::cout<<reference<<std::endl;
   thread_space.subscribers[reference]->exit_signal.set_value();
-  thread_space.subscribers[reference]->thread->join();
+  if(thread_space.subscribers[reference]->thread->joinable())
+    thread_space.subscribers[reference]->thread->join();
+  std::cout<<"made it"<<std::endl;
   return true;
 }
 
@@ -196,12 +217,12 @@ void ZMQControlClient::periodic_publish_thread(
   std::cout << sock_addr << std::endl;
   socket->bind(sock_addr);
   auto start = std::chrono::steady_clock::now();
-  std::cout << "here1" << std::endl;
   while (exit_signal.wait_for(std::chrono::milliseconds(0)) ==
          std::future_status::timeout) {
     start = std::chrono::steady_clock::now();
-    std::cout << "Topic " << topic << std::endl;
+    std::cout<<"sending topic "<<topic<<std::endl;
     s_sendmore(*socket, topic);
+    std::cout<<"Sending data "<<get_data()<<std::endl;
     s_send(*socket, get_data());
     auto wait_time = period + start - std::chrono::steady_clock::now();
     if (wait_time > std::chrono::milliseconds::zero())
@@ -240,10 +261,17 @@ void ZMQControlClient::subscription_thread(
     std::function<void(const std::string &)> callback) {
 
   std::cout << "Thread start" << std::endl;
+
+  std::string message;
+  ::zmq::pollitem_t items[] = {{ static_cast<void*>(*socket.get()), 0, ZMQ_POLLIN, 0}};
   while (exit_signal.wait_for(std::chrono::milliseconds(0)) ==
          std::future_status::timeout) {
-    std::string val = s_recv(*socket);
-    callback(val);
+    zmq::poll(&items[0], 1, 100);
+    if(items[0].revents & ZMQ_POLLIN) {
+      message = s_recv(*socket);
+      message = s_recv(*socket);
+      callback(message);
+    }
   }
   std::cout << "Thread end" << std::endl;
 }

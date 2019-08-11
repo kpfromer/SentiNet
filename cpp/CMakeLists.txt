@@ -10,6 +10,7 @@ find_library(PTHREAD_LIB pthread)
 find_library(PROTO_LIB protobuf)
 find_library(ZMQ_LIB zmq)
 find_library(BOOST_LOG boost_log)
+find_library(YAML_CPP yaml-cpp)
 
 add_compile_definitions(DBOOST_LOG_DYN_LINK)
 
@@ -32,10 +33,16 @@ add_library(${NETWORKING_LIB} SHARED ${NETWORKING_SRC_DIR})
 target_link_libraries(${NETWORKING_LIB} ${MESSAGES_LIB} ${ZMQ_LIB} ${BOOST_LOG} ${PTHREAD_LIB})
 
 add_executable(run "${SRC_DIR}/impl/main.cpp")
-target_link_libraries(run ${NETWORKING_LIB} ${PTHREAD_LIB})
+target_link_libraries(run ${NETWORKING_LIB} ${PTHREAD_LIB} ${YAML_CPP})
 
 add_executable(run2 "${SRC_DIR}/impl/main2.cpp")
-target_link_libraries(run2 ${NETWORKING_LIB} ${PTHREAD_LIB})
+target_link_libraries(run2 ${NETWORKING_LIB} ${PTHREAD_LIB} ${YAML_CPP})
+
+add_executable(all_in_one "${SRC_DIR}/impl/all_in_one.cpp")
+target_link_libraries(all_in_one ${NETWORKING_LIB} ${PTHREAD_LIB} ${YAML_CPP})
+
+add_executable(example "${SRC_DIR}/impl/example.cpp")
+target_link_libraries(example ${NETWORKING_LIB} ${PTHREAD_LIB} ${YAML_CPP})
 # add_executable(subscriber "${SRC_DIR}/impl/subscriber.cpp")
 # target_link_libraries(subscriber ${NETWORKING_LIB} ${BOOST_LOG} ${PTHREAD_LIB})
 #
