@@ -34,19 +34,27 @@ This is the main directory, you can pretty much ignore everything else for now
 ***
 *include*:
 All the header files and framework stuff
+
 Most important things
 
 ./cpp/include/framework/control
+
 ./cpp/include/networking/zmq
+
 ./cpp/include/framework/utils
+
 ./cpp/include/networking/curl
 
 Everything else in include is just scratch mostly
 
 *src*:
+
 All the implimentation files
+
 ./cpp/src/libs - implimentation of the libraries
+
 ./cpp/src/impl - the executables that are compiled
+
 
 *models*:
 In the future, these are going to house all proto files (https://developers.google.com/protocol-buffers/docs/proto)
