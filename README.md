@@ -59,3 +59,54 @@ All the implimentation files
 *models*:
 In the future, these are going to house all proto files (https://developers.google.com/protocol-buffers/docs/proto)
 There's one debug module here right now
+
+
+
+# Tutorial
+
+The pub sub framework for sentinet is very simple. Here is an example publisher subscriber (in the same process)
+
+```cpp
+// Include Control Client (ZMQ Is just 1 implimentation of CC)
+#include "networking/zmq/ZMQControlClient.hpp"
+
+int main() {
+
+  // Create a new ZCC instance
+  auto a = std::make_unique<ZMQControlClient>();
+
+  // Values to publish need to be ~global or else they are created everytime a publisher wants to publish
+  std::string value_to_publish("Hi there");
+
+  // parameters are (Address (soon won't be required), Topic, Callback function, period)
+  /*
+    a->publish("Topic name", value_to_publish); // In the future it will be this easy. This is like a 5 minute addition
+   */
+  a->publish("tcp://*:5555", "Topic name",
+      [&]() -> std::string& {
+        return value_to_publish;
+        }, std::chrono::seconds(1));
+
+  // parameters are (address to connect to (soon won't be required), Topic, callback)
+  a->subscribe("tcp://localhost:5555", "Topic name", 
+      [&](const std::string& value) -> void {
+        std::cout << "Recieved "<<value<< " on topic Topic name"<<std::endl;
+        });
+
+  // Since this is inherently multithreaded, you need to have something else going on, a simple while(1) works too
+  sleep(10);
+
+  // ALWAYS quit. I'm thinking about adding this to the desctructor, but for now, quit, this terminates threads and stops callbacks
+  a->quit();
+
+  return 0;
+
+}
+```
+
+
+
+
+
+
+
