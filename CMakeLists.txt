@@ -2,14 +2,13 @@ cmake_minimum_required(VERSION 3.7)
 
 project("Generic Modular Robot Framework" VERSION 0.0.1 LANGUAGES C;CXX)
 
-
 set(CPP_SOURCE_DIR ${PROJECT_SOURCE_DIR}/cpp)
 set(PYTHON_SOURCE_DIR ${PROJECT_SOURCE_DIR}/python)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(IIRF_VERSION_MAJOR 1)
-set(IIRF_VERSION_MINOR 0)
+set(SENTINET_VERSION_MAJOR 1)
+set(SENTINET_VERSION_MINOR 0)
 
 if(NOT DATE)
 	string(TIMESTAMP DATE "%Y%m%d-%H%M%S")
@@ -23,8 +22,6 @@ include(GNUInstallDirs)
 include("cmake_functions")
 
 option(BUILD_DOCS "Build the documentation" OFF)
-option(BUILD_SHARED "Build all libraries as shared objectes" ON)
-
 
 if(${BUILD_DOCS})
   find_package(Doxygen)
