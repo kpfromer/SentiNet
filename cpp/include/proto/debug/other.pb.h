@@ -27,11 +27,11 @@
 #include <google/protobuf/inlined_string_field.h>
 #include <google/protobuf/metadata.h>
 #include <google/protobuf/message.h>
-#include <google/protobuf/repeated_field.h>  // IWYU pragma: export
+#include <google/protobuf/repeated_field.h> // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
-#define PROTOBUF_INTERNAL_EXPORT_protobuf_proto_2fdebug_2fother_2eproto 
+#define PROTOBUF_INTERNAL_EXPORT_protobuf_proto_2fdebug_2fother_2eproto
 
 namespace protobuf_proto_2fdebug_2fother_2eproto {
 // Internal implementation detail -- do not use these members.
@@ -40,113 +40,112 @@ struct TableStruct {
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
   static const ::google::protobuf::internal::ParseTable schema[1];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
-  static const ::google::protobuf::internal::SerializationTable serialization_table[];
+  static const ::google::protobuf::internal::SerializationTable
+      serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
 };
 void AddDescriptors();
-}  // namespace protobuf_proto_2fdebug_2fother_2eproto
+} // namespace protobuf_proto_2fdebug_2fother_2eproto
 namespace debug {
 class MessageThing;
 class MessageThingDefaultTypeInternal;
 extern MessageThingDefaultTypeInternal _MessageThing_default_instance_;
-}  // namespace debug
+} // namespace debug
 namespace google {
 namespace protobuf {
-template<> ::debug::MessageThing* Arena::CreateMaybeMessage<::debug::MessageThing>(Arena*);
-}  // namespace protobuf
-}  // namespace google
+template <>
+::debug::MessageThing *
+Arena::CreateMaybeMessage<::debug::MessageThing>(Arena *);
+} // namespace protobuf
+} // namespace google
 namespace debug {
 
 // ===================================================================
 
-class MessageThing : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:debug.MessageThing) */ {
- public:
+class MessageThing : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:debug.MessageThing)
+                                                         */
+{
+public:
   MessageThing();
   virtual ~MessageThing();
 
-  MessageThing(const MessageThing& from);
+  MessageThing(const MessageThing &from);
 
-  inline MessageThing& operator=(const MessageThing& from) {
+  inline MessageThing &operator=(const MessageThing &from) {
     CopyFrom(from);
     return *this;
   }
-  #if LANG_CXX11
-  MessageThing(MessageThing&& from) noexcept
-    : MessageThing() {
+#if LANG_CXX11
+  MessageThing(MessageThing &&from) noexcept : MessageThing() {
     *this = ::std::move(from);
   }
 
-  inline MessageThing& operator=(MessageThing&& from) noexcept {
+  inline MessageThing &operator=(MessageThing &&from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
+      if (this != &from)
+        InternalSwap(&from);
     } else {
       CopyFrom(from);
     }
     return *this;
   }
-  #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+#endif
+  inline const ::google::protobuf::UnknownFieldSet &unknown_fields() const {
     return _internal_metadata_.unknown_fields();
   }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+  inline ::google::protobuf::UnknownFieldSet *mutable_unknown_fields() {
     return _internal_metadata_.mutable_unknown_fields();
   }
 
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const MessageThing& default_instance();
+  static const ::google::protobuf::Descriptor *descriptor();
+  static const MessageThing &default_instance();
 
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MessageThing* internal_default_instance() {
-    return reinterpret_cast<const MessageThing*>(
-               &_MessageThing_default_instance_);
+  static void InitAsDefaultInstance(); // FOR INTERNAL USE ONLY
+  static inline const MessageThing *internal_default_instance() {
+    return reinterpret_cast<const MessageThing *>(
+        &_MessageThing_default_instance_);
   }
-  static constexpr int kIndexInFileMessages =
-    0;
+  static constexpr int kIndexInFileMessages = 0;
 
-  void Swap(MessageThing* other);
-  friend void swap(MessageThing& a, MessageThing& b) {
-    a.Swap(&b);
-  }
+  void Swap(MessageThing *other);
+  friend void swap(MessageThing &a, MessageThing &b) { a.Swap(&b); }
 
   // implements Message ----------------------------------------------
 
-  inline MessageThing* New() const final {
+  inline MessageThing *New() const final {
     return CreateMaybeMessage<MessageThing>(NULL);
   }
 
-  MessageThing* New(::google::protobuf::Arena* arena) const final {
+  MessageThing *New(::google::protobuf::Arena *arena) const final {
     return CreateMaybeMessage<MessageThing>(arena);
   }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const MessageThing& from);
-  void MergeFrom(const MessageThing& from);
+  void CopyFrom(const ::google::protobuf::Message &from) final;
+  void MergeFrom(const ::google::protobuf::Message &from) final;
+  void CopyFrom(const MessageThing &from);
+  void MergeFrom(const MessageThing &from);
   void Clear() final;
   bool IsInitialized() const final;
 
   size_t ByteSizeLong() const final;
   bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
+      ::google::protobuf::io::CodedInputStream *input) final;
   void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const final;
+      ::google::protobuf::io::CodedOutputStream *output) const final;
+  ::google::protobuf::uint8 *InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8 *target) const final;
   int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  private:
+private:
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(MessageThing* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
+  void InternalSwap(MessageThing *other);
 
+private:
+  inline ::google::protobuf::Arena *GetArenaNoVirtual() const { return NULL; }
+  inline void *MaybeArenaPtr() const { return NULL; }
+
+public:
   ::google::protobuf::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
@@ -157,31 +156,31 @@ class MessageThing : public ::google::protobuf::Message /* @@protoc_insertion_po
   bool has_name() const;
   void clear_name();
   static const int kNameFieldNumber = 1;
-  const ::std::string& name() const;
-  void set_name(const ::std::string& value);
-  #if LANG_CXX11
-  void set_name(::std::string&& value);
-  #endif
-  void set_name(const char* value);
-  void set_name(const char* value, size_t size);
-  ::std::string* mutable_name();
-  ::std::string* release_name();
-  void set_allocated_name(::std::string* name);
+  const ::std::string &name() const;
+  void set_name(const ::std::string &value);
+#if LANG_CXX11
+  void set_name(::std::string &&value);
+#endif
+  void set_name(const char *value);
+  void set_name(const char *value, size_t size);
+  ::std::string *mutable_name();
+  ::std::string *release_name();
+  void set_allocated_name(::std::string *name);
 
   // optional string extra = 3;
   bool has_extra() const;
   void clear_extra();
   static const int kExtraFieldNumber = 3;
-  const ::std::string& extra() const;
-  void set_extra(const ::std::string& value);
-  #if LANG_CXX11
-  void set_extra(::std::string&& value);
-  #endif
-  void set_extra(const char* value);
-  void set_extra(const char* value, size_t size);
-  ::std::string* mutable_extra();
-  ::std::string* release_extra();
-  void set_allocated_extra(::std::string* extra);
+  const ::std::string &extra() const;
+  void set_extra(const ::std::string &value);
+#if LANG_CXX11
+  void set_extra(::std::string &&value);
+#endif
+  void set_extra(const char *value);
+  void set_extra(const char *value, size_t size);
+  ::std::string *mutable_extra();
+  ::std::string *release_extra();
+  void set_allocated_extra(::std::string *extra);
 
   // required int32 id = 2;
   bool has_id() const;
@@ -191,7 +190,7 @@ class MessageThing : public ::google::protobuf::Message /* @@protoc_insertion_po
   void set_id(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:debug.MessageThing)
- private:
+private:
   void set_has_name();
   void clear_has_name();
   void set_has_id();
@@ -212,78 +211,79 @@ class MessageThing : public ::google::protobuf::Message /* @@protoc_insertion_po
 };
 // ===================================================================
 
-
 // ===================================================================
 
 #ifdef __GNUC__
-  #pragma GCC diagnostic push
-  #pragma GCC diagnostic ignored "-Wstrict-aliasing"
-#endif  // __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstrict-aliasing"
+#endif // __GNUC__
 // MessageThing
 
 // required string name = 1;
 inline bool MessageThing::has_name() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MessageThing::set_has_name() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void MessageThing::clear_has_name() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+inline void MessageThing::set_has_name() { _has_bits_[0] |= 0x00000001u; }
+inline void MessageThing::clear_has_name() { _has_bits_[0] &= ~0x00000001u; }
 inline void MessageThing::clear_name() {
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  name_.ClearToEmptyNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
   clear_has_name();
 }
-inline const ::std::string& MessageThing::name() const {
+inline const ::std::string &MessageThing::name() const {
   // @@protoc_insertion_point(field_get:debug.MessageThing.name)
   return name_.GetNoArena();
 }
-inline void MessageThing::set_name(const ::std::string& value) {
+inline void MessageThing::set_name(const ::std::string &value) {
   set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+                   value);
   // @@protoc_insertion_point(field_set:debug.MessageThing.name)
 }
 #if LANG_CXX11
-inline void MessageThing::set_name(::std::string&& value) {
+inline void MessageThing::set_name(::std::string &&value) {
   set_has_name();
-  name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+                   ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:debug.MessageThing.name)
 }
 #endif
-inline void MessageThing::set_name(const char* value) {
+inline void MessageThing::set_name(const char *value) {
   GOOGLE_DCHECK(value != NULL);
   set_has_name();
-  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+                   ::std::string(value));
   // @@protoc_insertion_point(field_set_char:debug.MessageThing.name)
 }
-inline void MessageThing::set_name(const char* value, size_t size) {
+inline void MessageThing::set_name(const char *value, size_t size) {
   set_has_name();
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
+                   ::std::string(reinterpret_cast<const char *>(value), size));
   // @@protoc_insertion_point(field_set_pointer:debug.MessageThing.name)
 }
-inline ::std::string* MessageThing::mutable_name() {
+inline ::std::string *MessageThing::mutable_name() {
   set_has_name();
   // @@protoc_insertion_point(field_mutable:debug.MessageThing.name)
-  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return name_.MutableNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* MessageThing::release_name() {
+inline ::std::string *MessageThing::release_name() {
   // @@protoc_insertion_point(field_release:debug.MessageThing.name)
   if (!has_name()) {
     return NULL;
   }
   clear_has_name();
-  return name_.ReleaseNonDefaultNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return name_.ReleaseNonDefaultNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void MessageThing::set_allocated_name(::std::string* name) {
+inline void MessageThing::set_allocated_name(::std::string *name) {
   if (name != NULL) {
     set_has_name();
   } else {
     clear_has_name();
   }
-  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  name_.SetAllocatedNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
   // @@protoc_insertion_point(field_set_allocated:debug.MessageThing.name)
 }
 
@@ -291,12 +291,8 @@ inline void MessageThing::set_allocated_name(::std::string* name) {
 inline bool MessageThing::has_id() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void MessageThing::set_has_id() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void MessageThing::clear_has_id() {
-  _has_bits_[0] &= ~0x00000004u;
-}
+inline void MessageThing::set_has_id() { _has_bits_[0] |= 0x00000004u; }
+inline void MessageThing::clear_has_id() { _has_bits_[0] &= ~0x00000004u; }
 inline void MessageThing::clear_id() {
   id_ = 0;
   clear_has_id();
@@ -315,76 +311,81 @@ inline void MessageThing::set_id(::google::protobuf::int32 value) {
 inline bool MessageThing::has_extra() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void MessageThing::set_has_extra() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void MessageThing::clear_has_extra() {
-  _has_bits_[0] &= ~0x00000002u;
-}
+inline void MessageThing::set_has_extra() { _has_bits_[0] |= 0x00000002u; }
+inline void MessageThing::clear_has_extra() { _has_bits_[0] &= ~0x00000002u; }
 inline void MessageThing::clear_extra() {
-  extra_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  extra_.ClearToEmptyNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
   clear_has_extra();
 }
-inline const ::std::string& MessageThing::extra() const {
+inline const ::std::string &MessageThing::extra() const {
   // @@protoc_insertion_point(field_get:debug.MessageThing.extra)
   return extra_.GetNoArena();
 }
-inline void MessageThing::set_extra(const ::std::string& value) {
+inline void MessageThing::set_extra(const ::std::string &value) {
   set_has_extra();
-  extra_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  extra_.SetNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set:debug.MessageThing.extra)
 }
 #if LANG_CXX11
-inline void MessageThing::set_extra(::std::string&& value) {
+inline void MessageThing::set_extra(::std::string &&value) {
   set_has_extra();
   extra_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::move(value));
   // @@protoc_insertion_point(field_set_rvalue:debug.MessageThing.extra)
 }
 #endif
-inline void MessageThing::set_extra(const char* value) {
+inline void MessageThing::set_extra(const char *value) {
   GOOGLE_DCHECK(value != NULL);
   set_has_extra();
-  extra_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  extra_.SetNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(value));
   // @@protoc_insertion_point(field_set_char:debug.MessageThing.extra)
 }
-inline void MessageThing::set_extra(const char* value, size_t size) {
+inline void MessageThing::set_extra(const char *value, size_t size) {
   set_has_extra();
-  extra_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
+  extra_.SetNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char *>(value), size));
   // @@protoc_insertion_point(field_set_pointer:debug.MessageThing.extra)
 }
-inline ::std::string* MessageThing::mutable_extra() {
+inline ::std::string *MessageThing::mutable_extra() {
   set_has_extra();
   // @@protoc_insertion_point(field_mutable:debug.MessageThing.extra)
-  return extra_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return extra_.MutableNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* MessageThing::release_extra() {
+inline ::std::string *MessageThing::release_extra() {
   // @@protoc_insertion_point(field_release:debug.MessageThing.extra)
   if (!has_extra()) {
     return NULL;
   }
   clear_has_extra();
-  return extra_.ReleaseNonDefaultNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return extra_.ReleaseNonDefaultNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void MessageThing::set_allocated_extra(::std::string* extra) {
+inline void MessageThing::set_allocated_extra(::std::string *extra) {
   if (extra != NULL) {
     set_has_extra();
   } else {
     clear_has_extra();
   }
-  extra_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), extra);
+  extra_.SetAllocatedNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited(), extra);
   // @@protoc_insertion_point(field_set_allocated:debug.MessageThing.extra)
 }
 
 #ifdef __GNUC__
-  #pragma GCC diagnostic pop
-#endif  // __GNUC__
+#pragma GCC diagnostic pop
+#endif // __GNUC__
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace debug
+} // namespace debug
 
 // @@protoc_insertion_point(global_scope)
 
-#endif  // PROTOBUF_INCLUDED_proto_2fdebug_2fother_2eproto
+#endif // PROTOBUF_INCLUDED_proto_2fdebug_2fother_2eproto

@@ -16,7 +16,7 @@
 
 class CurlUploader : public UploaderInterface {
 public:
-  CurlUploader(){}
+  CurlUploader() {}
   virtual ~CurlUploader() = default;
 
   bool grab_file(const std::string &url, const std::string &filename);

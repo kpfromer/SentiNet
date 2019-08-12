@@ -7,7 +7,6 @@
 #include "networking/zmq/ZMQControlClient.hpp"
 #include <unistd.h>
 
-
 int main() {
 
   auto a = std::make_unique<ZMQControlClient>();
@@ -16,21 +15,18 @@ int main() {
 
   a->subscribe("tcp://localhost:5555", "Topic_name",
                [&](const std::string &value) -> void {
-                 std::cout << "Recieved " << value << " From Topic1" << std::endl;
+                 std::cout << "Recieved " << value << " From Topic1"
+                           << std::endl;
                });
 
+  a->subscribe(
+      "tcp://localhost:5556", "Topic2", [&](const std::string &value) -> void {
+        std::cout << "Recieved " << value << " From topic2" << std::endl;
+      });
 
-  a->subscribe("tcp://localhost:5556", "Topic2",
-              [&](const std::string &value) -> void {
-                std::cout << "Recieved " << value << " From topic2" <<std::endl;
-                });
-
-  a->publish("tcp://*:5559", "topic_outside",
-              [&]() -> std::string& {
-                return value;
-                },
-              std::chrono::milliseconds(900));
-
+  a->publish(
+      "tcp://*:5559", "topic_outside", [&]() -> std::string & { return value; },
+      std::chrono::milliseconds(900));
 
   a->publish("Topic name", "hello");
 
