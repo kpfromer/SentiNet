@@ -66,6 +66,12 @@ There's one debug module here right now
 
 The pub sub framework for sentinet is very simple. Here is an example publisher subscriber (in the same process)
 
+For more examples, see cpp/src/impl/examples
+
+Of course, this could be in two seperate processes. One for a publisher and one for a subscriber, this is just demonstrating the strength of a single Control Client instance
+
+This example uses publisher subscriber, but this can also be serve request (will add an example in the future, somewhat more complex here)
+
 ```cpp
 // Include Control Client (ZMQ Is just 1 implimentation of CC)
 #include "networking/zmq/ZMQControlClient.hpp"
