@@ -1,6 +1,9 @@
 #ifndef RANDOM_HPP
 #define RANDOM_HPP
 
+#include <random>
+#include <sstream>
+
 namespace utils {
 namespace random {
 static inline unsigned char random_char() {

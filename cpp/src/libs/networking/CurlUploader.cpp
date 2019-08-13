@@ -5,22 +5,17 @@
  */
 
 // C++ Includes
-#include <stdio.h>
-#include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <errno.h>
-
-#ifdef WIN32
-#include <io.h>
-#else
-#include <unistd.h>
-#endif
+#include <iostream>
 
 // Local Includes
 #include "networking/curl/CurlUploader.hpp"
-#include "framework/utils/utils.hpp"
+#include "framework/utils/strings.hpp"
+
+
 
 bool CurlUploader::grab_file(const std::string &url, const std::string &filename){
   return ftp_get(url, filename);
@@ -71,17 +66,20 @@ std::string CurlUploader::http_get(const std::string &url, const std::string &re
   if(curl) {
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_fwrite);
     ret = curl_easy_perform(curl);
     curl_easy_cleanup(curl);
   } else {
     return "";
   }
+  if(ret != CURLE_OK)
+    std::cout<<"Oh no!!"<<std::endl;
   return ""; 
 }
 
 std::string CurlUploader::https_get(const std::string &url, const std::string &request) {
   CURL *curl;
-  CURLcode ret;
+  // CURLcode ret;
   curl_global_init(CURL_GLOBAL_DEFAULT);
   curl = curl_easy_init();
   if(curl) {
@@ -92,7 +90,7 @@ std::string CurlUploader::https_get(const std::string &url, const std::string &r
 #ifdef SKIP_HOSTNAME_VERIFICATION
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
 #endif
-    ret = curl_easy_perform(curl);
+    // ret = curl_easy_perform(curl);
     curl_easy_cleanup(curl);
   }
   curl_global_cleanup();
@@ -143,6 +141,8 @@ bool CurlUploader::post_file(const std::string &url, const std::string &filename
       curl_easy_setopt(curl, CURLOPT_READDATA, hd_src);
       curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, (curl_off_t)fsize);
       ret = curl_easy_perform(curl);
+      if(ret == CURLE_OK)
+        std::cout<<"YAY"<<std::endl;
     } else {
       return false;
     }
@@ -153,39 +153,22 @@ bool CurlUploader::post_file(const std::string &url, const std::string &filename
     return ret == CURLE_OK;
 }
 bool CurlUploader::ftp_post(const std::string &url, const std::string &filename) {
-  post_file(url, filename);
+  return post_file(url, filename);
 }
 
 std::string CurlUploader::http_post(const std::string &url, const std::string &post_fields) {
   CURL *curl;
-  CURLcode ret;
+  // CURLcode ret;
 
   curl_global_init(CURL_GLOBAL_ALL);
   curl = curl_easy_init();
   if(curl) {
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, post_fields.c_str());
-    ret = curl_easy_perform(curl);
+    // ret = curl_easy_perform(curl);
     curl_easy_cleanup(curl);
   } else {
     return "";
   }
   return "";
 }
-/*
-bool smtp_send(const std::string &from_address, const std::string& to_addr, const std::string& cc_addr, const std::string &content) {
-  time_t now = time(0);
-  char* dt = ctime(&now);
-
-
-  const char *payload_text[] = { "
-    "Date: ", to_addr.c_str() };
-
-}
-bool smtp_ssl_send(const std::string &address, const std::string &content);
-*/
-
-
-
-
-

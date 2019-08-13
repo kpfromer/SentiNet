@@ -13,6 +13,12 @@
 
 #define FILE_SYSTEM_HPP
 
+#include <string>
+#include <sstream>
+#include <fstream>
+#include "strings.hpp"
+#include <unistd.h>
+
 namespace utils {
 namespace defaults {
 const char file_seperator = '/';

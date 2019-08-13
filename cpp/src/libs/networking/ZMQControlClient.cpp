@@ -1,5 +1,7 @@
 
 #include "networking/zmq/ZMQControlClient.hpp"
+#include "framework/utils/system_config.hpp"
+#include "framework/utils/logging.hpp"
 
 
 

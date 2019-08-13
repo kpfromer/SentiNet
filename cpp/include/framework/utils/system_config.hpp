@@ -9,7 +9,6 @@
 #include <yaml-cpp/yaml.h>
 #include "strings.hpp"
 
-
 namespace utils {
 namespace defaults {
 constexpr auto DEFAULT_SOCKET_PREFIX = "default";

@@ -1,6 +1,5 @@
 
 #include "networking/zmq/ZMQControlClient.hpp"
-#include <unistd.h>
 
 
 int main() {
