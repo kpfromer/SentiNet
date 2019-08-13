@@ -30,8 +30,9 @@ clean ::
 format ::
 	@find ${CPP_SRC} ${FILE_SUFFIXES} | xargs ${FORMAT_TARGET}
 
-install-arch-dependencies ::
-	yay boost
+install-deps ::
+	@sudo apt install cmake make curl libcurl4-gnutls-dev autoconf automake libtool g++ unzip libzmq3-dev
 
-install-arch-wii ::
-	yay wiiuse
+setup ::
+	@./scripts/generate setup ./resources/templates
+	@cp ./scripts/generate ~/.sentinet/bin

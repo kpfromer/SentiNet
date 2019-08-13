@@ -1,28 +1,35 @@
 cmake_minimum_required(VERSION 3.7)
 
-project("Generic Modular Robot Framework" VERSION 0.0.1 LANGUAGES C;CXX)
+project(SENTINET VERSION 0.0.1 LANGUAGES CXX)
 
-set(CPP_SOURCE_DIR ${PROJECT_SOURCE_DIR}/cpp)
-set(PYTHON_SOURCE_DIR ${PROJECT_SOURCE_DIR}/python)
+# Some global path areas
+set(CPP_DIR "${PROJECT_SOURCE_DIR}/cpp")
+set(PYTHON_DIR "${PROJECT_SOURCE_DIR}/python")
+set(TEMPLATES "${PROJECT_SOURCE_DIR}/resources/templates")
 
+# using C++ 14
 set(CMAKE_CXX_STANDARD 14)
 
-set(SENTINET_VERSION_MAJOR 1)
-set(SENTINET_VERSION_MINOR 0)
+# Versions
+set(SENTINET_VERSION_MAJOR 0.0.1)
 
+# Generate date time for when we tar it up
 if(NOT DATE)
 	string(TIMESTAMP DATE "%Y%m%d-%H%M%S")
 endif()
 
+# Some places to put our stuff
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/x86_64/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/x86_64/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/x86_64/bin)
 
+# Might remove this
 include(GNUInstallDirs)
-include("cmake_functions")
 
+# Build documentation
 option(BUILD_DOCS "Build the documentation" OFF)
 
+# TODO Fix this
 if(${BUILD_DOCS})
   find_package(Doxygen)
   if(DOXYGEN_FOUND)

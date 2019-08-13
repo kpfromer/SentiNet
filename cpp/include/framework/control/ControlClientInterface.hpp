@@ -1,8 +1,25 @@
 
 /**
- * @author      : theo (theo@$HOSTNAME)
- * @file        : ControlClientInterface
- * @created     : Saturday Jul 27, 2019 09:54:19 MDT
+ * @file ControlClientInterface
+ * @brief A Control Client is the uer endpoint for network patterns
+ *
+ * A Control Client's sole job is to publish, subscribe, serve, and request.
+ * What that means to an individual implimentation is up to the developer.
+ * This is a pure virtual class, except for utility functions (implimentations
+ * that make the main four methods easier). Implimenting a ControlClient
+ * involves routing messages over some sort of network communication.
+ *
+ * CC's I would like to develop
+ *
+ * ZMQ
+ * ROS / ROS2
+ * RabbitMQ
+ *
+ * TODO
+ * Need some sort of bridge service to connect over device interfaces
+ *
+ * @author  theo (theo@$Theo-Lenovo-Yoga-Arch)
+ * @created  Saturday Jul 27, 2019 09:54:19 MDT
  */
 
 #ifndef CONTROLINTERFACE_HPP
@@ -18,6 +35,15 @@ public:
   virtual bool start() = 0;
   virtual bool quit() = 0;
 
+  /**
+   * Core API
+   * main methods are
+   *
+   * publish
+   * subscribe
+   * serve
+   * request
+   */
   ////////////////////////// Publish Methods /////////////////////////////
   /**
    * Simple publisher - publishes message to topic

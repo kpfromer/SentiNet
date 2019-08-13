@@ -1,5 +1,3 @@
-
-
 /**
  * @author      : theo (theo@$HOSTNAME)
  * @file        : ControlClientInterface

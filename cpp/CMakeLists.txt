@@ -4,9 +4,11 @@ project(cpp)
 set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include")
 set(SRC_DIR "${PROJECT_SOURCE_DIR}/src")
 set(MODELS "${PROJECT_SOURCE_DIR}/models")
+set(THIRD_PARTY "${PROJECT_SOURCE_DIR}/third_party")
 
 # models is a protoc library
 add_subdirectory(${MODELS})
+add_subdirectory(${THIRD_PARTY})
 
 # C++ options
 include(cpp.cmake)
