@@ -53,7 +53,7 @@ if(${BUILD_DOCS})
     message("Doxygen needs to be installed for doxygen documentation")
   endif(DOXYGEN_FOUND)
 else()
-  add_subdirectory(${CPP_SOURCE_DIR})
+  add_subdirectory(${CPP_DIR})
 endif()
 
 
