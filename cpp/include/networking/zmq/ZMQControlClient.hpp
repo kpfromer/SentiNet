@@ -21,7 +21,7 @@
 class ZMQControlClient : public ControlClientInterface {
 public:
   ZMQControlClient(int context_ = 1);
-  ~ZMQControlClient(){}
+  ~ZMQControlClient() {}
 
 public: // TODO Take these out and put htme in controlbase interface
   bool start() override;
@@ -46,7 +46,6 @@ public: // TODO Take these out and put htme in controlbase interface
 public:
   bool initialize_publisher();
   bool initialize_client();
-
 
   /**
    * API Guide - implimentation - inherited methods from ControlClientInterface

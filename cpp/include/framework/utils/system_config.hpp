@@ -23,11 +23,10 @@ static std::queue<int> avaliable_ports;
 // A list of ports with a description - I don't know if this is needed
 static std::map<int, std::string> in_use_ports;
 
-
-inline void init_ports(const char* file) {
+inline void init_ports(const char *file) {
   YAML::Node ports = YAML::LoadFile(file)["ports"];
   for (std::size_t i = 0; i < ports.size(); i++) {
-    std::cout<<"hi"<<std::endl;
+    std::cout << "hi" << std::endl;
     // extract ranges
     std::vector<std::string> discretes =
         ::utils::strings::parse(ports[i].as<std::string>(), ',');
@@ -49,8 +48,8 @@ inline int get_port(const std::string &port_description = "In Use") {
   return 5;
 }
 
-void init(const char* filename) {
-  if(avaliable_ports.empty())
+void init(const char *filename) {
+  if (avaliable_ports.empty())
     init_ports(filename);
 }
 } // namespace ports

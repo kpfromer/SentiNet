@@ -1,12 +1,17 @@
 /**
- *  @file {{ FILE }}
+ *  @file {{FILE}}
  *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
  *  
  *  ADD A MORE DETAILED DESCRIPTION HERE
  *
- *  @author       {{ NAME }}
- *  @created      {{ TIMESTAMP }}
+ *  @author       {{NAME}} 
+ *  @created      {{TIMESTAMP}}
  *  @bug No Known Bugs
  */
 
-#include "{{ FILE }}.h"
+// C++ includes
+
+// Local includes
+
+
+

@@ -135,11 +135,6 @@ public:
    * the functions
    */
 
-
-
-
-
-
   // TODO I would like to change the utils things - so that all defaults are
   // local
   /*

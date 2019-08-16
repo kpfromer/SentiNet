@@ -8,15 +8,13 @@
 
 #define SERVERINTERFACE_HPP
 
+class ServerInterface {
+public:
+  ServerInterface();
+  virtual ~ServerInterface();
 
-class ServerInterface
-{
-    public:
-        ServerInterface ();
-        virtual ~ServerInterface ();
-    private:
-        /* private data */
+private:
+  /* private data */
 };
 
 #endif /* end of include guard SERVERINTERFACE_HPP */
-
