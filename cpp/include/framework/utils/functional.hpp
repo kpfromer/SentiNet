@@ -1,12 +1,12 @@
 /**
  *  @file functional
- *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
+ *  @brief A callback library for publisher subscribers
  *
- *  ADD A MORE DETAILED DESCRIPTION HERE
+ *  In the future, I would like a series of default callbacks that
+ *  can be set by the system
  *
  *  @author       theo (theo@varnsen)
  *  @created      Monday Jul 29, 2019 18:47:53 MDT
- *  @bug No Known Bugs
  */
 
 #ifndef FUNCTIONAL_HPP
@@ -16,6 +16,15 @@
 namespace util {
 namespace functional {
 
+/**
+ * @brief I don't know what this does or why it's here
+ *
+ * @param itterations no idea
+ * @param cb I don't know
+ * @param start Sorry
+ *
+ * @return Some type of vector. The template syntax is wrong even
+ */
 std::vector<T> generate(int itterations, void (*cb)(int), int &start = 1) {
   vector<int> sequence;
   for (int i = start; i < start + itterations; i++) {

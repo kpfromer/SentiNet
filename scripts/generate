@@ -1,0 +1,51 @@
+#!/bin/bash
+
+######################################################################
+# @author      : theo (theo@varnsen)
+# @file        : generate
+# @created     : Tuesday Aug 13, 2019 10:25:00 MDT
+#
+# @description : Generates a file from a given template
+######################################################################
+
+CACHE="$HOME/.sentinet"
+CPP="templates/c++.source.template"
+HPP="templates/c++.header.template"
+BIN="bin"
+
+
+set_up () {
+  if [ ! -d $CACHE ]; then
+    mkdir $CACHE
+  fi
+  cp -r $1 $CACHE
+  if [ ! -d $CACHE/$BIN ]; then
+    mkdir $CACHE/$BIN
+  fi
+  echo "export PATH=\"$CACHE/bin:$PATH\"" >> "$HOME/.bashrc"
+}
+
+read_and_replace () {
+  sed "s/{{NAME}}/$(whoami) : $(whoami)@$(hostname)/" $1 -i
+  sed "s/{{TIMESTAMP}}/$(date '+%Y-%m-%d %H:%M:%S')/" $1 -i
+  sed "s/{{FILE}}/$2/" $1 -i
+}
+
+generate_file () {
+  FILE=$1
+  ext="${FILE#*.}"
+  template=$CACHE/$HPP
+  if [[ $ext == "cpp" ]]; then
+   template=$CACHE/$CPP 
+  fi
+  cp $template $FILE
+  read_and_replace $FILE "${FILE%%.*}"
+}
+
+if [ $# -eq 0 ]; then
+  echo "No arguments given"
+elif [ $1 == "setup" ]; then
+  set_up $2
+else
+  generate_file $1
+fi

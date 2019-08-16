@@ -1,12 +1,13 @@
 /**
  *  @file file_system
- *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
+ *  @brief A file system library for sentinet
  *
- *  ADD A MORE DETAILED DESCRIPTION HERE
+ *  This will help functionalities like parsing files, reading
+ *  basic headers from retrieved endpoints and other things useful
+ *  for having a more reliable file checker
  *
  *  @author       theo (theo@varnsen)
  *  @created      Monday Jul 29, 2019 16:31:26 MDT
- *  @bug No Known Bugs
  */
 
 #ifndef FILE_SYSTEM_HPP
@@ -24,18 +25,42 @@ namespace defaults {
 const char file_seperator = '/';
 }
 namespace fs {
+/**
+ * @brief Similar to the bash mkdir command, creates a directory (can be
+ * embedded)
+ *
+ * @param path The directory to build (can be embedded, i.e.
+ * mkdir("./val/thing/");
+ *
+ * @return System status
+ */
 static inline bool mkdir(const std::string &path) {
   std::stringstream ss;
   ss << "mkdir -p " << path;
   return system(ss.str().c_str()) >= 0;
 }
 
+/**
+ * @brief Removes everything, use sparingly, this is rm -rf equivalent
+ *
+ * @param path The path to remove
+ *
+ * @return System status
+ */
 static inline bool rmrf(const std::string &path) {
   std::stringstream ss;
   ss << "rm -rf " << path;
   return system(ss.str().c_str()) >= 0;
 }
 
+/**
+ * @brief "Opens" a file and reads it. This returns a string that is the file
+ * content
+ *
+ * @param file The file to open
+ *
+ * @return The contents of the file
+ */
 static inline std::string cat(const std::string &file) {
   std::ifstream input(file);
   std::string cat_string((std::istreambuf_iterator<char>(input)),
@@ -44,12 +69,28 @@ static inline std::string cat(const std::string &file) {
   return cat_string;
 }
 
+/**
+ * @brief Although c++ fstream creates a file automatically, it is nice to have
+ * this. Creates a blank file
+ *
+ * @param file The file to create
+ *
+ * @return System status
+ */
 static inline bool touch(const std::string &file) {
   std::stringstream ss;
   ss << "touch " << file;
   return system(ss.str().c_str()) >= 0;
 }
 
+/**
+ * @brief Writes content to a file
+ *
+ * @param path The file to write to
+ * @param content The content to write
+ *
+ * @return Status
+ */
 static inline bool write(const std::string &path, const std::string &content) {
   std::ofstream input(path, std::ios_base::app);
   input << content;
@@ -57,6 +98,14 @@ static inline bool write(const std::string &path, const std::string &content) {
   return true;
 }
 
+/**
+ * @brief Overwrites the content of a file
+ *
+ * @param path The file to write to
+ * @param content The content to write
+ *
+ * @return Status
+ */
 static inline bool overwrite(const std::string &path,
                              const std::string &content) {
   std::ofstream input(path, std::ios_base::out);
@@ -65,6 +114,11 @@ static inline bool overwrite(const std::string &path,
   return true;
 }
 
+/**
+ * @brief Gets the current working directory
+ *
+ * @return The current working directory as a string
+ */
 static inline std::string pwd() {
   char *wd = get_current_dir_name();
   std::string cwd(wd);
@@ -72,6 +126,17 @@ static inline std::string pwd() {
   return cwd;
 }
 
+/**
+ * @brief Gets the absolute path given relative path
+ *
+ * example:
+ * absolute_path("./this_dir") might return
+ * "/home/theo/destroyer/of/all/evil/this_dir
+ *
+ * @param file The file to get the path of
+ *
+ * @return The absolute path
+ */
 static inline std::string absolute_path(const std::string &file) {
   std::string path = file;
   if (path.size() >= 2 && path[0] == '.' && path[1] == '/')

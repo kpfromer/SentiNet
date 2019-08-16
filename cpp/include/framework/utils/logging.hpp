@@ -1,12 +1,13 @@
 /**
  *  @file logging
- *  @brief A BRIEF DESCRIPTION OF THE HEADER FILE
+ *  @brief A logging library
  *
- *  ADD A MORE DETAILED DESCRIPTION HERE
+ *  So the implimentation of logging WILL change. But, they system calls will
+ * always be LOG_ERROR("stuf", args...) LOG_TRACE()
+ *  ...
  *
  *  @author       theo (theo@varnsen)
  *  @created      Monday Jul 29, 2019 17:57:18 MDT
- *  @bug No Known Bugs
  */
 
 #ifndef LOGGING_HPP

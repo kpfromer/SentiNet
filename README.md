@@ -1,31 +1,55 @@
 # Build instructions
 
+### Installing dependencies
+```bash
+$ sudo apt install cmake make curl libcurl4-gnutls-dev autoconf automake libtool g++ unzip libzmq3-dev
+# or just
+$ make install-deps # in SentiNet home dir
 
-Dependencies (most of these you can install with apt or pacman or yum ...)
+# Install yaml-cpp Note that this will be depreciated as I will include yaml cpp in third party
+$ git clone https://github.com/jbeder/yaml-cpp.git yaml-cpp
+$ cd yaml-cpp
+$ mkdir build
+$ cd build 
+$ cmake -DBUILD_SHARED_LIBS=ON ..
+$ make
+$ make install
 
-  - make
-  - cmake
-  - libcurl (curl - I think you need to install seperate headers if you want lib curl)
-  - zmq (Build this from source - [How to build lib zmq](http://zeromq.org/build:_start))
-  - No Ros yet, but in the future, you'll need ros / ros2
-  - protobuf (Build this from source [Protobuf master branch](https://github.com/protocolbuffers/protobuf/blob/master/src/README.md))
-  - yaml-cpp (Should be installable via apt, on arch, it's on the AUR I haven't checked, otherwise this is really easy to build from source [here] (https://github.com/jbeder/yaml-cpp))
+#Install protobuf, I might also add this as a third party
+https://github.com/protocolbuffers/protobuf/blob/master/src/README.md
+# either get a release here: https://github.com/protocolbuffers/protobuf/releases/tag/v3.9.1
+# or clone it using git
+$ git clone https://github.com/protocolbuffers/protobuf.git
+$ git submodule update --init --recursive
+$ ./autogen.sh
+$ ./configure
+$ make
+$ make check
+$ sudo make install
+$ sudo ldconfig
+```
   
-**Some of the above, I'll add as vendor libraries so that they're build on make of this project, but I haven't done that yet**
-
-
 ## To build
 ``` bash 
-$ make
-# that's it!!
+$ git clone https://github.com/tlincke125/SentiNet.git SentiNet
+$ cd SeniNet
+$ make #Note at this early of production, there are bound to be errors
+
+# Some other targets
+
+$ make install-deps # installs UBUNTU dependencies (using apt)
+$ make format # formats code
+$ make clean # removes build
+$ make cmake # only reads cmake stuff
+$ make compile # runs cmake as well as compile (make)
+$ make setup # sets up a few scripts that help development
 ```
  
 Artifacts are placed in ./build/x86_64/bin
 ``` bash
+# example running an artifact
 $ ./build/x86_64/bin/<example name>
 ```
-
-Later, I'm going to add a rule to cmake to put examples in a different directory, but for now, bin is just a conglomeration of all the tests / executables I wrote (all found in ./cpp/src/impl/)
 
 #  Directory structure
 
@@ -37,13 +61,13 @@ All the header files and framework stuff
 
 Most important things
 
-./cpp/include/framework/control
+- ./cpp/include/framework/control
 
-./cpp/include/networking/zmq
+- ./cpp/include/networking/zmq
 
-./cpp/include/framework/utils
+- ./cpp/include/framework/utils
 
-./cpp/include/networking/curl
+- ./cpp/include/networking/curl
 
 Everything else in include is just scratch mostly
 
@@ -51,15 +75,14 @@ Everything else in include is just scratch mostly
 
 All the implimentation files
 
-./cpp/src/libs - implimentation of the libraries
+- ./cpp/src/libs - implimentation of the libraries
 
-./cpp/src/impl - the executables that are compiled
+- ./cpp/src/impl - the executables that are compiled
 
 
 *models*:
-In the future, these are going to house all proto files (https://developers.google.com/protocol-buffers/docs/proto)
+This directory houses all .proto files for protobuf to parse
 There's one debug module here right now
-
 
 
 # Tutorial
@@ -111,8 +134,20 @@ int main() {
 ```
 
 
+## File Templates
+After setting up with
+```bash
+$ make setup
+```
+If you use bash (not zsh), you can now execute generate. examples
 
+```bash
+$ generate hello.cpp
+$ generate main.hpp
+$ generate main.h
+```
 
+This just creates a nice template file
 
 
 
