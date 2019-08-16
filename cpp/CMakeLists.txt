@@ -55,5 +55,3 @@ target_link_libraries(run2 ${NETWORKING_LIB})
 add_executable(all_in_one "${SRC_DIR}/impl/examples/all_in_one.cpp")
 target_link_libraries(all_in_one ${NETWORKING_LIB})
 
-add_executable(curl "${SRC_DIR}/impl/examples/curl.cpp")
-target_link_libraries(curl ${CURL_C} ${NETWORKING_LIB})
