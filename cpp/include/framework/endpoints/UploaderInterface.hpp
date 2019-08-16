@@ -16,8 +16,7 @@
 
 class UploaderInterface {
 public:
-  UploaderInterface();
-  virtual ~UploaderInterface();
+  virtual ~UploaderInterface() = default;
 
   // Recievers
   virtual bool grab_file(const std::string &url,
