@@ -14,10 +14,10 @@
 
 #define FILE_SYSTEM_HPP
 
-#include <string>
-#include <sstream>
-#include <fstream>
 #include "strings.hpp"
+#include <fstream>
+#include <sstream>
+#include <string>
 #include <unistd.h>
 
 namespace utils {
@@ -112,6 +112,62 @@ static inline bool overwrite(const std::string &path,
   input << content;
   input.close();
   return true;
+}
+/*
+static inline bool can_exec(const std::string& file)
+{
+    struct stat  st;
+    if (stat(file.c_str(), &st) < 0)
+        return false;
+    if ((st.st_mode & S_IEXEC) != 0)
+        return true;
+    return false;
+}
+
+static inline bool execute_file(const std::string& file) {
+  int pid = -1;
+  switch ((pid = fork()))
+  {
+    case -1:
+      perror ("fork");
+      break;
+    case 0:
+      execv (file.c_str(), NULL);
+      exit(EXIT_FAILURE);
+      break;
+    default:
+      puts ("This is a message from the parent");
+      break;
+  }
+  if(!can_exec(file)){
+    LOG_ERROR("Not a valid executable file");
+    return false;
+  }
+  .
+}
+*/
+
+/**
+ * @brief Appends a file with a slash
+ *
+ * @param base The base name
+ * @param basename The name of the file
+ *
+ * @return The string appended
+ */
+static inline std::string file_append(const std::string &base,
+                                      const std::string &basename) {
+  std::string mutable_basename;
+  std::string mutable_base;
+  if (basename[0] == '/')
+    mutable_basename = basename.substr(1);
+  else
+    mutable_basename = basename;
+  if (base[base.size() - 1] == '/')
+    mutable_base = base.substr(0, base.size() - 1);
+  else
+    mutable_base = base;
+  return ::utils::strings::join_d('/', mutable_base, mutable_basename);
 }
 
 /**
