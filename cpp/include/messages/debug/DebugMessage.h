@@ -9,7 +9,6 @@
 #define DEBUGMESSAGE_HPP
 
 // Project Includes
-#include "framework/networking/messages/MessageInterface.hpp"
 #include "proto/debug/debug.pb.h"
 
 // C++ Includes
@@ -17,7 +16,7 @@
 #include <memory>
 #include <string>
 
-class DebugMessage : public MessageInterface {
+class DebugMessage{
 public:
   DebugMessage();
   virtual ~DebugMessage();
