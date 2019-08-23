@@ -11,8 +11,8 @@
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -29,20 +29,18 @@
 #include <string>
 #include "curl_pair.h"
 
-namespace curl {    
-    template <class V>
-    inline curl_pair<CURLoption, V> 
-        make_option(const CURLoption opt, const V &val)
-    {
-        return curl_pair<CURLoption, V>(opt, val);
-    }
-    
-    template <class V>
-    inline curl_pair<CURLformoption, V>
-        make_formoption(const CURLformoption opt, const V &val)
-    {
-        return curl_pair<CURLformoption, V>(opt, val);
-    }
-}  // of namespace curl
+namespace curl {
+template <class V>
+inline curl_pair<CURLoption, V> make_option(const CURLoption opt,
+                                            const V &val) {
+  return curl_pair<CURLoption, V>(opt, val);
+}
 
-#endif	/* defined(__curlcpp__curl_option__) */
+template <class V>
+inline curl_pair<CURLformoption, V> make_formoption(const CURLformoption opt,
+                                                    const V &val) {
+  return curl_pair<CURLformoption, V>(opt, val);
+}
+} // namespace curl
+
+#endif /* defined(__curlcpp__curl_option__) */

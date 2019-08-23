@@ -21,7 +21,6 @@
 #include <unistd.h>
 #include <sstream>
 
-
 #include "strings.hpp"
 #include "file_system.hpp"
 #include "random.hpp"
@@ -29,4 +28,3 @@
 #include "logging.hpp"
 
 #endif /* end of include guard UTILS_HPP */
-

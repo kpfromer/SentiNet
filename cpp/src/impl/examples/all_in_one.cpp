@@ -10,7 +10,7 @@ int main() {
   a->publish(
       "tcp://*:5555", "Topic",
       [&]() -> std::string & { return value_to_publish; },
-      std::chrono::seconds(1));
+      std::chrono::milliseconds(1));
 
   a->subscribe("tcp://localhost:5555", "Topic",
                [&](const std::string &value) -> void {

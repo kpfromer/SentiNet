@@ -10,8 +10,6 @@ set(THIRD_PARTY "${PROJECT_SOURCE_DIR}/third_party")
 add_subdirectory(${MODELS})
 add_subdirectory(${THIRD_PARTY})
 
-# C++ options
-include(cpp.cmake)
 
 # Find the necessary libraries
 find_library(PTHREAD_LIB pthread)

@@ -8,15 +8,13 @@
 
 #define CURLSERVER_HPP
 
+class CurlServer {
+public:
+  CurlServer();
+  virtual ~CurlServer();
 
-class CurlServer
-{
-    public:
-        CurlServer ();
-        virtual ~CurlServer ();
-    private:
-        /* private data */
+private:
+  /* private data */
 };
 
 #endif /* end of include guard CURLSERVER_HPP */
-

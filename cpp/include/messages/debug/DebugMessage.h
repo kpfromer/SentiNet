@@ -16,7 +16,7 @@
 #include <memory>
 #include <string>
 
-class DebugMessage{
+class DebugMessage {
 public:
   DebugMessage();
   virtual ~DebugMessage();

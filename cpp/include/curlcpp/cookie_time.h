@@ -11,8 +11,8 @@
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -33,61 +33,64 @@
 #include <sstream>
 
 namespace curl {
-    /**
-     * This class provides a fast way to build a time object formed by hour, minutes and seconds.
-     */
-    class cookie_time {
-    public:
-        /**
-         * The default constructor will initialize every attribute with zero.
-         */
-        cookie_time() : hour(0), minutes(0), seconds(0) {};
-        /**
-         * The constructor with parameters allows to initialize attributes with custom values.
-         */
-        cookie_time(unsigned int, unsigned int, unsigned int);
-        /**
-         * This method allows to specify the hours.
-         */
-        cookie_time *set_hour(unsigned int) NOEXCEPT;
-        /**
-         * This method allows to specify the minutes.
-         */
-        cookie_time *set_minutes(unsigned int) NOEXCEPT;
-        /**
-         * This method allows to specify the seconds.
-         */
-        cookie_time *set_seconds(unsigned int) NOEXCEPT;
-        /**
-         * This method returns the hours.
-         */
-        const unsigned int get_hour() const NOEXCEPT;
-        /**
-         * This method returns the minutes.
-         */
-        const unsigned int get_minutes() const NOEXCEPT;
-        /**
-         * This method returns the seconds.
-         */
-        const unsigned int get_seconds() const NOEXCEPT;
-        /**
-         * This method returns the time formatted as h:m:s
-         */
-        std::string get_formatted() NOEXCEPT;
-    private:
-        /**
-         * The hours.
-         */
-        unsigned int hour;
-        /**
-         * The minutes.
-         */
-        unsigned int minutes;
-        /**
-         * The seconds.
-         */
-        unsigned int seconds;
-    };
-}
+/**
+ * This class provides a fast way to build a time object formed by hour, minutes
+ * and seconds.
+ */
+class cookie_time {
+public:
+  /**
+   * The default constructor will initialize every attribute with zero.
+   */
+  cookie_time() : hour(0), minutes(0), seconds(0){};
+  /**
+   * The constructor with parameters allows to initialize attributes with custom
+   * values.
+   */
+  cookie_time(unsigned int, unsigned int, unsigned int);
+  /**
+   * This method allows to specify the hours.
+   */
+  cookie_time *set_hour(unsigned int) NOEXCEPT;
+  /**
+   * This method allows to specify the minutes.
+   */
+  cookie_time *set_minutes(unsigned int) NOEXCEPT;
+  /**
+   * This method allows to specify the seconds.
+   */
+  cookie_time *set_seconds(unsigned int) NOEXCEPT;
+  /**
+   * This method returns the hours.
+   */
+  const unsigned int get_hour() const NOEXCEPT;
+  /**
+   * This method returns the minutes.
+   */
+  const unsigned int get_minutes() const NOEXCEPT;
+  /**
+   * This method returns the seconds.
+   */
+  const unsigned int get_seconds() const NOEXCEPT;
+  /**
+   * This method returns the time formatted as h:m:s
+   */
+  std::string get_formatted() NOEXCEPT;
 
-#endif //CURLCPP_COOKIE_TIME_H
+private:
+  /**
+   * The hours.
+   */
+  unsigned int hour;
+  /**
+   * The minutes.
+   */
+  unsigned int minutes;
+  /**
+   * The seconds.
+   */
+  unsigned int seconds;
+};
+} // namespace curl
+
+#endif // CURLCPP_COOKIE_TIME_H

@@ -8,20 +8,18 @@
 
 #define SERVERINTERFACE_HPP
 
-
 // Local Includes
 #include "framework/utils/utils.hpp"
 
-
 class ServerInterface {
 public:
-  ServerInterface(const std::string& b_path);
+  ServerInterface(const std::string &b_path);
   virtual ~ServerInterface() = default;
 
   virtual void serve() = 0;
 
 protected:
-    std::string base_path;
+  std::string base_path;
 };
 
 #endif /* end of include guard SERVERINTERFACE_HPP */

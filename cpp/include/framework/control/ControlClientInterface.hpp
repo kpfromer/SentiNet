@@ -33,7 +33,6 @@
 
 // Local Includes
 
-
 class ControlClientInterface {
 public:
   virtual ~ControlClientInterface() = default;

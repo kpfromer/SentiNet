@@ -13,7 +13,6 @@
 
 // Project inludes
 
-
 class UploaderInterface {
 public:
   virtual ~UploaderInterface() = default;

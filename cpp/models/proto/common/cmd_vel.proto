@@ -1,0 +1,17 @@
+syntax="proto2";
+
+package movement;
+
+message drive_train {
+  required int32 linear_vel = 1;
+  required int32 angular_vel = 2;
+}
+
+message camera {
+  required int32 angular_vel = 1;
+}
+
+message gun {
+  required int32 left_mag = 1;
+  required int32 right_mag = 2;
+}
