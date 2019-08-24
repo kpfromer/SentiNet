@@ -80,6 +80,7 @@ void log_log(int level, const char *file, int line, const char *fmt, ...) {
   if (level < L.level) {
     return;
   }
+  // const char* file = ::utils::fs::split_file_name(file_, 3).c_str();
 
   /* Acquire lock */
   lock();

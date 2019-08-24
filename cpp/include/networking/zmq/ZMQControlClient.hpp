@@ -16,6 +16,17 @@
 #include "framework/control/ControlClientInterface.hpp"
 #include "networking/zmq/zhelpers.hpp"
 
+/**
+ * @brief A ZMQControl Client is an implementation of the Control Client Interface. CCI by default
+ * is not multithreaded, nor is it as complex as ZMQCC. ZMQ Control Client is structured in a way that
+ * allows an application to push subscribers and publishers into a map of said subs and pubs. This allows
+ * all messages to be passed in the same process (you don't need two seperate files for a publisher and subscriber)
+ * This is useful for modular applications. Eventually, sentinet will allow applications to be uploaded from a central
+ * system that allocates resources to the local robot controller. A few important things here. This is multithreaded,
+ * ZMQ takes care of race conditions, however, it is strongly advised to read the documentation before diving into the
+ * multithreaded aspects of ZMQ. Namely, sockets shouldn't share threads. This is why ZMQ socket thread space exists, to
+ * seperate sockets from threads.
+ */
 class ZMQControlClient : public ControlClientInterface {
 public:
   ZMQControlClient(int context_ = 1);
@@ -24,26 +35,27 @@ public:
 public: // TODO Take these out and put htme in controlbase interface
   bool start() override;
   bool quit() override;
-  /*
-    bool initialize_outbound(bool requester, bool publisher)
-    {
-      if(requester)
-        thread_spacethis_client =
-        std::make_unique<::zmq::socket_t>(context, ZMQ_REQ);
-      if(publisher){
-        data.this_publisher =
-        std::make_unique<::zmq::socket_t>(data.context, ZMQ_PUB);
-        data.this_publisher->bind(::utils::strings::join_d(
-          ':', ::utils::defaults::SERVER_TCP_PREFIX,
-          ::utils::ports::get_port()));
-        }
-        return true; //TODO
-    }
-  */
 
 public:
+
+
+  /**
+   * @brief In order to publish or request concurrently, you MUST first initialize publisher or client
+   * by default, client and publisher don't exist. This would be a method put in the constructor to an 
+   * implementation specific. The reason is because these two could just cause high overhead. Instead, initializing them
+   * explicitly allows the program to only open the necessary sockets
+   *
+   * @return status
+   */
   bool initialize_publisher();
+
+  /**
+   * @brief Refer to initialize_publisher
+   *
+   * @return Status
+   */
   bool initialize_client();
+
 
   /**
    * API Guide - implimentation - inherited methods from ControlClientInterface
@@ -89,57 +101,23 @@ public:
 
   // Thread functions
 private:
-  /**
-   * @brief The function call to a new periodic publisher thread
-   *
-   * @param sock_addr The sock address to bind to
-   * @note sock_addr can be initialized earlier with bind, but it's better to
-   * create all socket->bind() calls in the same thread space, that way we're
-   * not sharing threads between sockets
-   *
-   * @param exit_signal checked every loop - turned on to quit
-   * @param socket The socket to move
-   * @note socket is not shared between threads, this is just the refernece, it
-   * is bare bones constructed in the call to begin the thread
-   *
-   * @param topic The topic the socket publishes to
-   * @note topic is mutable - allows the topic to be changed mid execution
-   *
-   * @param get_publish A method that returns the string to publish
-   * @note this can just be a simple getter method, but be careful with race
-   * conditions
-   *
-   * @param period The period of the publish //TODO change to frequency
-   */
-  // For all const & references, you must refere to it as std::ref(value)
-  // http://www.davidespataro.it/modern-c-concurrency-how-to-use-a-thread-object-correctly-and-common-pitfalls/
-  // THIS IS REALLY IMPORTANT
-  // std::ref https://en.cppreference.com/w/cpp/utility/functional/ref WILL
-  // CAUSE RACE CONDITIONS THIS NEEDS TO BE HANDLED WITH EXTREME CARE!!!!!!!!!
-  // static void periodic_publish_thread(const std::string sock_addr,        //
-  // Even if the thread wanted to, it can't change this
-  //                              std::future<void> exit_signal,             //
-  //                              Can be changed from outside
-  //                              std::unique_ptr<::zmq::socket_t> socket,   //
-  //                              A unique pointer, so once this thread is
-  //                              called,
-  //                                                                         //
-  //                                                                         The
-  //                                                                         thread
-  //                                                                         has
-  //                                                                         complete
-  //                                                                         control
-  //                                                                         over
-  //                                                                         it
-  //                              std::string &topic,                        //
-  //                              Important! This can be changed, and it's an
-  //                              address std::function<std::string &(void)>&,
-  //                              // This can also be changed const
-  //                              std::chrono::microseconds period);   // Cannot
-  //                              be changed
 
-  // I want to be smarter about this, passing params by std::ref, but for now,
-  // I'm going to allow all threads to copy
+  // TODO I want to be smarter about this, passing params by std::ref, but for now,
+  // TODO - Instead of all of these parameters, I need to seperate this into a struct, similar to how a pthread works
+  // However, I would like to keep it static, just because of the high overhead of Control Clients
+  /**
+   * @brief A periodic publisher thread
+   *
+   * This thread maintains a socket's lifetime within the thread space. It binds and kills the
+   * socket automatically inside the thread. 
+   *
+   * @param sock_addr The address to bind to
+   * @param exit_signal The exit signal indicating when to leave
+   * @param socket The socket to process data on
+   * @param topic The topic to publish to, this can be changed
+   * @param std::function How the thread gets its string to publish
+   * @param period The period to publish using std::chrono
+   */
   static void periodic_publish_thread(const std::string sock_addr,
                                       std::future<void> exit_signal,
                                       std::unique_ptr<::zmq::socket_t> socket,
@@ -266,26 +244,6 @@ private:
 
   // Helper Functions
 private:
-  // inline int get_id(const std::string& descriptor, const std::string&
-  // reference);
-  //
-  // inline int get_client_id(const std::string &reference) {
-  //   return get_id("clients", reference);
-  // }
-  // inline int get_publish_id(const std::string &reference) {
-  //   return get_id("publishers", reference);
-  // }
-  // inline int get_subscribe_id(const std::string &reference) {
-  //   return get_id("subscribers", reference);
-  // }
-  // inline int get_server_id(const std::string &reference) {
-  //   return get_id("servers", reference);
-  // }
-  //
-  // Not utilizing this function yet
-  // But I would like to http://stroustrup.com/wrapper.pdf
-  // static void periodic(const std::chrono::microseconds &period,
-  //                      std::function<void(void)> func);
 
   // Honestly I was just too lazy to write out std::map ......
   template <typename T>

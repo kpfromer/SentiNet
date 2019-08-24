@@ -200,6 +200,33 @@ static inline std::string absolute_path(const std::string &file) {
   return ::utils::strings::join_d("/", pwd(), path);
 }
 
+/**
+ * @brief Returns a file path cut down to only num_splits
+ *
+ * example:
+ * split_file_name("/home/theo/bad/file/lots/of/files", 3)
+ *
+ * returns
+ *
+ * "/lots/of/files"
+ *
+ * @param file
+ * @param num_splits
+ *
+ * @return 
+ */
+static inline std::string split_file_name(const std::string& file, int num_splits) {
+  auto a = ::utils::strings::parse(file, '/');
+  if(a.size() < static_cast<uint64_t>(num_splits)) {
+    return "";
+  }
+  std::string value;
+  for(int i = a.size() - 1; i >= 0; i--) {
+    value += "/" + a[i];
+  }
+  return value;
+}
+
 } // namespace fs
 } // namespace utils
 
