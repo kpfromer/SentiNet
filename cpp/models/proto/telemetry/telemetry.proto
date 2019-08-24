@@ -1,0 +1,19 @@
+syntax="proto2";
+
+package telemetry;
+
+message telemetry {
+  required int64 time_alive = 1;
+  required string description = 2;
+
+  message endpoint {
+    required int32 num_endpoints = 1;
+    required int32 num_messages = 2;
+  }
+
+  required endpoint publishers = 3;
+  required endpoint subscribers = 4;
+  required endpoint clients = 5;
+  required endpoint servers = 6;
+}
+

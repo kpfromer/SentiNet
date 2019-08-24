@@ -64,6 +64,12 @@ target_link_libraries(all_in_one ${NETWORKING_LIB})
 
 add_executable(example "${SRC_DIR}/impl/example.cpp")
 target_link_libraries(example ${NETWORKING_LIB})
+
+add_executable(client "${SRC_DIR}/impl/examples/client.cpp")
+target_link_libraries(client ${NETWORKING_LIB})
+
+add_executable(server "${SRC_DIR}/impl/examples/server.cpp")
+target_link_libraries(server ${NETWORKING_LIB})
 # add_executable(subscriber "${SRC_DIR}/impl/subscriber.cpp")
 # target_link_libraries(subscriber ${NETWORKING_LIB} ${BOOST_LOG} ${PTHREAD_LIB})
 #
