@@ -17,8 +17,10 @@ int main() {
 
   dt.parse_from_string(ret);
 
-  std::cout<<"Recieved a dt with linear = "<<dt.get_linear()<<" "<<dt.get_angular()<<std::endl;
-  std::cout<<"Proof: lin + ang = "<<dt.get_linear() + dt.get_angular()<<std::endl;
+  std::cout << "Recieved a dt with linear = " << dt.get_linear() << " "
+            << dt.get_angular() << std::endl;
+  std::cout << "Proof: lin + ang = " << dt.get_linear() + dt.get_angular()
+            << std::endl;
 
   std::cout << ret << std::endl;
   std::cout << dt.print() << std::endl;

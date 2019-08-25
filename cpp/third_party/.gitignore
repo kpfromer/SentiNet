@@ -7,6 +7,6 @@ build*/
 .idea/*
 .vscode/*
 venv*/
-*compile_commands*
-*/*.venv
-./cpp/third_party/*
+*run
+*wii-controller-c
+compile_commands.json

@@ -17,165 +17,208 @@
 #include <google/protobuf/port_def.inc>
 namespace movement {
 class drive_trainDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<drive_train> _instance;
+public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<drive_train>
+      _instance;
 } _drive_train_default_instance_;
 class cameraDefaultTypeInternal {
- public:
+public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<camera> _instance;
 } _camera_default_instance_;
 class gunDefaultTypeInternal {
- public:
+public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<gun> _instance;
 } _gun_default_instance_;
-}  // namespace movement
+} // namespace movement
 static void InitDefaultsscc_info_camera_proto_2fcommon_2fcmd_5fvel_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::movement::_camera_default_instance_;
-    new (ptr) ::movement::camera();
+    void *ptr = &::movement::_camera_default_instance_;
+    new (ptr)::movement::camera();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
   ::movement::camera::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_camera_proto_2fcommon_2fcmd_5fvel_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_camera_proto_2fcommon_2fcmd_5fvel_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0>
+    scc_info_camera_proto_2fcommon_2fcmd_5fvel_2eproto = {
+        {ATOMIC_VAR_INIT(
+             ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized),
+         0, InitDefaultsscc_info_camera_proto_2fcommon_2fcmd_5fvel_2eproto},
+        {}};
 
-static void InitDefaultsscc_info_drive_train_proto_2fcommon_2fcmd_5fvel_2eproto() {
+static void
+InitDefaultsscc_info_drive_train_proto_2fcommon_2fcmd_5fvel_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::movement::_drive_train_default_instance_;
-    new (ptr) ::movement::drive_train();
+    void *ptr = &::movement::_drive_train_default_instance_;
+    new (ptr)::movement::drive_train();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
   ::movement::drive_train::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_drive_train_proto_2fcommon_2fcmd_5fvel_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_drive_train_proto_2fcommon_2fcmd_5fvel_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0>
+    scc_info_drive_train_proto_2fcommon_2fcmd_5fvel_2eproto = {
+        {ATOMIC_VAR_INIT(
+             ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized),
+         0,
+         InitDefaultsscc_info_drive_train_proto_2fcommon_2fcmd_5fvel_2eproto},
+        {}};
 
 static void InitDefaultsscc_info_gun_proto_2fcommon_2fcmd_5fvel_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::movement::_gun_default_instance_;
-    new (ptr) ::movement::gun();
+    void *ptr = &::movement::_gun_default_instance_;
+    new (ptr)::movement::gun();
     ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
   }
   ::movement::gun::InitAsDefaultInstance();
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_gun_proto_2fcommon_2fcmd_5fvel_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_gun_proto_2fcommon_2fcmd_5fvel_2eproto}, {}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0>
+    scc_info_gun_proto_2fcommon_2fcmd_5fvel_2eproto = {
+        {ATOMIC_VAR_INIT(
+             ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized),
+         0, InitDefaultsscc_info_gun_proto_2fcommon_2fcmd_5fvel_2eproto},
+        {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_proto_2fcommon_2fcmd_5fvel_2eproto[3];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_proto_2fcommon_2fcmd_5fvel_2eproto = nullptr;
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_proto_2fcommon_2fcmd_5fvel_2eproto = nullptr;
+static ::PROTOBUF_NAMESPACE_ID::Metadata
+    file_level_metadata_proto_2fcommon_2fcmd_5fvel_2eproto[3];
+static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const *
+    *file_level_enum_descriptors_proto_2fcommon_2fcmd_5fvel_2eproto = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const **
+    file_level_service_descriptors_proto_2fcommon_2fcmd_5fvel_2eproto = nullptr;
 
-const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_proto_2fcommon_2fcmd_5fvel_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::movement::drive_train, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::movement::drive_train, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::movement::drive_train, linear_vel_),
-  PROTOBUF_FIELD_OFFSET(::movement::drive_train, angular_vel_),
-  0,
-  1,
-  PROTOBUF_FIELD_OFFSET(::movement::camera, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::movement::camera, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::movement::camera, angular_vel_),
-  0,
-  PROTOBUF_FIELD_OFFSET(::movement::gun, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::movement::gun, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::movement::gun, left_mag_),
-  PROTOBUF_FIELD_OFFSET(::movement::gun, right_mag_),
-  0,
-  1,
+const ::PROTOBUF_NAMESPACE_ID::uint32
+    TableStruct_proto_2fcommon_2fcmd_5fvel_2eproto::offsets
+        [] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+            PROTOBUF_FIELD_OFFSET(::movement::drive_train, _has_bits_),
+            PROTOBUF_FIELD_OFFSET(::movement::drive_train, _internal_metadata_),
+            ~0u, // no _extensions_
+            ~0u, // no _oneof_case_
+            ~0u, // no _weak_field_map_
+            PROTOBUF_FIELD_OFFSET(::movement::drive_train, linear_vel_),
+            PROTOBUF_FIELD_OFFSET(::movement::drive_train, angular_vel_),
+            0,
+            1,
+            PROTOBUF_FIELD_OFFSET(::movement::camera, _has_bits_),
+            PROTOBUF_FIELD_OFFSET(::movement::camera, _internal_metadata_),
+            ~0u, // no _extensions_
+            ~0u, // no _oneof_case_
+            ~0u, // no _weak_field_map_
+            PROTOBUF_FIELD_OFFSET(::movement::camera, angular_vel_),
+            0,
+            PROTOBUF_FIELD_OFFSET(::movement::gun, _has_bits_),
+            PROTOBUF_FIELD_OFFSET(::movement::gun, _internal_metadata_),
+            ~0u, // no _extensions_
+            ~0u, // no _oneof_case_
+            ~0u, // no _weak_field_map_
+            PROTOBUF_FIELD_OFFSET(::movement::gun, left_mag_),
+            PROTOBUF_FIELD_OFFSET(::movement::gun, right_mag_),
+            0,
+            1,
 };
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 7, sizeof(::movement::drive_train)},
-  { 9, 15, sizeof(::movement::camera)},
-  { 16, 23, sizeof(::movement::gun)},
-};
-
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::movement::_drive_train_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::movement::_camera_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::movement::_gun_default_instance_),
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema
+    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+        {0, 7, sizeof(::movement::drive_train)},
+        {9, 15, sizeof(::movement::camera)},
+        {16, 23, sizeof(::movement::gun)},
 };
 
-const char descriptor_table_protodef_proto_2fcommon_2fcmd_5fvel_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\032proto/common/cmd_vel.proto\022\010movement\"6"
-  "\n\013drive_train\022\022\n\nlinear_vel\030\001 \002(\005\022\023\n\013ang"
-  "ular_vel\030\002 \002(\005\"\035\n\006camera\022\023\n\013angular_vel\030"
-  "\001 \002(\005\"*\n\003gun\022\020\n\010left_mag\030\001 \002(\005\022\021\n\tright_"
-  "mag\030\002 \002(\005"
-  ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_deps[1] = {
+static ::PROTOBUF_NAMESPACE_ID::Message const *const file_default_instances[] =
+    {
+        reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message *>(
+            &::movement::_drive_train_default_instance_),
+        reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message *>(
+            &::movement::_camera_default_instance_),
+        reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message *>(
+            &::movement::_gun_default_instance_),
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_sccs[3] = {
-  &scc_info_camera_proto_2fcommon_2fcmd_5fvel_2eproto.base,
-  &scc_info_drive_train_proto_2fcommon_2fcmd_5fvel_2eproto.base,
-  &scc_info_gun_proto_2fcommon_2fcmd_5fvel_2eproto.base,
+
+const char descriptor_table_protodef_proto_2fcommon_2fcmd_5fvel_2eproto
+    [] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+        "\n\032proto/common/cmd_vel.proto\022\010movement\"6"
+        "\n\013drive_train\022\022\n\nlinear_vel\030\001 "
+        "\002(\005\022\023\n\013ang"
+        "ular_vel\030\002 "
+        "\002(\005\"\035\n\006camera\022\023\n\013angular_vel\030"
+        "\001 \002(\005\"*\n\003gun\022\020\n\010left_mag\030\001 "
+        "\002(\005\022\021\n\tright_"
+        "mag\030\002 \002(\005";
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable
+    *const descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_deps[1] = {};
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase
+    *const descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_sccs[3] = {
+        &scc_info_camera_proto_2fcommon_2fcmd_5fvel_2eproto.base,
+        &scc_info_drive_train_proto_2fcommon_2fcmd_5fvel_2eproto.base,
+        &scc_info_gun_proto_2fcommon_2fcmd_5fvel_2eproto.base,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_once;
-static bool descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_initialized = false;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto = {
-  &descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_initialized, descriptor_table_protodef_proto_2fcommon_2fcmd_5fvel_2eproto, "proto/common/cmd_vel.proto", 169,
-  &descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_once, descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_sccs, descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_deps, 3, 0,
-  schemas, file_default_instances, TableStruct_proto_2fcommon_2fcmd_5fvel_2eproto::offsets,
-  file_level_metadata_proto_2fcommon_2fcmd_5fvel_2eproto, 3, file_level_enum_descriptors_proto_2fcommon_2fcmd_5fvel_2eproto, file_level_service_descriptors_proto_2fcommon_2fcmd_5fvel_2eproto,
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag
+    descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_once;
+static bool descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_initialized =
+    false;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable
+    descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto = {
+        &descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_initialized,
+        descriptor_table_protodef_proto_2fcommon_2fcmd_5fvel_2eproto,
+        "proto/common/cmd_vel.proto",
+        169,
+        &descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_once,
+        descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_sccs,
+        descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto_deps,
+        3,
+        0,
+        schemas,
+        file_default_instances,
+        TableStruct_proto_2fcommon_2fcmd_5fvel_2eproto::offsets,
+        file_level_metadata_proto_2fcommon_2fcmd_5fvel_2eproto,
+        3,
+        file_level_enum_descriptors_proto_2fcommon_2fcmd_5fvel_2eproto,
+        file_level_service_descriptors_proto_2fcommon_2fcmd_5fvel_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_proto_2fcommon_2fcmd_5fvel_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto), true);
+static bool dynamic_init_dummy_proto_2fcommon_2fcmd_5fvel_2eproto =
+    (::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(
+         &descriptor_table_proto_2fcommon_2fcmd_5fvel_2eproto),
+     true);
 namespace movement {
 
 // ===================================================================
 
-void drive_train::InitAsDefaultInstance() {
-}
+void drive_train::InitAsDefaultInstance() {}
 class drive_train::_Internal {
- public:
+public:
   using HasBits = decltype(std::declval<drive_train>()._has_bits_);
-  static void set_has_linear_vel(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-  static void set_has_angular_vel(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
+  static void set_has_linear_vel(HasBits *has_bits) { (*has_bits)[0] |= 1u; }
+  static void set_has_angular_vel(HasBits *has_bits) { (*has_bits)[0] |= 2u; }
 };
 
 drive_train::drive_train()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+    : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:movement.drive_train)
 }
-drive_train::drive_train(const drive_train& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr),
+drive_train::drive_train(const drive_train &from)
+    : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&linear_vel_, &from.linear_vel_,
-    static_cast<size_t>(reinterpret_cast<char*>(&angular_vel_) -
-    reinterpret_cast<char*>(&linear_vel_)) + sizeof(angular_vel_));
+           static_cast<size_t>(reinterpret_cast<char *>(&angular_vel_) -
+                               reinterpret_cast<char *>(&linear_vel_)) +
+               sizeof(angular_vel_));
   // @@protoc_insertion_point(copy_constructor:movement.drive_train)
 }
 
 void drive_train::SharedCtor() {
-  ::memset(&linear_vel_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&angular_vel_) -
-      reinterpret_cast<char*>(&linear_vel_)) + sizeof(angular_vel_));
+  ::memset(&linear_vel_, 0,
+           static_cast<size_t>(reinterpret_cast<char *>(&angular_vel_) -
+                               reinterpret_cast<char *>(&linear_vel_)) +
+               sizeof(angular_vel_));
 }
 
 drive_train::~drive_train() {
@@ -183,71 +226,76 @@ drive_train::~drive_train() {
   SharedDtor();
 }
 
-void drive_train::SharedDtor() {
-}
+void drive_train::SharedDtor() {}
 
-void drive_train::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const drive_train& drive_train::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_drive_train_proto_2fcommon_2fcmd_5fvel_2eproto.base);
+void drive_train::SetCachedSize(int size) const { _cached_size_.Set(size); }
+const drive_train &drive_train::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(
+      &::scc_info_drive_train_proto_2fcommon_2fcmd_5fvel_2eproto.base);
   return *internal_default_instance();
 }
 
-
 void drive_train::Clear() {
-// @@protoc_insertion_point(message_clear_start:movement.drive_train)
+  // @@protoc_insertion_point(message_clear_start:movement.drive_train)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
-    ::memset(&linear_vel_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&angular_vel_) -
-        reinterpret_cast<char*>(&linear_vel_)) + sizeof(angular_vel_));
+    ::memset(&linear_vel_, 0,
+             static_cast<size_t>(reinterpret_cast<char *>(&angular_vel_) -
+                                 reinterpret_cast<char *>(&linear_vel_)) +
+                 sizeof(angular_vel_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* drive_train::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+const char *drive_train::_InternalParse(
+    const char *ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext *ctx) {
+#define CHK_(x)                                                                \
+  if (PROTOBUF_PREDICT_FALSE(!(x)))                                            \
+  goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // required int32 linear_vel = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          _Internal::set_has_linear_vel(&has_bits);
-          linear_vel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // required int32 angular_vel = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          _Internal::set_has_angular_vel(&has_bits);
-          angular_vel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
+    // required int32 linear_vel = 1;
+    case 1:
+      if (PROTOBUF_PREDICT_TRUE(
+              static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+        _Internal::set_has_linear_vel(&has_bits);
+        linear_vel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+        CHK_(ptr);
+      } else
+        goto handle_unusual;
+      continue;
+    // required int32 angular_vel = 2;
+    case 2:
+      if (PROTOBUF_PREDICT_TRUE(
+              static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+        _Internal::set_has_angular_vel(&has_bits);
+        angular_vel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+        CHK_(ptr);
+      } else
+        goto handle_unusual;
+      continue;
+    default: {
+    handle_unusual:
+      if ((tag & 7) == 4 || tag == 0) {
+        ctx->SetLastTag(tag);
+        goto success;
       }
-    }  // switch
-  }  // while
+      ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+      CHK_(ptr != nullptr);
+      continue;
+    }
+    } // switch
+  }   // while
 success:
   _has_bits_.Or(has_bits);
   return ptr;
@@ -256,52 +304,60 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+#else // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool drive_train::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream *input) {
+#define DO_(EXPRESSION)                                                        \
+  if (!PROTOBUF_PREDICT_TRUE(EXPRESSION))                                      \
+  goto failure
   ::PROTOBUF_NAMESPACE_ID::uint32 tag;
   // @@protoc_insertion_point(parse_start:movement.drive_train)
   for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p =
+        input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 linear_vel = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
-          _Internal::set_has_linear_vel(&_has_bits_);
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
-                 input, &linear_vel_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
+    if (!p.second)
+      goto handle_unusual;
+    switch (
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(
+            tag)) {
+    // required int32 linear_vel = 1;
+    case 1: {
+      if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
+        _Internal::set_has_linear_vel(&_has_bits_);
+        DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+             ::PROTOBUF_NAMESPACE_ID::int32,
+             ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+            input, &linear_vel_)));
+      } else {
+        goto handle_unusual;
       }
+      break;
+    }
 
-      // required int32 angular_vel = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
-          _Internal::set_has_angular_vel(&_has_bits_);
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
-                 input, &angular_vel_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
+    // required int32 angular_vel = 2;
+    case 2: {
+      if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
+        _Internal::set_has_angular_vel(&_has_bits_);
+        DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+             ::PROTOBUF_NAMESPACE_ID::int32,
+             ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+            input, &angular_vel_)));
+      } else {
+        goto handle_unusual;
       }
+      break;
+    }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+    default: {
+    handle_unusual:
+      if (tag == 0) {
+        goto success;
       }
+      DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+          input, tag, _internal_metadata_.mutable_unknown_fields()));
+      break;
+    }
     }
   }
 success:
@@ -312,23 +368,25 @@ failure:
   return false;
 #undef DO_
 }
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+#endif // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void drive_train::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream *output) const {
   // @@protoc_insertion_point(serialize_start:movement.drive_train)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required int32 linear_vel = 1;
   if (cached_has_bits & 0x00000001u) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(1, this->linear_vel(), output);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(
+        1, this->linear_vel(), output);
   }
 
   // required int32 angular_vel = 2;
   if (cached_has_bits & 0x00000002u) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(2, this->angular_vel(), output);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(
+        2, this->angular_vel(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -338,104 +396,110 @@ void drive_train::SerializeWithCachedSizes(
   // @@protoc_insertion_point(serialize_end:movement.drive_train)
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* drive_train::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8 *
+drive_train::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8 *target) const {
   // @@protoc_insertion_point(serialize_to_array_start:movement.drive_train)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required int32 linear_vel = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->linear_vel(), target);
+    target =
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(
+            1, this->linear_vel(), target);
   }
 
   // required int32 angular_vel = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->angular_vel(), target);
+    target =
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(
+            2, this->angular_vel(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::
+        SerializeUnknownFieldsToArray(_internal_metadata_.unknown_fields(),
+                                      target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:movement.drive_train)
   return target;
 }
 
 size_t drive_train::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:movement.drive_train)
+  // @@protoc_insertion_point(required_fields_byte_size_fallback_start:movement.drive_train)
   size_t total_size = 0;
 
   if (has_linear_vel()) {
     // required int32 linear_vel = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->linear_vel());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->linear_vel());
   }
 
   if (has_angular_vel()) {
     // required int32 angular_vel = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->angular_vel());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->angular_vel());
   }
 
   return total_size;
 }
 size_t drive_train::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:movement.drive_train)
+  // @@protoc_insertion_point(message_byte_size_start:movement.drive_train)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+            _internal_metadata_.unknown_fields());
   }
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) ==
+      0) { // All required fields are present.
     // required int32 linear_vel = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->linear_vel());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->linear_vel());
 
     // required int32 angular_vel = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->angular_vel());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->angular_vel());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void drive_train::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:movement.drive_train)
+void drive_train::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
+  // @@protoc_insertion_point(generalized_merge_from_start:movement.drive_train)
   GOOGLE_DCHECK_NE(&from, this);
-  const drive_train* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<drive_train>(
-          &from);
+  const drive_train *source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<drive_train>(&from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:movement.drive_train)
+    // @@protoc_insertion_point(generalized_merge_from_cast_fail:movement.drive_train)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:movement.drive_train)
+    // @@protoc_insertion_point(generalized_merge_from_cast_success:movement.drive_train)
     MergeFrom(*source);
   }
 }
 
-void drive_train::MergeFrom(const drive_train& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:movement.drive_train)
+void drive_train::MergeFrom(const drive_train &from) {
+  // @@protoc_insertion_point(class_specific_merge_from_start:movement.drive_train)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -449,26 +513,29 @@ void drive_train::MergeFrom(const drive_train& from) {
   }
 }
 
-void drive_train::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:movement.drive_train)
-  if (&from == this) return;
+void drive_train::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
+  // @@protoc_insertion_point(generalized_copy_from_start:movement.drive_train)
+  if (&from == this)
+    return;
   Clear();
   MergeFrom(from);
 }
 
-void drive_train::CopyFrom(const drive_train& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:movement.drive_train)
-  if (&from == this) return;
+void drive_train::CopyFrom(const drive_train &from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:movement.drive_train)
+  if (&from == this)
+    return;
   Clear();
   MergeFrom(from);
 }
 
 bool drive_train::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003)
+    return false;
   return true;
 }
 
-void drive_train::InternalSwap(drive_train* other) {
+void drive_train::InternalSwap(drive_train *other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
@@ -480,59 +547,49 @@ void drive_train::InternalSwap(drive_train* other) {
   return GetMetadataStatic();
 }
 
-
 // ===================================================================
 
-void camera::InitAsDefaultInstance() {
-}
+void camera::InitAsDefaultInstance() {}
 class camera::_Internal {
- public:
+public:
   using HasBits = decltype(std::declval<camera>()._has_bits_);
-  static void set_has_angular_vel(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
+  static void set_has_angular_vel(HasBits *has_bits) { (*has_bits)[0] |= 1u; }
 };
 
 camera::camera()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+    : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:movement.camera)
 }
-camera::camera(const camera& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr),
+camera::camera(const camera &from)
+    : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   angular_vel_ = from.angular_vel_;
   // @@protoc_insertion_point(copy_constructor:movement.camera)
 }
 
-void camera::SharedCtor() {
-  angular_vel_ = 0;
-}
+void camera::SharedCtor() { angular_vel_ = 0; }
 
 camera::~camera() {
   // @@protoc_insertion_point(destructor:movement.camera)
   SharedDtor();
 }
 
-void camera::SharedDtor() {
-}
+void camera::SharedDtor() {}
 
-void camera::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const camera& camera::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_camera_proto_2fcommon_2fcmd_5fvel_2eproto.base);
+void camera::SetCachedSize(int size) const { _cached_size_.Set(size); }
+const camera &camera::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(
+      &::scc_info_camera_proto_2fcommon_2fcmd_5fvel_2eproto.base);
   return *internal_default_instance();
 }
 
-
 void camera::Clear() {
-// @@protoc_insertion_point(message_clear_start:movement.camera)
+  // @@protoc_insertion_point(message_clear_start:movement.camera)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   angular_vel_ = 0;
   _has_bits_.Clear();
@@ -540,34 +597,40 @@ void camera::Clear() {
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* camera::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+const char *
+camera::_InternalParse(const char *ptr,
+                       ::PROTOBUF_NAMESPACE_ID::internal::ParseContext *ctx) {
+#define CHK_(x)                                                                \
+  if (PROTOBUF_PREDICT_FALSE(!(x)))                                            \
+  goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // required int32 angular_vel = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          _Internal::set_has_angular_vel(&has_bits);
-          angular_vel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
+    // required int32 angular_vel = 1;
+    case 1:
+      if (PROTOBUF_PREDICT_TRUE(
+              static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+        _Internal::set_has_angular_vel(&has_bits);
+        angular_vel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+        CHK_(ptr);
+      } else
+        goto handle_unusual;
+      continue;
+    default: {
+    handle_unusual:
+      if ((tag & 7) == 4 || tag == 0) {
+        ctx->SetLastTag(tag);
+        goto success;
       }
-    }  // switch
-  }  // while
+      ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+      CHK_(ptr != nullptr);
+      continue;
+    }
+    } // switch
+  }   // while
 success:
   _has_bits_.Or(has_bits);
   return ptr;
@@ -576,39 +639,46 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+#else // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool camera::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream *input) {
+#define DO_(EXPRESSION)                                                        \
+  if (!PROTOBUF_PREDICT_TRUE(EXPRESSION))                                      \
+  goto failure
   ::PROTOBUF_NAMESPACE_ID::uint32 tag;
   // @@protoc_insertion_point(parse_start:movement.camera)
   for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p =
+        input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 angular_vel = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
-          _Internal::set_has_angular_vel(&_has_bits_);
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
-                 input, &angular_vel_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
+    if (!p.second)
+      goto handle_unusual;
+    switch (
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(
+            tag)) {
+    // required int32 angular_vel = 1;
+    case 1: {
+      if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
+        _Internal::set_has_angular_vel(&_has_bits_);
+        DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+             ::PROTOBUF_NAMESPACE_ID::int32,
+             ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+            input, &angular_vel_)));
+      } else {
+        goto handle_unusual;
       }
+      break;
+    }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+    default: {
+    handle_unusual:
+      if (tag == 0) {
+        goto success;
       }
+      DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+          input, tag, _internal_metadata_.mutable_unknown_fields()));
+      break;
+    }
     }
   }
 success:
@@ -619,18 +689,19 @@ failure:
   return false;
 #undef DO_
 }
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+#endif // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void camera::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream *output) const {
   // @@protoc_insertion_point(serialize_start:movement.camera)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required int32 angular_vel = 1;
   if (cached_has_bits & 0x00000001u) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(1, this->angular_vel(), output);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(
+        1, this->angular_vel(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -640,97 +711,102 @@ void camera::SerializeWithCachedSizes(
   // @@protoc_insertion_point(serialize_end:movement.camera)
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* camera::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8 *camera::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8 *target) const {
   // @@protoc_insertion_point(serialize_to_array_start:movement.camera)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required int32 angular_vel = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->angular_vel(), target);
+    target =
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(
+            1, this->angular_vel(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::
+        SerializeUnknownFieldsToArray(_internal_metadata_.unknown_fields(),
+                                      target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:movement.camera)
   return target;
 }
 
 size_t camera::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:movement.camera)
+  // @@protoc_insertion_point(message_byte_size_start:movement.camera)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+            _internal_metadata_.unknown_fields());
   }
   // required int32 angular_vel = 1;
   if (has_angular_vel()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->angular_vel());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->angular_vel());
   }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void camera::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:movement.camera)
+void camera::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
+  // @@protoc_insertion_point(generalized_merge_from_start:movement.camera)
   GOOGLE_DCHECK_NE(&from, this);
-  const camera* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<camera>(
-          &from);
+  const camera *source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<camera>(&from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:movement.camera)
+    // @@protoc_insertion_point(generalized_merge_from_cast_fail:movement.camera)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:movement.camera)
+    // @@protoc_insertion_point(generalized_merge_from_cast_success:movement.camera)
     MergeFrom(*source);
   }
 }
 
-void camera::MergeFrom(const camera& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:movement.camera)
+void camera::MergeFrom(const camera &from) {
+  // @@protoc_insertion_point(class_specific_merge_from_start:movement.camera)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   if (from.has_angular_vel()) {
     set_angular_vel(from.angular_vel());
   }
 }
 
-void camera::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:movement.camera)
-  if (&from == this) return;
+void camera::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
+  // @@protoc_insertion_point(generalized_copy_from_start:movement.camera)
+  if (&from == this)
+    return;
   Clear();
   MergeFrom(from);
 }
 
-void camera::CopyFrom(const camera& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:movement.camera)
-  if (&from == this) return;
+void camera::CopyFrom(const camera &from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:movement.camera)
+  if (&from == this)
+    return;
   Clear();
   MergeFrom(from);
 }
 
 bool camera::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001)
+    return false;
   return true;
 }
 
-void camera::InternalSwap(camera* other) {
+void camera::InternalSwap(camera *other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
@@ -741,42 +817,36 @@ void camera::InternalSwap(camera* other) {
   return GetMetadataStatic();
 }
 
-
 // ===================================================================
 
-void gun::InitAsDefaultInstance() {
-}
+void gun::InitAsDefaultInstance() {}
 class gun::_Internal {
- public:
+public:
   using HasBits = decltype(std::declval<gun>()._has_bits_);
-  static void set_has_left_mag(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-  static void set_has_right_mag(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
+  static void set_has_left_mag(HasBits *has_bits) { (*has_bits)[0] |= 1u; }
+  static void set_has_right_mag(HasBits *has_bits) { (*has_bits)[0] |= 2u; }
 };
 
-gun::gun()
-  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+gun::gun() : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
   // @@protoc_insertion_point(constructor:movement.gun)
 }
-gun::gun(const gun& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _internal_metadata_(nullptr),
+gun::gun(const gun &from)
+    : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&left_mag_, &from.left_mag_,
-    static_cast<size_t>(reinterpret_cast<char*>(&right_mag_) -
-    reinterpret_cast<char*>(&left_mag_)) + sizeof(right_mag_));
+           static_cast<size_t>(reinterpret_cast<char *>(&right_mag_) -
+                               reinterpret_cast<char *>(&left_mag_)) +
+               sizeof(right_mag_));
   // @@protoc_insertion_point(copy_constructor:movement.gun)
 }
 
 void gun::SharedCtor() {
-  ::memset(&left_mag_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&right_mag_) -
-      reinterpret_cast<char*>(&left_mag_)) + sizeof(right_mag_));
+  ::memset(&left_mag_, 0,
+           static_cast<size_t>(reinterpret_cast<char *>(&right_mag_) -
+                               reinterpret_cast<char *>(&left_mag_)) +
+               sizeof(right_mag_));
 }
 
 gun::~gun() {
@@ -784,71 +854,77 @@ gun::~gun() {
   SharedDtor();
 }
 
-void gun::SharedDtor() {
-}
+void gun::SharedDtor() {}
 
-void gun::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const gun& gun::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_gun_proto_2fcommon_2fcmd_5fvel_2eproto.base);
+void gun::SetCachedSize(int size) const { _cached_size_.Set(size); }
+const gun &gun::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(
+      &::scc_info_gun_proto_2fcommon_2fcmd_5fvel_2eproto.base);
   return *internal_default_instance();
 }
 
-
 void gun::Clear() {
-// @@protoc_insertion_point(message_clear_start:movement.gun)
+  // @@protoc_insertion_point(message_clear_start:movement.gun)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
-    ::memset(&left_mag_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&right_mag_) -
-        reinterpret_cast<char*>(&left_mag_)) + sizeof(right_mag_));
+    ::memset(&left_mag_, 0,
+             static_cast<size_t>(reinterpret_cast<char *>(&right_mag_) -
+                                 reinterpret_cast<char *>(&left_mag_)) +
+                 sizeof(right_mag_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* gun::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+const char *
+gun::_InternalParse(const char *ptr,
+                    ::PROTOBUF_NAMESPACE_ID::internal::ParseContext *ctx) {
+#define CHK_(x)                                                                \
+  if (PROTOBUF_PREDICT_FALSE(!(x)))                                            \
+  goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // required int32 left_mag = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          _Internal::set_has_left_mag(&has_bits);
-          left_mag_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // required int32 right_mag = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          _Internal::set_has_right_mag(&has_bits);
-          right_mag_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
+    // required int32 left_mag = 1;
+    case 1:
+      if (PROTOBUF_PREDICT_TRUE(
+              static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+        _Internal::set_has_left_mag(&has_bits);
+        left_mag_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+        CHK_(ptr);
+      } else
+        goto handle_unusual;
+      continue;
+    // required int32 right_mag = 2;
+    case 2:
+      if (PROTOBUF_PREDICT_TRUE(
+              static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+        _Internal::set_has_right_mag(&has_bits);
+        right_mag_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+        CHK_(ptr);
+      } else
+        goto handle_unusual;
+      continue;
+    default: {
+    handle_unusual:
+      if ((tag & 7) == 4 || tag == 0) {
+        ctx->SetLastTag(tag);
+        goto success;
       }
-    }  // switch
-  }  // while
+      ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+      CHK_(ptr != nullptr);
+      continue;
+    }
+    } // switch
+  }   // while
 success:
   _has_bits_.Or(has_bits);
   return ptr;
@@ -857,52 +933,60 @@ failure:
   goto success;
 #undef CHK_
 }
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+#else // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool gun::MergePartialFromCodedStream(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream *input) {
+#define DO_(EXPRESSION)                                                        \
+  if (!PROTOBUF_PREDICT_TRUE(EXPRESSION))                                      \
+  goto failure
   ::PROTOBUF_NAMESPACE_ID::uint32 tag;
   // @@protoc_insertion_point(parse_start:movement.gun)
   for (;;) {
-    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p =
+        input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 left_mag = 1;
-      case 1: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
-          _Internal::set_has_left_mag(&_has_bits_);
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
-                 input, &left_mag_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
+    if (!p.second)
+      goto handle_unusual;
+    switch (
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(
+            tag)) {
+    // required int32 left_mag = 1;
+    case 1: {
+      if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
+        _Internal::set_has_left_mag(&_has_bits_);
+        DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+             ::PROTOBUF_NAMESPACE_ID::int32,
+             ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+            input, &left_mag_)));
+      } else {
+        goto handle_unusual;
       }
+      break;
+    }
 
-      // required int32 right_mag = 2;
-      case 2: {
-        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
-          _Internal::set_has_right_mag(&_has_bits_);
-          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
-                 input, &right_mag_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
+    // required int32 right_mag = 2;
+    case 2: {
+      if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
+        _Internal::set_has_right_mag(&_has_bits_);
+        DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+             ::PROTOBUF_NAMESPACE_ID::int32,
+             ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32>(
+            input, &right_mag_)));
+      } else {
+        goto handle_unusual;
       }
+      break;
+    }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
+    default: {
+    handle_unusual:
+      if (tag == 0) {
+        goto success;
       }
+      DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+          input, tag, _internal_metadata_.mutable_unknown_fields()));
+      break;
+    }
     }
   }
 success:
@@ -913,23 +997,25 @@ failure:
   return false;
 #undef DO_
 }
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+#endif // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
 void gun::SerializeWithCachedSizes(
-    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream *output) const {
   // @@protoc_insertion_point(serialize_start:movement.gun)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required int32 left_mag = 1;
   if (cached_has_bits & 0x00000001u) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(1, this->left_mag(), output);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(
+        1, this->left_mag(), output);
   }
 
   // required int32 right_mag = 2;
   if (cached_has_bits & 0x00000002u) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(2, this->right_mag(), output);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32(
+        2, this->right_mag(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -939,104 +1025,109 @@ void gun::SerializeWithCachedSizes(
   // @@protoc_insertion_point(serialize_end:movement.gun)
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* gun::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+::PROTOBUF_NAMESPACE_ID::uint8 *gun::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8 *target) const {
   // @@protoc_insertion_point(serialize_to_array_start:movement.gun)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
   // required int32 left_mag = 1;
   if (cached_has_bits & 0x00000001u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->left_mag(), target);
+    target =
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(
+            1, this->left_mag(), target);
   }
 
   // required int32 right_mag = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->right_mag(), target);
+    target =
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(
+            2, this->right_mag(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::
+        SerializeUnknownFieldsToArray(_internal_metadata_.unknown_fields(),
+                                      target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:movement.gun)
   return target;
 }
 
 size_t gun::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:movement.gun)
+  // @@protoc_insertion_point(required_fields_byte_size_fallback_start:movement.gun)
   size_t total_size = 0;
 
   if (has_left_mag()) {
     // required int32 left_mag = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->left_mag());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->left_mag());
   }
 
   if (has_right_mag()) {
     // required int32 right_mag = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->right_mag());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->right_mag());
   }
 
   return total_size;
 }
 size_t gun::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:movement.gun)
+  // @@protoc_insertion_point(message_byte_size_start:movement.gun)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+            _internal_metadata_.unknown_fields());
   }
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) ==
+      0) { // All required fields are present.
     // required int32 left_mag = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->left_mag());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->left_mag());
 
     // required int32 right_mag = 2;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->right_mag());
+    total_size +=
+        1 + ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+                this->right_mag());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void gun::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:movement.gun)
+void gun::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
+  // @@protoc_insertion_point(generalized_merge_from_start:movement.gun)
   GOOGLE_DCHECK_NE(&from, this);
-  const gun* source =
-      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<gun>(
-          &from);
+  const gun *source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<gun>(&from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:movement.gun)
+    // @@protoc_insertion_point(generalized_merge_from_cast_fail:movement.gun)
     ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:movement.gun)
+    // @@protoc_insertion_point(generalized_merge_from_cast_success:movement.gun)
     MergeFrom(*source);
   }
 }
 
-void gun::MergeFrom(const gun& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:movement.gun)
+void gun::MergeFrom(const gun &from) {
+  // @@protoc_insertion_point(class_specific_merge_from_start:movement.gun)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  (void)cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -1050,26 +1141,29 @@ void gun::MergeFrom(const gun& from) {
   }
 }
 
-void gun::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:movement.gun)
-  if (&from == this) return;
+void gun::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message &from) {
+  // @@protoc_insertion_point(generalized_copy_from_start:movement.gun)
+  if (&from == this)
+    return;
   Clear();
   MergeFrom(from);
 }
 
-void gun::CopyFrom(const gun& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:movement.gun)
-  if (&from == this) return;
+void gun::CopyFrom(const gun &from) {
+  // @@protoc_insertion_point(class_specific_copy_from_start:movement.gun)
+  if (&from == this)
+    return;
   Clear();
   MergeFrom(from);
 }
 
 bool gun::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003)
+    return false;
   return true;
 }
 
-void gun::InternalSwap(gun* other) {
+void gun::InternalSwap(gun *other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
@@ -1081,18 +1175,23 @@ void gun::InternalSwap(gun* other) {
   return GetMetadataStatic();
 }
 
-
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace movement
+} // namespace movement
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::movement::drive_train* Arena::CreateMaybeMessage< ::movement::drive_train >(Arena* arena) {
-  return Arena::CreateInternal< ::movement::drive_train >(arena);
+template <>
+PROTOBUF_NOINLINE ::movement::drive_train *
+Arena::CreateMaybeMessage<::movement::drive_train>(Arena *arena) {
+  return Arena::CreateInternal<::movement::drive_train>(arena);
 }
-template<> PROTOBUF_NOINLINE ::movement::camera* Arena::CreateMaybeMessage< ::movement::camera >(Arena* arena) {
-  return Arena::CreateInternal< ::movement::camera >(arena);
+template <>
+PROTOBUF_NOINLINE ::movement::camera *
+Arena::CreateMaybeMessage<::movement::camera>(Arena *arena) {
+  return Arena::CreateInternal<::movement::camera>(arena);
 }
-template<> PROTOBUF_NOINLINE ::movement::gun* Arena::CreateMaybeMessage< ::movement::gun >(Arena* arena) {
-  return Arena::CreateInternal< ::movement::gun >(arena);
+template <>
+PROTOBUF_NOINLINE ::movement::gun *
+Arena::CreateMaybeMessage<::movement::gun>(Arena *arena) {
+  return Arena::CreateInternal<::movement::gun>(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

@@ -8,7 +8,6 @@
 #include <unistd.h>
 
 int main() {
-  
 
   std::cout << "Hi there" << std::endl;
   std::unique_ptr<ZMQControlClient> a = std::make_unique<ZMQControlClient>();

@@ -19,8 +19,9 @@ int main() {
   dt.serialize_to_string(&val_to_serve);
 
   a->serve("tcp://*:5555",
-           [&val_to_serve](const std::string &v) -> std::string { return val_to_serve; });
-
+           [&val_to_serve](const std::string &v) -> std::string {
+             return val_to_serve;
+           });
 
   std::cout << "Sleeping" << std::endl;
   sleep(10);
