@@ -9,4 +9,4 @@ build*/
 venv*/
 *compile_commands*
 */*.venv
-./cpp/third_party/*
+*cpp/third_party/*
