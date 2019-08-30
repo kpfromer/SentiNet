@@ -30,13 +30,7 @@ enum { LLOG_TRACE, LLOG_DEBUG, LLOG_INFO, LLOG_WARN, LLOG_ERROR, LLOG_FATAL };
 #define log_error(...) log_log(LLOG_ERROR, __FILE__, __LINE__, __VA_ARGS__)
 #define log_fatal(...) log_log(LLOG_FATAL, __FILE__, __LINE__, __VA_ARGS__)
 
-void log_set_udata(void *udata);
-void log_set_lock(log_LockFn fn);
-void log_set_fp(FILE *fp);
-void log_set_level(int level);
-void log_set_quiet(int enable);
-
-void log_log(int level, const char *file, int line, const char *fmt, ...);
+static void log_log(int level, const char *file, int line, const char *fmt, ...);
 
 static struct {
   void *udata;
@@ -66,17 +60,17 @@ static void unlock(void) {
   }
 }
 
-void log_set_udata(void *udata) { L.udata = udata; }
+static void log_set_udata(void *udata) { L.udata = udata; }
 
-void log_set_lock(log_LockFn fn) { L.lock = fn; }
+static void log_set_lock(log_LockFn fn) { L.lock = fn; }
 
-void log_set_fp(FILE *fp) { L.fp = fp; }
+static void log_set_fp(FILE *fp) { L.fp = fp; }
 
-void log_set_level(int level) { L.level = level; }
+static void log_set_level(int level) { L.level = level; }
 
-void log_set_quiet(int enable) { L.quiet = enable ? 1 : 0; }
+static void log_set_quiet(int enable) { L.quiet = enable ? 1 : 0; }
 
-void log_log(int level, const char *file, int line, const char *fmt, ...) {
+static void log_log(int level, const char *file, int line, const char *fmt, ...) {
   if (level < L.level) {
     return;
   }

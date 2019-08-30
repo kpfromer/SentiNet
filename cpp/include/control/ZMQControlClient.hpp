@@ -13,8 +13,11 @@
 #include <thread>
 
 // Local includes
+#include "core/utils/logging.hpp"
+#include "core/utils/strings.hpp"
 #include "core/control/ControlClientInterface.hpp"
 #include "control/zhelpers.hpp"
+
 
 /**
  * @brief A ZMQControl Client is an implementation of the Control Client
@@ -31,9 +34,22 @@
  * threads. This is why ZMQ socket thread space exists, to seperate sockets from
  * threads.
  */
+
+namespace utils {
+namespace defaults {
+constexpr auto DEFAULT_SOCKET_PREFIX = "default"; 
+constexpr auto SERVER_TCP_PREFIX = "tcp://*";
+constexpr auto SERVER_UDP_PREFIX = "udp://*";
+constexpr auto LOCAL_HOST_UDP_PREFIX = "udp://127.0.0.1";
+constexpr auto LOCAL_HOST_TCP_PREFIX = "tcp://127.0.0.1";
+constexpr auto DEFAULT_ZMQ_CONTROL_NAME = "ZMQController";
+}
+}
+
+
 class ZMQControlClient : public ControlClientInterface {
 public:
-  ZMQControlClient(int context_ = 1);
+  ZMQControlClient(int context_ = 1, const std::string& yaml_system_file = "empty");
   ~ZMQControlClient() {}
 
 public: // TODO Take these out and put htme in controlbase interface
@@ -51,7 +67,7 @@ public:
    *
    * @return status
    */
-  bool initialize_publisher();
+  bool initialize_publisher(const std::string& address);
 
   /**
    * @brief Refer to initialize_publisher
@@ -257,8 +273,60 @@ private:
     map[sock_addr]->socket = std::make_unique<::zmq::socket_t>(context, type);
     return *map[sock_addr];
   }
+
+/*
+
+  ///////////////////////////////////// Specific Functions for ZMQ CC /////////////////////////////
+  public:
+
+    bool publish(const std::string& topic, const std::string& message, const std::chrono::microseconds period) {
+      return publish(::utils
+    }
+
+    bool publish(const std::string& topic, std::function<std::string&(void)> get_message_to_publish);
+
+    template <typename T>
+    T subscribe(const std::string& topic, std::function<T(const std::string& message)> callback);
+
+    bool serve(const std::string& address, const std::string& message);
+    
+    template <typename T>
+    T serve(const std::string& address, std::function<std::string&(const T&)> get_message_to_serve);
+*/
 };
 
 // Initialize static socket thread space with default constructor
 
 #endif /* end of include guard ZMQCONTROLCLIENT_HPP */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

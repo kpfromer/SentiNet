@@ -62,9 +62,9 @@ def GLPDC(path,pHeadings,position,velocity,backwards):
 		turn_ratio=h_dev/np.pi*(-1)**backwards
 
 	return [throttle, turn_ratio]
-start=[0,0]
+start=[3, 0]
 end=np.array([5,5])
-att=[2,-2]
+att=[1,-9]
 M,dM=Bez_Cur(start,end,att,1)
 pos=np.array([3.,0.,0.])
 vel=np.array([0.,0.])

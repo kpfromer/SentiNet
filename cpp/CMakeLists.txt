@@ -1,7 +1,6 @@
 project(cpp)
 
 # models is a protoc library
-add_subdirectory(models)
 # add_subdirectory(third_party)
 
 # Find the necessary libraries
@@ -25,6 +24,18 @@ set(CONTROL_LIB control)
 add_library(${CONTROL_LIB} STATIC ${CONTROL_SRC})
 target_link_libraries(${CONTROL_LIB} ${MESSAGES_LIB} ${ZMQ_LIB} ${PTHREAD_LIB})
 
+file(GLOB_RECURSE KERNEL_SRC "${PROJECT_SOURCE_DIR}/src/kernel/*.cpp")
+set(KERNEL_LIB kernel)
+add_library(${KERNEL_LIB} STATIC ${KERNEL_SRC})
+target_link_libraries(${KERNEL_LIB})
+
+
+add_executable(serial_example "${PROJECT_SOURCE_DIR}/src/impl/kernel_examples/serial_example.cpp")
+target_link_libraries(serial_example ${KERNEL_LIB})
+
+add_executable(kermit "${PROJECT_SOURCE_DIR}/src/impl/examples/kermit.cpp")
+target_link_libraries(kermit ${KERNEL_LIB} ${CONTROL_LIB} ${YAML_CPP})
+
 # Create a static core library for sentinet core
 # file(GLOB_RECURSE CORE_SRC_FILES "${PROJECT_SOURCE_DIR}/src/core/*.cpp")
 # set(CORE_LIB core)
@@ -32,9 +43,6 @@ target_link_libraries(${CONTROL_LIB} ${MESSAGES_LIB} ${ZMQ_LIB} ${PTHREAD_LIB})
 # target_link_libraries(${CORE_LIB} ${MESSAGES_LIB} ${ZMQ_LIB} ${PTHREAD_LIB})
 
 # Create an implementation specific
-
-
-
 # add_executable(run1 "${SRC_DIR}/impl/examples/main_1.cpp")
 # target_link_libraries(run1 ${NETWORKING_LIB})
 #

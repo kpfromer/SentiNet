@@ -6,6 +6,7 @@ project(SENTINET VERSION 0.0.1 LANGUAGES C CXX)
 # Some global paths 
 set(CPP_SRC "${PROJECT_SOURCE_DIR}/cpp")
 set(PYTHON_SRC "${PROJECT_SOURCE_DIR}/python")
+set(MODELS_SRC "${PROJECT_SOURCE_DIR}/models")
 
 include(${CMAKE_ROOT}/Modules/ExternalProject.cmake)
 include(${PROJECT_SOURCE_DIR}/.cmake/cpp.cmake)
@@ -37,6 +38,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/x86_64/bin)
 # Build documentation
 option(BUILD_DOCS "Build the documentation" OFF)
 option(BUILD_DEPENDENCIES "Build external dependencies" OFF)
+option(BUILD_MODEL "Generate model files from protobuf" OFF)
 
 # TODO Fix this
 if(${BUILD_DOCS})
@@ -61,6 +63,7 @@ if(${BUILD_DOCS})
     message("Doxygen needs to be installed for doxygen documentation")
   endif(DOXYGEN_FOUND)
 else()
+  add_subdirectory(${MODELS_SRC})
   add_subdirectory(${CPP_SRC})
 endif()
 

@@ -71,6 +71,7 @@ private:
     int bytes;
     char *buffer;
     termios toptions;
+    termios old_options;
   } SerialProperties;
 
   const std::vector<int> close_signals;

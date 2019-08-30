@@ -4,7 +4,7 @@
  * @created     : Friday Aug 23, 2019 16:05:46 MDT
  */
 
-#include "messages/common/DriveTrain.hpp"
+#include "messages/common/CmdVel.hpp"
 
 DriveTrain::DriveTrain() {
   message = std::make_unique<movement::drive_train>();

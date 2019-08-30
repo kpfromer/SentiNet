@@ -33,11 +33,35 @@
 
 // Local Includes
 
+/**
+ * @brief Control Client interface is the communication client in the Control Base application
+ *
+ * This is a pure interface class. The object oriented approach is going to allow flexibility with the
+ * type of communication clients that are implimented. However, we should not get too carried away with an 
+ * object oriented approach. I thought about adding helper functions to this class, but each Control
+ * client will have its own resources that it is utilizing. Thus, I'm keeping only the base functions
+ * so that CCs have something to derrive from. If anything, this is a template for how to publish onto a 
+ * certain control client.
+ */
 class ControlClientInterface {
 public:
   virtual ~ControlClientInterface() = default;
 
+  /**
+   * @brief A pure virtual way to start and stop a CC. This should be up to the developer
+   *
+   * Start and stop are both dependent on the application, they are purely virtual to encourage the
+   * developer to impliment a method for terminating their CC. 
+   *
+   * @return Status of start
+   */
   virtual bool start() = 0;
+
+  /**
+   * @brief Quit should return satisfactorily and clean up all thread or publishing objects
+   *
+   * @return Status of quit
+   */
   virtual bool quit() = 0;
 
   /**
@@ -49,6 +73,7 @@ public:
    * serve
    * request
    */
+
   ////////////////////////// Publish Methods /////////////////////////////
   /**
    * Simple publisher - publishes message to topic
@@ -153,56 +178,5 @@ public:
                      std::function<std::string(void)> callback) = 0;
 
   virtual bool terminate_server(const std::string &address) = 0;
-  /////////////////////////////// FUNCTIONALITY ///////////////////////////
-  /**
-   * These are the most used functions, utilizing helper functions
-   * and defaults so that a developer doesn't have to pass all the parameters to
-   * the functions
-   */
-
-  // TODO I would like to change the utils things - so that all defaults are
-  // local
-  /*
-    inline bool
-    publish(const int &port, std::string &topic,
-            const std::function<std::string &(void)> &get_data_to_publish,
-            const std::chrono::microseconds &period) {
-
-      return publish(
-          ::utils::strings::join_d(":", ::utils::defaults::SERVER_TCP_PREFIX),
-          topic, get_data_to_publish, period);
-    }
-
-    inline bool
-    publish(std::string &topic,
-            const std::function<std::string &(void)> &get_data_to_publish,
-            const std::chrono::microseconds &period) {
-
-      return publish(
-          ::utils::strings::join_d(":", ::utils::defaults::SERVER_TCP_PREFIX,
-    ::utils::ports::get_port("publisher")), topic, get_data_to_publish, period);
-    }
-
-     // Pass a port and callback
-    inline bool serve(const int &port,
-                      std::function<std::string(void)> &callback) {
-      return serve(
-          utils::strings::join_d(':', utils::defaults::SERVER_TCP_PREFIX, port);
-          callback);
-    }
-
-    // Pass just a callback
-    inline bool serve(std::function<std::string(void)> &callback){
-      return serve(
-          utils::strings::join(":", utils::defaults::SERVER_TCP_PREFIX,
-    utils::ports::get_port("server")), callback);
-    }
-    // Inline when a port is supplied instead of address
-    inline bool serve(const int &port,
-                      std::function<std::string(const std::string &)> &callback)
-    { return serve( utils::strings::join(utils::defaults::SERVER_TCP_PREFIX,
-    port, ":"), callback);
-    }
-    */
 };
 #endif /* end of include guard CONTROLINTERFACE_HPP */

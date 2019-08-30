@@ -5,6 +5,8 @@
  */
 
 #include "kernel/SerialPort.hpp"
+#include <iostream>
+
 
 SerialPort::SerialPort(const std::string &port, const int &baud,
                        const int &bytes)
@@ -127,6 +129,9 @@ bool SerialPort::open() {
   if (properties.baud == 0)
     return false;
 
+  // Make a copy to revert to origional
+  properties.old_options = properties.toptions;
+
   cfsetispeed(&properties.toptions, properties.baud);
   cfsetospeed(&properties.toptions, properties.baud);
 
@@ -149,12 +154,16 @@ bool SerialPort::open() {
 }
 
 bool SerialPort::close() {
-  // if already closed
+  // if already close
   if (properties.state == CLOSED)
     return true;
 
   // A small gap here, but necessary
   properties.state = CLOSING;
+
+  // Set the options back to their old options
+  if (tcsetattr(properties.fd, TCSANOW, &properties.old_options) < 0)
+    std::cout<<"Error returning origional options"<<std::endl;
 
   if (::close(properties.fd) < 0)
     return false;
