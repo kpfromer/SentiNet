@@ -8,6 +8,9 @@
 
 #define SERIALPORT_HPP
 
+// Local Includes
+#include "core/kernel/InputOutputInterface.hpp"
+
 // C++ includes
 #include <vector>
 #include <thread>
@@ -22,7 +25,7 @@
 
 static volatile sig_atomic_t signalStatus = 0;
 
-class SerialPort {
+class SerialPort : public InputOutputInterface {
 public:
   SerialPort() = delete;
   SerialPort(const std::string &port, const int &baud,

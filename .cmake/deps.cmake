@@ -1,6 +1,7 @@
 
-set(WII_CONT_VERS "v0.0.3-wip")
-set(WII_CONT_DIR "${CMAKE_SOURCE_DIR}/cpp/third_party/wii-controller-c-${WII_CONT_VERS}")
+set(WII_CONT_VERS "release")
+set(WII_CONT_SUFFIX "v1.0.0")
+set(WII_CONT_DIR "${CMAKE_SOURCE_DIR}/cpp/third_party/wii-controller-c-${WII_CONT_SUFFIX}")
 
 ExternalProject_Add(
   wii-controller-c

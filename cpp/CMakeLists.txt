@@ -16,7 +16,6 @@ include_directories(${wii-controller-c_INCLUDE_DIRS})
 
 # Create a static library for messages
 file(GLOB_RECURSE MSGS_SRC "${PROJECT_SOURCE_DIR}/include/proto/*.cc" "${PROJECT_SOURCE_DIR}/src/messages/*.cpp")
-message(${MSGS_SRC})
 set(MESSAGES_LIB messages)
 add_library(${MESSAGES_LIB} STATIC ${MSGS_SRC})
 target_link_libraries(${MESSAGES_LIB} ${PTHREAD_LIB} ${PROTO_LIB})
