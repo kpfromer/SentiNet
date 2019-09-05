@@ -47,6 +47,8 @@ public:
   void add_camera();
   void add_drive_train(int, int, int);
 
+  void loop();
+
 private:
   std::unique_ptr<robot_s> robot;
   std::unique_ptr<controller_s> controller;

@@ -1,9 +1,8 @@
 
 #include "control/ZMQControlClient.hpp"
-#include "core/utils/system_config.hpp"
-#include "core/utils/logging.hpp"
 
-ZMQControlClient::ZMQControlClient(int context_) : context(context_) {
+ZMQControlClient::ZMQControlClient(int context_, const std::string& yaml_file) 
+  :   context(context_) {
   // By default, no pub or client
   this_publisher = nullptr;
   this_client = nullptr;
@@ -221,6 +220,7 @@ void ZMQControlClient::periodic_publish_thread(
   auto start = std::chrono::steady_clock::now();
   while (exit_signal.wait_for(std::chrono::milliseconds(0)) ==
          std::future_status::timeout) {
+    std::cout<<topic<<std::endl;
     start = std::chrono::steady_clock::now();
     s_sendmore(*socket, topic);
     s_send(*socket, get_data());

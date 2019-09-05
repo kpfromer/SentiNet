@@ -8,7 +8,7 @@
 
 #define MESSAGEFACTORY_HPP
 
-#include "messages/common/DriveTrain.hpp"
+#include "messages/common/CmdVel.hpp"
 #include "messages/debug/DebugMessage.h"
 
 class MessageFactory {

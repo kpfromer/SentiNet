@@ -79,4 +79,3 @@ void WiiController::set_disc_lin_ang() { set_opt(DISCLINANG); }
 
 void WiiController::set_non_lin() { set_opt(NONLIN); }
 
-std::string &WiiController::get_dt() { msg. }
