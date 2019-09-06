@@ -13,10 +13,11 @@
 #include <thread>
 
 // Local includes
-#include "core/utils/system_config.temp"
 #include "core/utils/logging.hpp"
+#include "core/utils/strings.hpp"
 #include "core/control/ControlClientInterface.hpp"
 #include "control/zhelpers.hpp"
+
 
 /**
  * @brief A ZMQControl Client is an implementation of the Control Client
@@ -33,6 +34,19 @@
  * threads. This is why ZMQ socket thread space exists, to seperate sockets from
  * threads.
  */
+
+namespace utils {
+namespace defaults {
+constexpr auto DEFAULT_SOCKET_PREFIX = "default"; 
+constexpr auto SERVER_TCP_PREFIX = "tcp://*";
+constexpr auto SERVER_UDP_PREFIX = "udp://*";
+constexpr auto LOCAL_HOST_UDP_PREFIX = "udp://127.0.0.1";
+constexpr auto LOCAL_HOST_TCP_PREFIX = "tcp://127.0.0.1";
+constexpr auto DEFAULT_ZMQ_CONTROL_NAME = "ZMQController";
+}
+}
+
+
 class ZMQControlClient : public ControlClientInterface {
 public:
   ZMQControlClient(int context_ = 1, const std::string& yaml_system_file = "empty");
@@ -53,7 +67,7 @@ public:
    *
    * @return status
    */
-  bool initialize_publisher();
+  bool initialize_publisher(const std::string& address);
 
   /**
    * @brief Refer to initialize_publisher

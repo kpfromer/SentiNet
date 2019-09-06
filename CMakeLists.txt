@@ -38,6 +38,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/x86_64/bin)
 # Build documentation
 option(BUILD_DOCS "Build the documentation" OFF)
 option(BUILD_DEPENDENCIES "Build external dependencies" OFF)
+option(BUILD_MODEL "Generate model files from protobuf" OFF)
 
 # TODO Fix this
 if(${BUILD_DOCS})

@@ -7,11 +7,13 @@ set(input_dir "-I=.")
 set(output_dir_cpp "--cpp_out=${CPP_SRC}/include")
 set(output_dir_python "--python_out=${PYTHON_SRC}/messages")
 
-execute_process(
-  COMMAND ${proto_cmd} ${PROTO_FILES} ${input_dir} ${output_dir_cpp}
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-)
-execute_process(
-  COMMAND ${proto_cmd} ${PROTO_FILES} ${input_dir} ${output_dir_python}
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-)
+if(${BUILD_MODEL})
+  execute_process(
+    COMMAND ${proto_cmd} ${PROTO_FILES} ${input_dir} ${output_dir_cpp}
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+  )
+  execute_process(
+    COMMAND ${proto_cmd} ${PROTO_FILES} ${input_dir} ${output_dir_python}
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+  )
+endif()

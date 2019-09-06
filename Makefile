@@ -36,3 +36,7 @@ install-deps ::
 setup ::
 	@./scripts/generate setup ./resources/templates
 	@cp ./scripts/generate ~/.sentinet/bin
+
+model ::
+	@${CMAKE_TARGET} -DBUILD_MODEL=ON
+	@${MAKE_TARGET}

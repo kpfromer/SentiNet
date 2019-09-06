@@ -29,11 +29,10 @@ bool ZMQControlClient::quit() {
   return true;
 }
 
-bool ZMQControlClient::initialize_publisher() {
+bool ZMQControlClient::initialize_publisher(const std::string& address) {
   using namespace ::utils;
   this_publisher = std::make_unique<::zmq::socket_t>(context, ZMQ_PUB);
-  this_publisher->bind(strings::join_d(":", defaults::SERVER_TCP_PREFIX,
-                                       ports::get_port("Publisher")));
+  this_publisher->bind(address);
   return true;
 }
 

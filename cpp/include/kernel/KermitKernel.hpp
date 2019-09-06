@@ -12,7 +12,6 @@
 #include "kernel/SerialPort.hpp"
 #include "control/ZMQControlClient.hpp"
 #include "messages/common/CmdVel.hpp"
-#include "core/utils/strings.hpp"
 
 // C++ includes
 #include <memory>
@@ -37,7 +36,7 @@ public:
 
 private:
 
-  bool initialize_control_client(const std::string& address = ::utils::strings::join_d(':', "tcp://localhost*", local_port));
+  bool initialize_control_client(const std::string& address = "tcp://localhost:5555");
 
   void recieve_drive_message(const std::string& drive_message);
 

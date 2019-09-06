@@ -54,7 +54,7 @@ bool KermitKernel::send_data() {
   kermit.buffer[0] = 'd';
   kermit.buffer[1] = kermit.drive.lin;
   kermit.buffer[2] = kermit.drive.ang;
-  kermit.buffer[3] = 0; 
+  kermit.buffer[3] = 0;  // I origionally had gun buffer, that'd be here
   kermit.buffer[4] = 0;
   return kermit.xbee->write(kermit.buffer); // string?
 }
