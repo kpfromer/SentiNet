@@ -1,3 +1,32 @@
+# How to checkout / create / merge a branch
+
+This project is restricted on master and release. You will not be able to commit to these branches. In order to make changes to the project, create a new branch
+
+```bash
+  $ git checkout -b my_new_branch
+  $ git push -u origin my_new_branch
+
+  ... Do stuff - add changes
+
+  $ git add <specific files>
+  $ git status
+  $ git commit -m "my_new_branch: added changes"
+  $ git push
+```
+
+
+
+## IMPORTANT
+Every time you make changes, you need to rebase from master. To see why, remember master is recieving new changes all the time. If you push with an old master, this might cause merge conflicts
+``` bash
+  $ git fetch # not necessary, but I'm showing this here because it's useful to update your branches
+  $ git pull --rebase
+  $ git rebase origin/master
+```
+
+
+
+
 # Build instructions
 
 ### Installing dependencies
