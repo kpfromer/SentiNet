@@ -1,2 +1,3 @@
 from .ControlClient import ControlClient
-from .modules.StateMachine import *
+from .modules.GLPDC import GLPDC, Bez_Cur
+from .StateMachine import *
