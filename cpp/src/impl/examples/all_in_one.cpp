@@ -7,14 +7,17 @@ int main() {
 
   std::string value_to_publish("Hi there");
 
-  a->publish(
-      "tcp://localhost:5555", "Topic",
-      [&]() -> std::string & { return value_to_publish; },
-      std::chrono::milliseconds(1));
 
-  a->subscribe("tcp://localhost:5555", "Topic",
+
+
+  a->publish(
+      "tcp://localhost:5570", "Topic",
+      [&]() -> std::string & { std::cout<<"Seding "<<value_to_publish << std::endl; return value_to_publish; },
+      std::chrono::seconds(1));
+
+  a->subscribe("tcp://localhost:5571", "Topic",
                [&](const std::string &value) -> void {
-                 std::cout << "recieved" << value << std::endl;
+                 std::cout << "recieved " << value << std::endl;
                });
 
   a->serve("tcp://localhost:5556", 

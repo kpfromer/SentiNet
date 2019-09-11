@@ -17,6 +17,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+#include "string_ops.h"
+
 #define LOG_VERSION "0.1.0"
 
 typedef void (*log_LockFn)(void *udata, int lock);
@@ -70,7 +72,22 @@ static void log_set_level(int level) { L.level = level; }
 
 static void log_set_quiet(int enable) { L.quiet = enable ? 1 : 0; }
 
-static void log_log(int level, const char *file, int line, const char *fmt, ...) {
+static void log_log(int level, const char *file_, int line, const char *fmt, ...) {
+
+  char file[20];
+  int index = strlen(file_) - 1;
+  int copy_index;
+  int num_slashes = 0;
+  int i;
+  int num_backwards = 1;
+
+  for(i = index; num_slashes < num_backwards && i >= 0; --i)
+    if(file_[i] == '/')
+      num_slashes++;
+  copy_index = i;
+  memcpy(file, &file_[copy_index + 1], index - copy_index);
+  file[index - copy_index] = '\0';
+
   if (level < L.level) {
     return;
   }
