@@ -16,6 +16,7 @@
 
 // Local includes
 #include "control/zhelpers.hpp"
+#include "core/utils/logging.hpp"
 
 class Publisher_Context {
 
@@ -71,6 +72,7 @@ class Server_Context {
 
   private:
     typedef struct thread_properties {
+      std::string sock_addr;
       std::future<void> exit_signal;
       std::unique_ptr<::zmq::socket_t> socket;
       std::function<std::string(std::string&)> callback;
@@ -92,6 +94,10 @@ class Server_Context {
     inline void set_socket(std::unique_ptr<::zmq::socket_t> socket) {
       properties.socket = std::move(socket);
     }
+
+    inline void set_address(const std::string& address) {
+      properties.sock_addr = address;
+    }
     
     inline void set_callback(std::function<std::string(std::string&)> callback) {
       properties.callback = callback;
@@ -106,6 +112,8 @@ class Subscriber_Context {
 
   private:
     typedef struct thread_properties {
+      std::string topic;
+      std::string address;
       std::future<void> exit_signal;
       std::unique_ptr<::zmq::socket_t> socket;
       std::function<void(std::string&)> callback;
@@ -122,6 +130,14 @@ class Subscriber_Context {
     
     inline void set_exit_signal(std::future<void> exit_signal) {
       properties.exit_signal = std::move(exit_signal);
+    }
+
+    inline void set_sock_addr(const std::string& address) {
+      properties.address = address;
+    }
+
+    inline void set_topic(const std::string& topic) {
+      properties.topic = topic;
     }
 
     inline void set_socket(std::unique_ptr<::zmq::socket_t> socket) {

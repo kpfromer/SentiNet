@@ -213,25 +213,6 @@ private:
     return *map[identifier];
   }
 
-/*
-
-  ///////////////////////////////////// Specific Functions for ZMQ CC /////////////////////////////
-  public:
-
-    bool publish(const std::string& topic, const std::string& message, const std::chrono::microseconds period) {
-      return publish(::utils
-    }
-
-    bool publish(const std::string& topic, std::function<std::string&(void)> get_message_to_publish);
-
-    template <typename T>
-    T subscribe(const std::string& topic, std::function<T(const std::string& message)> callback);
-
-    bool serve(const std::string& address, const std::string& message);
-    
-    template <typename T>
-    T serve(const std::string& address, std::function<std::string&(const T&)> get_message_to_serve);
-*/
 };
 
 // Initialize static socket thread space with default constructor
