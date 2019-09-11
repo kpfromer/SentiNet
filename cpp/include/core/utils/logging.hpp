@@ -118,28 +118,11 @@ static void log_log(int level, const char *file, int line, const char *fmt, ...)
   unlock();
 }
 
-static inline void LOG_TRACE(const std::string &message) {
-  log_trace(message.c_str());
-}
 
-static inline void LOG_DEBUG(const std::string &message) {
-  log_debug(message.c_str());
-}
-
-static inline void LOG_INFO(const std::string &message) {
-  log_info(message.c_str());
-}
-
-static inline void LOG_WARN(const std::string &message) {
-  log_warn(message.c_str());
-}
-
-static inline void LOG_ERROR(const std::string &message) {
-  log_error(message.c_str());
-}
-
-static inline void LOG_FATAL(const std::string &message) {
-  log_fatal(message.c_str());
-}
+#define LOG_TRACE log_trace
+#define LOG_DEBUG log_debug
+#define LOG_INFO  log_info
+#define LOG_WARN  log_warn
+#define LOG_ERROR log_error
 
 #endif /* end of include guard LOGGING_HPP */
