@@ -34,35 +34,41 @@
 // Local Includes
 
 /**
- * @brief Control Client interface is the communication client in the Control Base application
+ * @brief Control Client interface is the communication client in the Control
+ * Base application
  *
- * This is a pure interface class. The object oriented approach is going to allow flexibility with the
- * type of communication clients that are implimented. However, we should not get too carried away with an 
- * object oriented approach. I thought about adding helper functions to this class, but each Control
- * client will have its own resources that it is utilizing. Thus, I'm keeping only the base functions
- * so that CCs have something to derrive from. If anything, this is a template for how to publish onto a 
- * certain control client.
+ * This is a pure interface class. The object oriented approach is going to
+ * allow flexibility with the type of communication clients that are
+ * implimented. However, we should not get too carried away with an object
+ * oriented approach. I thought about adding helper functions to this class, but
+ * each Control client will have its own resources that it is utilizing. Thus,
+ * I'm keeping only the base functions so that CCs have something to derrive
+ * from. If anything, this is a template for how to publish onto a certain
+ * control client.
  */
 class ControlClientInterface {
 public:
   virtual ~ControlClientInterface() = default;
 
   /**
-   * @brief A pure virtual way to start and stop a CC. This should be up to the developer
+   * @brief A pure virtual way to start and stop a CC. This should be up to the
+   * developer
    *
-   * Start and stop are both dependent on the application, they are purely virtual to encourage the
-   * developer to impliment a method for terminating their CC. 
+   * Start and stop are both dependent on the application, they are purely
+   * virtual to encourage the developer to impliment a method for terminating
+   * their CC.
    *
    * @return Status of start
    */
-  virtual bool start() = 0;
+  virtual bool start(int params = 0) = 0;
 
   /**
-   * @brief Quit should return satisfactorily and clean up all thread or publishing objects
+   * @brief Quit should return satisfactorily and clean up all thread or
+   * publishing objects
    *
    * @return Status of quit
    */
-  virtual bool quit() = 0;
+  virtual bool quit(int params = 0) = 0;
 
   /**
    * Core API
@@ -93,6 +99,8 @@ public:
    * Periodic publisher - publishes message obtained at get_data_to_publish and
    * publishes every period
    *
+   * @note it's ok to copy
+   *
    * @param  topic [Topic to publish onto. Note that this is not const as it can
    * be changed]
    * @param  get_data_to_publish [Callback called to obtain the message we want
@@ -101,9 +109,34 @@ public:
    *
    * @return       [status of the publish]
    */
-  virtual bool publish(std::string sock_addr, std::string topic,
+  virtual bool publish(std::string broker_frontend, std::string topic,
                        std::function<std::string &(void)> get_data_to_publish,
-                       std::chrono::microseconds period) = 0;
+                       const std::chrono::microseconds &period) = 0;
+
+  typedef struct publish_params {
+    publish_params() = delete;
+    publish_params(const std::string &broker, const std::string &topic_) {
+      broker_frontend = broker;
+      topic = topic_;
+    }
+    publish_params(const std::string &broker, const std::string &topic_,
+                   std::function<std::string &(void)> get_data_,
+                   const std::chrono::microseconds period_) {
+      broker_frontend = broker;
+      topic = topic_;
+      get_data = get_data_;
+      period = period_;
+    }
+    std::string broker_frontend;
+    std::string topic;
+    std::function<std::string &(void)> get_data;
+    std::chrono::microseconds period;
+  } publish_params;
+
+  bool request(publish_params &params) {
+    return publish(params.broker_frontend, params.topic, params.get_data,
+                   params.period);
+  }
 
   virtual bool cancel_periodic_publisher(const std::string &) = 0;
 
@@ -131,11 +164,24 @@ public:
    */
   virtual bool
   request(std::string &destination, // Destination can change (not const)
-          std::function<std::string &(void)> get_data_to_request,
+          std::function<std::string &(const std::string &)> get_data_to_request,
           std::function<void(const std::string &)> action_to_recieved_data,
           const std::chrono::microseconds &period) = 0;
 
+  typedef struct {
+    std::string destination;
+    std::function<std::string &(const std::string &)> get_data_to_request;
+    std::function<void(const std::string &)> callback;
+    const std::chrono::microseconds period;
+  } periodic_request_parameters;
+
+  bool request(periodic_request_parameters &params) {
+    return request(params.destination, params.get_data_to_request,
+                   params.callback, params.period);
+  }
+
   virtual bool cancel_periodic_request(const std::string &) = 0;
+
   ////////////////////////// Subscribe Methods /////////////////////////////
   /**
    * Subscribe to a topic with a specified callback
