@@ -36,6 +36,8 @@ target_link_libraries(serial_example ${KERNEL_LIB})
 add_executable(kermit "${PROJECT_SOURCE_DIR}/src/impl/examples/kermit.cpp")
 target_link_libraries(kermit ${KERNEL_LIB} ${CONTROL_LIB} ${YAML_CPP})
 
+add_executable(all_in_one "${PROJECT_SOURCE_DIR}/src/impl/examples/all_in_one.cpp")
+target_link_libraries(all_in_one ${KERNEL_LIB} ${CONTROL_LIB} ${YAML_CPP})
 # Create a static core library for sentinet core
 # file(GLOB_RECURSE CORE_SRC_FILES "${PROJECT_SOURCE_DIR}/src/core/*.cpp")
 # set(CORE_LIB core)

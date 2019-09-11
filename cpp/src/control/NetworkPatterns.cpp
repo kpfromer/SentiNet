@@ -67,6 +67,7 @@ void Subscriber_Context::subscription_thread(thread_properties &properties) {
   std::string preallocated_message_string;
 
   ::zmq::pollitem_t item = {static_cast<void*>(*socket.get()), 0, ZMQ_POLLIN, 0};
+  LOG_INFO("Subscriber thread has been started on topic %s", properties.topic.c_str());
 
   while(exit_signal.wait_for(std::chrono::milliseconds(0)) == std::future_status::timeout) {
     zmq::poll(&item, 1, 100);
@@ -76,6 +77,8 @@ void Subscriber_Context::subscription_thread(thread_properties &properties) {
       callback(preallocated_message_string);
     }
   }
+
+  LOG_INFO("Subscriber thread has been terminated on topic %s", properties.topic.c_str());
 }
 
 void Requester_Context::requester_thread(thread_properties& properties) {

@@ -70,20 +70,20 @@ bool ZMQControlClient::publish(
 
   // Create a future promise to exit the thread
   auto futureObj = val.exit_signal.get_future();
-  auto context = std::make_unique<Publisher_Context>();
+  auto pub_context = std::make_unique<Publisher_Context>();
 
   // Set publisher context properties
-  context->set_sock_addr(sock_addr);
-  context->set_exit_signal(std::move(futureObj));
-  context->set_socket(std::move(val.socket));
-  context->set_topic(topic);
-  context->set_data_request_callback(get_data_to_publish);
-  context->set_period(period);
+  pub_context->set_sock_addr(sock_addr);
+  pub_context->set_exit_signal(std::move(futureObj));
+  pub_context->set_socket(std::move(val.socket));
+  pub_context->set_topic(topic);
+  pub_context->set_data_request_callback(get_data_to_publish);
+  pub_context->set_period(period);
 
   // Create a new thread - attatched to periodic  publisher
   val.thread = std::make_unique<std::thread>(
       &ZMQControlClient::periodic_publish_thread,
-      std::move(context));
+      std::move(pub_context));
   return true;
 }
 
@@ -123,18 +123,18 @@ bool ZMQControlClient::request(
 
   // Create a future promise to exit
   auto &&futureObj = val.exit_signal.get_future();
-  auto context = std::make_unique<Requester_Context>();
+  auto req_context = std::make_unique<Requester_Context>();
 
-  context->set_exit_signal(std::move(futureObj));
-  context->set_socket(std::move(val.socket));
-  context->set_data_request(get_data_to_request);
-  context->set_callback(action_to_recieved_data);
-  context->set_period(period);
+  req_context->set_exit_signal(std::move(futureObj));
+  req_context->set_socket(std::move(val.socket));
+  req_context->set_data_request(get_data_to_request);
+  req_context->set_callback(action_to_recieved_data);
+  req_context->set_period(period);
 
   // Our main thread
   val.thread = std::make_unique<std::thread>(
       &ZMQControlClient::periodic_request_thread, 
-      std::move(context));
+      std::move(req_context));
   return true;
 }
 
@@ -149,6 +149,7 @@ bool ZMQControlClient::subscribe(
     const std::string sock_addr, const std::string topic,
     std::function<void(std::string &)> callback) {
 
+
   auto &&found = thread_space.subscribers.find(topic);
 
   if (found != thread_space.subscribers.end()) {
@@ -160,17 +161,17 @@ bool ZMQControlClient::subscribe(
 
   auto &&futureObj = val.exit_signal.get_future();
 
-  auto context = std::make_unique<Subscriber_Context>();
+  auto sub_context = std::make_unique<Subscriber_Context>();
   
-  context->set_exit_signal(std::move(futureObj));
-  context->set_socket(std::move(val.socket));
-  context->set_callback(callback);
-  context->set_sock_addr(sock_addr);
-  context->set_topic(topic);
+  sub_context->set_exit_signal(std::move(futureObj));
+  sub_context->set_socket(std::move(val.socket));
+  sub_context->set_callback(callback);
+  sub_context->set_sock_addr(sock_addr);
+  sub_context->set_topic(topic);
 
   val.thread = std::make_unique<std::thread>(
       &ZMQControlClient::subscription_thread, 
-      std::move(context));
+      std::move(sub_context));
 
   return true;
 }
@@ -186,6 +187,7 @@ bool ZMQControlClient::serve(
     const std::string address,
     std::function<std::string(std::string &)> callback) {
 
+  
   auto &&found = thread_space.servers.find(address);
   if (found != thread_space.servers.end()) {
     std::cout << "Already have a server there bud" << std::endl;
@@ -195,16 +197,16 @@ bool ZMQControlClient::serve(
   auto &&val = create_socket(ZMQ_REP, thread_space.servers, address);
   auto &&futureObj = val.exit_signal.get_future();
   
-  auto context = std::make_unique<Server_Context>();
+  auto serv_context = std::make_unique<Server_Context>();
   
-  context->set_address(address);
-  context->set_exit_signal(std::move(futureObj));
-  context->set_socket(std::move(val.socket));
-  context->set_callback(callback);
+  serv_context->set_address(address);
+  serv_context->set_exit_signal(std::move(futureObj));
+  serv_context->set_socket(std::move(val.socket));
+  serv_context->set_callback(callback);
 
   val.thread = std::make_unique<std::thread>(
       &ZMQControlClient::server_thread, 
-      std::move(context));
+      std::move(serv_context));
   return true;
 }
 

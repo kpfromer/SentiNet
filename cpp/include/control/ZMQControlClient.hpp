@@ -207,10 +207,10 @@ private:
   template <typename T>
   inline socket_thread_space &create_socket(int type, T &map,
                                             const std::string identifier) {
-    auto socket_thread = std::make_unique<socket_thread_space>();
+    socket_thread_space socket_thread;
     map.emplace(identifier, std::move(socket_thread));
-    map[identifier]->socket = std::make_unique<::zmq::socket_t>(context, type);
-    return *map[identifier];
+    map[identifier].socket = std::make_unique<::zmq::socket_t>(context, type);
+    return map[identifier];
   }
 
 };

@@ -1,5 +1,5 @@
 
-#include "networking/zmq/ZMQControlClient.hpp"
+#include "control/ZMQControlClient.hpp"
 
 int main() {
 
@@ -8,7 +8,7 @@ int main() {
   std::string value_to_publish("Hi there");
 
   a->publish(
-      "tcp://*:5555", "Topic",
+      "tcp://localhost:5555", "Topic",
       [&]() -> std::string & { return value_to_publish; },
       std::chrono::milliseconds(1));
 
@@ -16,6 +16,11 @@ int main() {
                [&](const std::string &value) -> void {
                  std::cout << "recieved" << value << std::endl;
                });
+
+  a->serve("tcp://localhost:5556", 
+      [] (std::string& val) -> std::string { 
+          std::cout<<"Got one"; 
+          return val; });
 
   sleep(10);
   a->quit();
