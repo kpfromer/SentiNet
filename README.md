@@ -78,6 +78,7 @@ Artifacts are placed in ./build/x86_64/bin
 ``` bash
 # example running an artifact
 $ ./build/x86_64/bin/<example name>
+$ ./build/x86_64/bin/proxy # starts the proxy, There are a lot of things I need to fix on proxy, but for now its a seperate app
 ```
 
 #  Directory structure
