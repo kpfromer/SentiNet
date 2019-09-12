@@ -124,6 +124,60 @@ Of course, this could be in two seperate processes. One for a publisher and one 
 
 This example uses publisher subscriber, but this can also be serve request (will add an example in the future, somewhat more complex here)
 
+
+```cpp
+#include "control/ZMQControlClient.hpp"
+
+int main() {
+  
+  // Two demonstrate, this will be the value that we publish
+  std::string value("Well hello there");
+
+  // Publish params are nice packets of publisher data that we can  spin up
+  publish_params a;
+  // Assign it to a front end address on a broker
+  a.broker_frontend = "tcp://localhost:5570";
+  // Assign a topic
+  a.topic = "Topic";
+  // Assign a callback (this is in the form of std::string (void) so a regular function
+  // will do just fine as well)
+  a.get_data = [&value] (void) -> std::string {
+    std::cout<<"Sending: "<<value<<std::endl;
+    return value;
+  };  
+  // Set the period - defauts to 100 microseconds
+  a.period = std::chrono::seconds(1);
+
+  // Create a new subscriber param set
+  subscribe_params b;
+  // Attatch a callback
+  b.callback = [] (std::string& val) -> void {
+    std::cout<< "Recieved " << val << std::endl;
+  };  
+  // Assign a backend address
+  b.socket_backend = "tcp://localhost:5571";
+  // Assign a topic
+  b.topic = "Topic";
+
+  // Make a new control client
+  auto cc = std::make_unique<ZMQControlClient>();
+
+  // Now, all you have to do is spin up a new thingy
+  cc->spin(b);
+  cc->spin(a);
+
+  // Sleep because this is asynchronous
+  sleep(10);
+
+  // ALWAYS quit
+  cc->quit();
+
+  return 0;
+}
+```
+
+
+# DEPRECIATED USE THE ABOVE EXAMPLE USING PARAMS
 ```cpp
 // Include Control Client (ZMQ Is just 1 implimentation of CC)
 #include "networking/zmq/ZMQControlClient.hpp"

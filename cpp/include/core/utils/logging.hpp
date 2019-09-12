@@ -32,7 +32,8 @@ enum { LLOG_TRACE, LLOG_DEBUG, LLOG_INFO, LLOG_WARN, LLOG_ERROR, LLOG_FATAL };
 #define log_error(...) log_log(LLOG_ERROR, __FILE__, __LINE__, __VA_ARGS__)
 #define log_fatal(...) log_log(LLOG_FATAL, __FILE__, __LINE__, __VA_ARGS__)
 
-static void log_log(int level, const char *file, int line, const char *fmt, ...);
+static void log_log(int level, const char *file, int line, const char *fmt,
+                    ...);
 
 static struct {
   void *udata;
@@ -72,7 +73,8 @@ static void log_set_level(int level) { L.level = level; }
 
 static void log_set_quiet(int enable) { L.quiet = enable ? 1 : 0; }
 
-static void log_log(int level, const char *file_, int line, const char *fmt, ...) {
+static void log_log(int level, const char *file_, int line, const char *fmt,
+                    ...) {
 
   char file[20];
   int index = strlen(file_) - 1;
@@ -81,8 +83,8 @@ static void log_log(int level, const char *file_, int line, const char *fmt, ...
   int i;
   int num_backwards = 1;
 
-  for(i = index; num_slashes < num_backwards && i >= 0; --i)
-    if(file_[i] == '/')
+  for (i = index; num_slashes < num_backwards && i >= 0; --i)
+    if (file_[i] == '/')
       num_slashes++;
   copy_index = i;
   memcpy(file, &file_[copy_index + 1], index - copy_index);
@@ -135,11 +137,10 @@ static void log_log(int level, const char *file_, int line, const char *fmt, ...
   unlock();
 }
 
-
 #define LOG_TRACE log_trace
 #define LOG_DEBUG log_debug
-#define LOG_INFO  log_info
-#define LOG_WARN  log_warn
+#define LOG_INFO log_info
+#define LOG_WARN log_warn
 #define LOG_ERROR log_error
 
 #endif /* end of include guard LOGGING_HPP */

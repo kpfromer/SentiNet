@@ -7,7 +7,6 @@
 #include "kernel/SerialPort.hpp"
 #include <iostream>
 
-
 SerialPort::SerialPort(const std::string &port, const int &baud,
                        const int &bytes)
     : close_signals({SIGQUIT, SIGKILL, SIGINT}), properties(bytes) {
@@ -163,7 +162,7 @@ bool SerialPort::close() {
 
   // Set the options back to their old options
   if (tcsetattr(properties.fd, TCSANOW, &properties.old_options) < 0)
-    std::cout<<"Error returning origional options"<<std::endl;
+    std::cout << "Error returning origional options" << std::endl;
 
   if (::close(properties.fd) < 0)
     return false;

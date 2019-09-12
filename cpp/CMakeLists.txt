@@ -39,6 +39,8 @@ target_link_libraries(kermit ${KERNEL_LIB} ${CONTROL_LIB} ${YAML_CPP})
 add_executable(all_in_one "${PROJECT_SOURCE_DIR}/src/impl/examples/all_in_one.cpp")
 target_link_libraries(all_in_one ${KERNEL_LIB} ${CONTROL_LIB} ${YAML_CPP})
 
+add_executable(all_in_one_two "${PROJECT_SOURCE_DIR}/src/impl/examples/all_in_one_type_two.cpp")
+target_link_libraries(all_in_one_two ${KERNEL_LIB} ${CONTROL_LIB} ${YAML_CPP})
 
 add_executable(proxy "${PROJECT_SOURCE_DIR}/src/impl/examples/proxy.cpp")
 target_link_libraries(proxy ${KERNEL_LIB} ${CONTROL_LIB} ${YAML_CPP})

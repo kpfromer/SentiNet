@@ -19,7 +19,6 @@
 #include "control/zhelpers.hpp"
 #include "control/NetworkPatterns.hpp"
 
-
 /**
  * @brief A ZMQControl Client is an implementation of the Control Client
  * Interface. CCI by default is not multithreaded, nor is it as complex as
@@ -38,19 +37,19 @@
 
 namespace utils {
 namespace defaults {
-constexpr auto DEFAULT_SOCKET_PREFIX = "default"; 
+constexpr auto DEFAULT_SOCKET_PREFIX = "default";
 constexpr auto SERVER_TCP_PREFIX = "tcp://*";
 constexpr auto SERVER_UDP_PREFIX = "udp://*";
 constexpr auto LOCAL_HOST_UDP_PREFIX = "udp://127.0.0.1";
 constexpr auto LOCAL_HOST_TCP_PREFIX = "tcp://127.0.0.1";
 constexpr auto DEFAULT_ZMQ_CONTROL_NAME = "ZMQController";
-}
-}
-
+} // namespace defaults
+} // namespace utils
 
 class ZMQControlClient : public ControlClientInterface {
 public:
-  ZMQControlClient(int context_ = 1, const std::string& yaml_system_file = "empty");
+  ZMQControlClient(int context_ = 1,
+                   const std::string &yaml_system_file = "empty");
   ~ZMQControlClient() {}
 
   bool start(int i = 0) override;
@@ -67,7 +66,7 @@ public:
    *
    * @return status
    */
-  bool initialize_publisher(const std::string& address) override;
+  bool initialize_publisher(const std::string &address) override;
 
   /**
    * @brief Refer to initialize_publisher
@@ -82,12 +81,11 @@ public:
 public:
   ///////////////////////////// PUBLISH /////////////////////////////////
   // Publishes on <this thread>
-  bool publish(const std::string &topic, 
-      const std::string &message) override;
+  bool publish(const std::string &topic, const std::string &message) override;
 
   // Does not execute above fnc - creates a new periodic publisher thread
   bool publish(const std::string sock_addr, const std::string topic,
-               std::function<std::string (void)> get_data_to_publish,
+               std::function<std::string(void)> get_data_to_publish,
                std::chrono::microseconds period) override;
 
   bool cancel_periodic_publisher(const std::string &) override;
@@ -97,11 +95,10 @@ public:
                       const std::string message) override;
 
   // Does not execute above fnc
-  bool request(
-      const std::string destination, const std::string id,
-      std::function<std::string (void)> get_data_to_request,
-      const std::function<void(std::string &)> callback,
-      const std::chrono::microseconds period) override;
+  bool request(const std::string destination, const std::string id,
+               std::function<std::string(void)> get_data_to_request,
+               const std::function<void(std::string &)> callback,
+               const std::chrono::microseconds period) override;
 
   bool cancel_periodic_request(const std::string &) override;
 
@@ -119,16 +116,19 @@ public:
 
   // Thread functions
 private:
-  static void periodic_publish_thread(std::unique_ptr<Publisher_Context> pub_context) {
+  static void
+  periodic_publish_thread(std::unique_ptr<Publisher_Context> pub_context) {
     pub_context->enter_thread();
   }
-  static void periodic_request_thread(std::unique_ptr<Requester_Context> req_context){
+  static void
+  periodic_request_thread(std::unique_ptr<Requester_Context> req_context) {
     req_context->enter_thread();
   }
-  static void subscription_thread(std::unique_ptr<Subscriber_Context> sub_context){
+  static void
+  subscription_thread(std::unique_ptr<Subscriber_Context> sub_context) {
     sub_context->enter_thread();
   }
-  static void server_thread(std::unique_ptr<Server_Context> serv_thread){
+  static void server_thread(std::unique_ptr<Server_Context> serv_thread) {
     serv_thread->enter_thread();
   }
 
@@ -164,19 +164,15 @@ private:
    * @note - A software engineer may say this is bad, instead, I
    * should have a map that maps strings to X_Context from
    * Network Patterns, however, I believe when it comes to multithreading
-   * I'd rather grant context permissions to each object in charge of the 
+   * I'd rather grant context permissions to each object in charge of the
    * thread. So a socket_thread_space is simply the aspects that this
    * object needs access to
    */
   typedef struct socket_data_s {
-    std::unordered_map<std::string, socket_thread_space>
-        subscribers;
-    std::unordered_map<std::string, socket_thread_space>
-        servers;
-    std::unordered_map<std::string, socket_thread_space>
-        periodic_clients;
-    std::unordered_map<std::string, socket_thread_space>
-        periodic_publishers;
+    std::unordered_map<std::string, socket_thread_space> subscribers;
+    std::unordered_map<std::string, socket_thread_space> servers;
+    std::unordered_map<std::string, socket_thread_space> periodic_clients;
+    std::unordered_map<std::string, socket_thread_space> periodic_publishers;
   } socket_data;
 
   /**
@@ -212,11 +208,8 @@ private:
     map[identifier].socket = std::make_unique<::zmq::socket_t>(context, type);
     return map[identifier];
   }
-
 };
 
 // Initialize static socket thread space with default constructor
 
 #endif /* end of include guard ZMQCONTROLCLIENT_HPP */
-
-

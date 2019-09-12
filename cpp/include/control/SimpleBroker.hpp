@@ -8,15 +8,13 @@
 
 #define SIMPLEBROKER_HPP
 
+class SimpleBroker {
+public:
+  SimpleBroker();
+  virtual ~SimpleBroker();
 
-class SimpleBroker
-{
-    public:
-        SimpleBroker ();
-        virtual ~SimpleBroker ();
-    private:
-        /* private data */
+private:
+  /* private data */
 };
 
 #endif /* end of include guard SIMPLEBROKER_HPP */
-

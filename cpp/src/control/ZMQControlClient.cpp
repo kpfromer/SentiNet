@@ -1,8 +1,8 @@
 
 #include "control/ZMQControlClient.hpp"
 
-ZMQControlClient::ZMQControlClient(int context_, const std::string& yaml_file) 
-  :   context(context_) {
+ZMQControlClient::ZMQControlClient(int context_, const std::string &yaml_file)
+    : context(context_) {
   // By default, no pub or client
   this_publisher = nullptr;
   this_client = nullptr;
@@ -29,10 +29,11 @@ bool ZMQControlClient::quit(int) {
   return true;
 }
 
-bool ZMQControlClient::initialize_publisher(const std::string& address) {
+bool ZMQControlClient::initialize_publisher(const std::string &address) {
   using namespace ::utils;
   this_publisher = std::make_unique<::zmq::socket_t>(context, ZMQ_PUB);
-  this_publisher->connect(address); // TODO - Add guards that protect from false endpoints. A ping protocol persay
+  this_publisher->connect(address); // TODO - Add guards that protect from false
+                                    // endpoints. A ping protocol persay
   return true;
 }
 
@@ -53,7 +54,7 @@ bool ZMQControlClient::publish(const std::string &topic,
 
 bool ZMQControlClient::publish(
     const std::string sock_addr, const std::string topic,
-    std::function<std::string (void)> get_data_to_publish,
+    std::function<std::string(void)> get_data_to_publish,
     std::chrono::microseconds period) {
 
   // If already exists do nothing
@@ -65,8 +66,7 @@ bool ZMQControlClient::publish(
 
   // Store a new socket by key sock_addr
   // val is now a socket_thread_space
-  auto &&val =
-      create_socket(ZMQ_PUB, thread_space.periodic_publishers, topic);
+  auto &&val = create_socket(ZMQ_PUB, thread_space.periodic_publishers, topic);
 
   // Create a future promise to exit the thread
   auto futureObj = val.exit_signal.get_future();
@@ -82,14 +82,13 @@ bool ZMQControlClient::publish(
 
   // Create a new thread - attatched to periodic  publisher
   val.thread = std::make_unique<std::thread>(
-      &ZMQControlClient::periodic_publish_thread,
-      std::move(pub_context));
+      &ZMQControlClient::periodic_publish_thread, std::move(pub_context));
   return true;
 }
 
 bool ZMQControlClient::cancel_periodic_publisher(const std::string &reference) {
   thread_space.periodic_publishers[reference].exit_signal.set_value();
-  if(thread_space.periodic_publishers[reference].thread->joinable())
+  if (thread_space.periodic_publishers[reference].thread->joinable())
     thread_space.periodic_publishers[reference].thread->join();
   return true;
 }
@@ -105,7 +104,7 @@ std::string ZMQControlClient::request(const std::string destination,
 
 bool ZMQControlClient::request(
     const std::string destination, const std::string id,
-    std::function<std::string (void)> get_data_to_request,
+    std::function<std::string(void)> get_data_to_request,
     std::function<void(std::string &)> action_to_recieved_data,
     const std::chrono::microseconds period) {
 
@@ -118,8 +117,7 @@ bool ZMQControlClient::request(
 
   // create and assign the address of val (a socket_thraed_space) to the map
   // val is now a socket_thread_space
-  auto &&val =
-      create_socket(ZMQ_REQ, thread_space.periodic_clients, id);
+  auto &&val = create_socket(ZMQ_REQ, thread_space.periodic_clients, id);
 
   // Create a future promise to exit
   auto &&futureObj = val.exit_signal.get_future();
@@ -133,22 +131,20 @@ bool ZMQControlClient::request(
 
   // Our main thread
   val.thread = std::make_unique<std::thread>(
-      &ZMQControlClient::periodic_request_thread, 
-      std::move(req_context));
+      &ZMQControlClient::periodic_request_thread, std::move(req_context));
   return true;
 }
 
 bool ZMQControlClient::cancel_periodic_request(const std::string &reference) {
   thread_space.periodic_clients[reference].exit_signal.set_value();
-  if(thread_space.periodic_clients[reference].thread->joinable())
+  if (thread_space.periodic_clients[reference].thread->joinable())
     thread_space.periodic_clients[reference].thread->join();
   return true;
 }
 
-bool ZMQControlClient::subscribe(
-    const std::string sock_addr, const std::string topic,
-    std::function<void(std::string &)> callback) {
-
+bool ZMQControlClient::subscribe(const std::string sock_addr,
+                                 const std::string topic,
+                                 std::function<void(std::string &)> callback) {
 
   auto &&found = thread_space.subscribers.find(topic);
 
@@ -162,7 +158,7 @@ bool ZMQControlClient::subscribe(
   auto &&futureObj = val.exit_signal.get_future();
 
   auto sub_context = std::make_unique<Subscriber_Context>();
-  
+
   sub_context->set_exit_signal(std::move(futureObj));
   sub_context->set_socket(std::move(val.socket));
   sub_context->set_callback(callback);
@@ -170,8 +166,7 @@ bool ZMQControlClient::subscribe(
   sub_context->set_topic(topic);
 
   val.thread = std::make_unique<std::thread>(
-      &ZMQControlClient::subscription_thread, 
-      std::move(sub_context));
+      &ZMQControlClient::subscription_thread, std::move(sub_context));
 
   return true;
 }
@@ -187,7 +182,6 @@ bool ZMQControlClient::serve(
     const std::string address,
     std::function<std::string(std::string &)> callback) {
 
-  
   auto &&found = thread_space.servers.find(address);
   if (found != thread_space.servers.end()) {
     std::cout << "Already have a server there bud" << std::endl;
@@ -196,24 +190,22 @@ bool ZMQControlClient::serve(
 
   auto &&val = create_socket(ZMQ_REP, thread_space.servers, address);
   auto &&futureObj = val.exit_signal.get_future();
-  
+
   auto serv_context = std::make_unique<Server_Context>();
-  
+
   serv_context->set_address(address);
   serv_context->set_exit_signal(std::move(futureObj));
   serv_context->set_socket(std::move(val.socket));
   serv_context->set_callback(callback);
 
-  val.thread = std::make_unique<std::thread>(
-      &ZMQControlClient::server_thread, 
-      std::move(serv_context));
+  val.thread = std::make_unique<std::thread>(&ZMQControlClient::server_thread,
+                                             std::move(serv_context));
   return true;
 }
 
-
 bool ZMQControlClient::terminate_server(const std::string &reference) {
   thread_space.servers[reference].exit_signal.set_value();
-  if(thread_space.servers[reference].thread->joinable())
+  if (thread_space.servers[reference].thread->joinable())
     thread_space.servers[reference].thread->join();
   return true;
 }

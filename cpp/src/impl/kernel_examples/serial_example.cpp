@@ -4,9 +4,7 @@
  * @created     : Friday Aug 30, 2019 14:06:53 MDT
  */
 
-
 #include "kernel/SerialPort.hpp"
-
 
 int main() {
   auto a = std::make_unique<SerialPort>("/dev/ttyUSB0", 9600);

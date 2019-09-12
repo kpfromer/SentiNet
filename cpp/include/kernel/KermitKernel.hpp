@@ -24,21 +24,21 @@ constexpr int local_port = 5555;
 class KermitKernel : public ZMQControlClient {
 public:
   KermitKernel() = delete;
-  KermitKernel(const std::string& drive_topic, const bool verbose = true);
+  KermitKernel(const std::string &drive_topic, const bool verbose = true);
 
   virtual ~KermitKernel();
 
-  void set_drive_topic(const std::string& topic);
+  void set_drive_topic(const std::string &topic);
 
-  void set_serial(const std::string& port, const int& baud);
+  void set_serial(const std::string &port, const int &baud);
 
   bool loop(const std::chrono::microseconds serial_period);
 
 private:
+  bool initialize_control_client(
+      const std::string &address = "tcp://localhost:5555");
 
-  bool initialize_control_client(const std::string& address = "tcp://localhost:5555");
-
-  void recieve_drive_message(const std::string& drive_message);
+  void recieve_drive_message(const std::string &drive_message);
 
   void print_state();
   bool send_data();
@@ -79,5 +79,5 @@ private:
   KermitOutputs kermit;
   KermitMessageProperties message;
 };
-}
+} // namespace Kermit
 #endif /* end of include guard KERMITKERNEL_HPP */
